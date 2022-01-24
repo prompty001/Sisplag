@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald');
+
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color: #242c3a;
+    font-size: 20px;
+    outline: none;
+    border-radius: 6px;
+    font-family: 'Oswald', sans-serif;
+    color: rgb(224, 223, 223);
+
+    margin-block-start: 3px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.schoolForm .formPersonalData {
+    margin-left: 18%;
+    text-align: left;
+}
+
+.schoolForm .formPersonalData h3 {
+    margin-left: 10em;
+    font-size: 30px;
+    color: rgb(128, 123, 123);
+}
+
+.schoolForm .formPersonalData .formPersonalDataInput p {
+    font-weight: bold;
+}
+
+.schoolForm .formPersonalData .formPersonalDataInput .allInput {
+    border: 1px solid black;
+    background-color: #162033;
+    padding: 7px;
+    width: 38%;
+}
+
+.schoolForm .formPersonalData .formPersonalDataInput .selectInitials {
+    font-size: 16px;
+    width: 10%;
+}
+
+.schoolForm .formPersonalData .formPersonalDataInput .selectDistrict {
+    font-size: 16px;
+    width: 10%;
+}
+    
