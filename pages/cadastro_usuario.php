@@ -60,7 +60,7 @@
                     <p class="label">Tipo de Usuario</p>
                 <select id="school-acronym" style="flex-grow: 1" name="fk_tipousuario">
                         <option value="selecopo" > -- Selecione Opção --</option>
-                        <!-- Consulta no banco - Cargos dos Servidores--->
+                        <!-- Consulta no banco - Tipo de Usuario--->
                         <?php
                             $consultaTipoUsuario = $conn->prepare('SELECT * FROM tipousuario');
                             $consultaTipoUsuario->execute();
