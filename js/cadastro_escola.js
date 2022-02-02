@@ -7,7 +7,7 @@ function handleClickType(radioTypeSchool) {
 
     document.querySelector('.schoolForm .formPersonalData .formPersonalDataInput .selectInitials').style.display = 'inline';
     
-    if (valueRadioSchool === 'private') {
+    if (valueRadioSchool === '2') {
         document.querySelector('.selectInitials option[value="emeif"]').innerHTML = "Comunitária";
         document.querySelector('.selectInitials option[value="emef"]').innerHTML = "Confessional";
         document.querySelector('.selectInitials option[value="emei"]').innerHTML = "OSC";
