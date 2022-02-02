@@ -32,7 +32,7 @@ CREATE TABLE tipoUsuario(
 CREATE TABLE instituicao( 
 	id_instituicao INT NOT NULL AUTO_INCREMENT, 
 	fk_tipoInstituicao INT,
-	sigla VARCHAR(20),
+	fk_sigla INT,
 	fk_distrito INT,
 	nome_instituicao VARCHAR(50) NOT NULL, 
 	fundacao DATE,
@@ -56,14 +56,22 @@ CREATE TABLE instituicao(
 	whats_secretario VARCHAR(50) DEFAULT 'Sem WhatsApp',  
 	nome_coordenador VARCHAR(50),
 	email_coordenador VARCHAR(50) DEFAULT 'Sem email',
-	whats_coordenador VARCHAR(50) DEFAULT 'Sem WhatsApp',  
+	whats_coordenador VARCHAR(50) DEFAULT 'Sem WhatsApp', 
+	convenio_semec VARCHAR(50), 
+	educacao_infantil VARCHAR(50), 
+	fundamental VARCHAR(50), 
+	fundamental_eja VARCHAR(50), 
+	outros_niveis VARCHAR(50), 
+	CONSTRAINT pk_escola PRIMARY KEY (id_instituicao)
+)
+
+/*
 	convenio_semec VARCHAR(50), 
 	educacao_infantil VARCHAR(50), 
 	fundamental VARCHAR(50), 
 	fundamental_eja VARCHAR(50), 
 	outros_niveis VARCHAR(50),
-	CONSTRAINT pk_escola PRIMARY KEY (id_instituicao)
-)
+*/
 
 
 CREATE TABLE tipoInstituicao( 
@@ -218,11 +226,18 @@ ALTER TABLE usuario ADD CONSTRAINT fk_tipo FOREIGN KEY (fk_tipousuario) REFERENC
 
 ALTER TABLE instituicao ADD CONSTRAINT fk_tip FOREIGN KEY (fk_tipoInstituicao) REFERENCES tipoInstituicao (id_inst);
 ALTER TABLE instituicao ADD CONSTRAINT fk_distritoadm FOREIGN KEY (fk_distrito) REFERENCES distritoadm (id_distrito);
-
+ALTER TABLE instituicao ADD CONSTRAINT fk_siglainst FOREIGN KEY (fk_sigla) REFERENCES siglainstituicao (id_sigla);
 
 ALTER TABLE filial ADD CONSTRAINT fk_tipoinst FOREIGN KEY (fk_tipoInstituicaoFilial) REFERENCES tipoInstituicao (id_inst);
 
-ALTER TABLE instituicao ADD fk_siglainst int;
-ALTER TABLE instituicao ADD CONSTRAINT fk_sigla FOREIGN KEY (fk_siglainst) REFERENCES siglainstituicao (id_sigla);
+/*ALTER TABLE instituicao ADD fk_siglainst int;*/
 
 
+/*ALTER TABLE instituicao ADD (
+	convenio_semec VARCHAR(50), 
+	educacao_infantil VARCHAR(50), 
+	fundamental VARCHAR(50), 
+	fundamental_eja VARCHAR(50), 
+	outros_niveis VARCHAR(50)
+);
+*/

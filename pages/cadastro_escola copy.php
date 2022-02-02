@@ -14,11 +14,13 @@
 
     <?php
         require_once('../config/conexao.php');
+        require_once('../config/painel.php');
+
 
         if(isset($_POST['enviar'])){
-            $id_inst = $_POST['id_inst'];
-            $id_sigla = $_POST['id_sigla'];
-            $id_distrito = $_POST['id_distrito'];
+            $fk_tipoInstituicao = $_POST['fk_tipoInstituicao'];
+            $fk_sigla = $_POST['fk_sigla'];
+            $fk_distrito = $_POST['fk_distrito'];
             $nome_instituicao = $_POST['nome_instituicao'];
             $fundacao = $_POST['fundacao'];
             $codigo_inep = $_POST['codigo_inep'];
@@ -44,7 +46,7 @@
             $email_coordenador = $_POST['email_coordenador'];
 
 
-            $cadastroEscola = $conn->prepare("INSERT INTO INSTITUICAO(fk_tipoInstituicao, sigla, fk_distrito, nome_instituicao, fundacao, codigo_inep, cnpj_escola, entidade_mantenedora, cnpj_conselho, vigencia_ce, cidade, uf, complemento, bairro, cep_escola, telefone_inst, email_inst, nome_gestor, whats_gestor, email_gestor, nome_secretario, whats_secretario, email_secretario, nome_coordenador, whats_coordenador, email_coordenador) VALUES ('$id_inst', '$id_sigla', '$id_distrito', '$nome_instituicao', '$fundacao', '$codigo_inep', '$cnpj_escola', '$entidade_mantenedora', '$cnpj_conselho', '$vigencia_ce', '$cidade', '$uf','$complemento', '$bairro', '$cep_escola', '$telefone_inst', '$email_inst', $nome_gestor', $whats_gestor', $email_gestor', '$nome_secretario', '$whats_secretario', '$email_secretario', '$nome_coordenador', '$whats_coordenador', '$email_coordenador')");
+            $cadastroEscola = $conn->prepare("INSERT INTO INSTITUICAO (fk_tipoInstituicao, fk_sigla, fk_distrito, nome_instituicao, fundacao, codigo_inep, cnpj_escola, entidade_mantenedora, cnpj_conselho, vigencia_ce, cep_escola, uf, cidade, bairro, complemento, email_inst, telefone_inst, nome_gestor, email_gestor, whats_gestor, nome_secretario, email_secretario, whats_secretario, nome_coordenador, email_coordenador, whats_coordenador) VALUES ('$fk_tipoInstituicao', '$fk_sigla', '$fk_distrito', '$nome_instituicao', '$fundacao', '$codigo_inep', '$cnpj_escola', '$entidade_mantenedora', '$cnpj_conselho', '$vigencia_ce', '$cep_escola', '$uf',  '$cidade', '$bairro', '$complemento', '$email_inst', '$telefone_inst', '$nome_gestor', '$email_gestor', '$whats_gestor', '$nome_secretario', '$email_secretario', '$whats_secretario', '$nome_coordenador', '$email_coordenador', '$whats_coordenador')");
 
             $cadastroEscola->execute();
         }
@@ -57,9 +59,9 @@
                 <h3>Dados de Identificação</h3>
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
-            <form method="POST">
+            <form method="POST" action="cadastro_escola02.php">
                 <p class="label">Cargo</p>
-                <select name="id_inst">
+                <select name="fk_tipoInstituicao">
                     <option>Tipo Escola</option>
                     <!-- Consulta no banco - Tipo de Escola--->
                     <?php
@@ -75,7 +77,7 @@
                         ?>
                 </select>
 
-                <select name="id_sigla">
+                <select name="fk_sigla">
                     <option>Sigla</SIGLA></option>
                     <!-- Consulta no banco - Siglas--->
                     <?php
@@ -91,7 +93,7 @@
                         ?>
                 </select>
 
-                <select name="id_distrito">
+                <select name="fk_distrito">
                     <option >Distrito Adm</option>
                     <!-- Consulta no banco - Distritos ADM--->
                     <?php
@@ -155,14 +157,71 @@
 
                 <input type="text" class="allInput coordinatorEmail"  name="email_coordenador" placeholder="Email">
 
-                <div>
+
+                <div class="formTechnicalData">
+            <hr>
+            <h3>Dados Técnicos</h3>
+            <hr>
+
+                
+                <p>Celebra Convênio com a Semec</p>
+                <input type="radio" name="radioPact" value="no" onclick="handleClickPact(this)">
+                <label for="Não">Não</label>
+                <input type="radio" name="radioPact" value="yes" onclick="handleClickPact(this)">
+                <label for="Sim">Sim</label><br>
+                
+                <div class="areaPact" style="display: none;">
+                    <input type="text" class="allInput noPact" name="noPact" placeholder="Nº do Convênio">
+                    <input type="text" class="allInput objPact" name="objPact" placeholder="Objeto"><br>
+                    <input type="text" class="allInput validityPact" name="validityPact" placeholder="Vigência">
+                </div>  
+
+                <p>Etapa(s)/Modalidade(s) da Educação Básica Ofertada</p>
+                <p style="font-size: 18px;margin-left: 26px;">Educação Infantil</p>
+                <div class="childEducation">
+                    <input type="checkbox" name="nursery" value="nursery">
+                    <label for="nursery">Creche</label>
+                      <input type="checkbox" name="preSchool" value="preSchool">
+                    <label for="preSchool">Pré-Escola</label>
+                </div>
+
+                <p style="font-size: 18px;margin-left: 26px;">Educação Fundamental</p>
+                <div class="basicEducation">
+                    <input type="checkbox" name="cycleOne" value="cycleOne">
+                    <label for="cycleOne">CF I (1º, 2º e 3º ano)</label>
+                      <input type="checkbox" name="cycleTwo" value="cycleTwp">
+                    <label for="cycleTwo">CF II (4º e 5º ano)</label>
+                      <input type="checkbox" name="cycleThree" value="cycleThree">
+                    <label for="cycleThree">CF III (6º e 7º ano)</label>
+                      <input type="checkbox" name="cycleFour" value="cycleFour">
+                    <label for="cycleFour">CF IV (8º e 9º ano)</label>
+                </div>
+
+                <P style="font-size: 18px; margin-left: 26px;">Ensino Fundamental - Educação de Jovens, Adultos e Idosos (Totalidades do Conhecimento) - Anos Iniciais e Finais</P>
+                <div class="basicEducationTwo">
+                    <input type="checkbox" name="totalityOne" value="totalityOne">
+                    <label for="totalityOne">1ª Totalidade - CF I (1º, 2º e 3º ano)</label>
+                      <input type="checkbox" name="totalityTwo" value="totalityTwo">
+                    <label for="totalityTwo">2ª Totalidade - CF II (4º e 5º ano)</label><br>
+                    <input type="checkbox" name="totalityThree" value="totalityThree">
+                    <label for="totalityThree">3ª Totalidade - CF III (6º e 7º ano)</label>
+                      <input type="checkbox" name="totalityFour" value="totalityFour">
+                    <label for="totalityFour">4ª Totalidade - CF IV (8º e 9º ano)</label><br>
+                    <input type="checkbox" name="othersLevels" value="othersLevels">
+                    <label for="othersLevels">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
+                </div>
+
+            </form>
+        </div>
 
                 <button type="submit" class="btn btn-primary" type="button" name="enviar">Enviar</button>
                 
 
 
-            </form>
+                            </div>
+                            </div>
 
+    <script src="../js/cadastro_escola.js"></script>
     
   </body>
 
