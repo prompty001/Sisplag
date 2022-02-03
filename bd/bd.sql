@@ -97,7 +97,9 @@ CREATE TABLE distritoAdm(
 CREATE TABLE filial( 
 	id_filial INT NOT NULL AUTO_INCREMENT, 
 	nome_filial VARCHAR(50),
-	sigla_filial VARCHAR(20),
+	fk_tipoInstituicaoFilial INT,
+	fk_instituicao INT
+	fk_sigla VARCHAR(20),
 	fundacao_filial VARCHAR(50),
 	codigo_inepfilial VARCHAR(50),
 	cep_escola INT,
@@ -107,13 +109,12 @@ CREATE TABLE filial(
 	complemento VARCHAR(50),
 	telefone_filial VARCHAR(13) DEFAULT 'Sem telefone',
 	email_filial VARCHAR(50) DEFAULT 'Sem email',
-	responsavel_filial VARCHAR(50), 
+	resp_filial VARCHAR(50), 
 	email_respLegal VARCHAR(50) DEFAULT 'Sem email',
-	educacaoinf_Filial VARCHAR(50), 
+	educacao_infantil VARCHAR(50), 
 	fundamental_filial VARCHAR(50), 
 	fundamentaleja_filial VARCHAR(50), 
 	outrosniveis_filial VARCHAR(50),
-	fk_tipoInstituicaoFilial INT, 
 	CONSTRAINT pk_filial PRIMARY KEY (id_filial)
 )
 
@@ -196,6 +197,8 @@ INSERT INTO distritoadm (distritoAdm)
 
 INSERT INTO usuario (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento) VALUES ('teste', 00000000000, 'teste@gmail.com', 'teste', '2022-01-22', '2022-01-30', '1920-05-01')
 
+INSERT INTO usuario (nome_usuario, cpf_usuario, senha_usuario) VALUES ('admin', 00, 'admin')
+
 
 INSERT INTO tipoInstituicao 
 	VALUES ('pública'),
@@ -213,6 +216,7 @@ INSERT INTO `siglainstituicao`(`sigla`)
             ('EMEI'),
             ('UEI'),
             ('Block')
+
 
 
 
@@ -247,5 +251,11 @@ ALTER TABLE instituicao
     ADD COLUMN n_convenio INT AFTER convenio_semec,
     ADD COLUMN objeto VARCHAR(50) AFTER n_convenio,
     ADD COLUMN vigencia DATE AFTER objeto;
+
+
+ALTER TABLE filial ADD CONSTRAINT fk_tipoFilial FOREIGN KEY (fk_tipoInstituicaoFilial) REFERENCES tipoInstituicao (id_inst);
+ALTER TABLE filial ADD CONSTRAINT fk_inst FOREIGN KEY (fk_instituicao) REFERENCES instituicao (id_instituicao);
+ALTER TABLE filial ADD CONSTRAINT fk_siglaFilial FOREIGN KEY (fk_sigla) REFERENCES siglaInstituicao (id_sigla);
+
 
 	

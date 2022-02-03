@@ -68,7 +68,7 @@
 
 
                 <hr>
-                <select class="allInput selectInitialsBranch" name="initials">
+                <select class="allInput selectInitialsBranch" name="fk_sigla">
                 <option>-Sigla-</SIGLA></option>
                     <!-- Consulta no banco - Siglas--->
                     <?php
@@ -98,38 +98,41 @@
 
                 <p>Etapa(s)/Modalidade(s) da Educação Básica Ofertada</p>
                 <p style="font-size: 18px;margin-left: 26px;">Educação Infantil</p>
-                <div class="childEducationBranch">
-                    <input type="checkbox" name="nurseryBranch" value="nurseryBranch">
-                    <label for="nurseryBranch">Creche</label>
-                      <input type="checkbox" name="preSchoolBranch" value="preSchoolBranch">
-                    <label for="preSchoolBranch">Pré-Escola</label>
+                <div class="childEducation">
+                    <input type="checkbox" name="educacao_infantil" value="Creche">
+                    <label for="nursery">Creche</label>
+                      <input type="checkbox" name="educacao_infantil" value="Pré-Escola">
+                    <label for="preSchool">Pré-Escola</label>
                 </div>
 
                 <p style="font-size: 18px;margin-left: 26px;">Educação Fundamental</p>
-                <div class="basicEducationBranch">
-                    <input type="checkbox" name="cycleOneBranch" value="cycleOneBranch">
-                    <label for="cycleOneBranch">CF I (1º, 2º e 3º ano)</label>
-                      <input type="checkbox" name="cycleTwoBranch" value="cycleTwpBranch">
-                    <label for="cycleTwoBranch">CF II (4º e 5º ano)</label>
-                      <input type="checkbox" name="cycleThreeBranch" value="cycleThreeBranch">
-                    <label for="cycleThreeBranch">CF III (6º e 7º ano)</label>
-                      <input type="checkbox" name="cycleFourBranch" value="cycleFourBranch">
-                    <label for="cycleFourBranch">CF IV (8º e 9º ano)</label>
+                <div class="basicEducation">
+                    <input type="checkbox" name="fundamental" value="CF I (1º, 2º e 3º ano)">
+                    <label for="cycleOne">CF I (1º, 2º e 3º ano)</label>
+                      <input type="checkbox" name="fundamental" value="CF II (4º e 5º ano)">
+                    <label for="cycleTwo">CF II (4º e 5º ano)</label>
+                      <input type="checkbox" name="fundamental" value="CF III (6º e 7º ano)">
+                    <label for="cycleThree">CF III (6º e 7º ano)</label>
+                      <input type="checkbox" name="fundamental" value="CF IV (8º e 9º ano)">
+                    <label for="cycleFour">CF IV (8º e 9º ano)</label>
                 </div>
 
                 <P style="font-size: 18px; margin-left: 26px;">Ensino Fundamental - Educação de Jovens, Adultos e Idosos (Totalidades do Conhecimento) - Anos Iniciais e Finais</P>
                 <div class="basicEducationTwo">
-                    <input type="checkbox" name="totalityOneBranch" value="totalityOneBranch">
-                    <label for="totalityOneBranch">1ª Totalidade - CF I (1º, 2º e 3º ano)</label>
-                      <input type="checkbox" name="totalityTwoBranch" value="totalityTwoBranch">
-                    <label for="totalityTwoBranch">2ª Totalidade - CF II (4º e 5º ano)</label><br>
-                    <input type="checkbox" name="totalityThreeBranch" value="totalityThreeBranch">
-                    <label for="totalityThreeBranch">3ª Totalidade - CF III (6º e 7º ano)</label>
-                      <input type="checkbox" name="totalityFourBranch" value="totalityFourBranch">
-                    <label for="totalityFourBranch">4ª Totalidade - CF IV (8º e 9º ano)</label><br>
-                    <input type="checkbox" name="othersLevelsBranch" value="othersLevelsBranch">
-                    <label for="othersLevelsBranch">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
+                    <input type="checkbox" name="fundamental_eja" value="1ª Totalidade - CF I (1º, 2º e 3º ano)">
+                    <label for="totalityOne">1ª Totalidade - CF I (1º, 2º e 3º ano)</label>
+                      <input type="checkbox" name="fundamental_eja" value="2ª Totalidade - CF II (4º e 5º ano)">
+                    <label for="totalityTwo">2ª Totalidade - CF II (4º e 5º ano)</label><br>
+                    <input type="checkbox" name="fundamental_eja" value="3ª Totalidade - CF III (6º e 7º ano)">
+                    <label for="totalityThree">3ª Totalidade - CF III (6º e 7º ano)</label>
+                      <input type="checkbox" name="fundamental_eja" value="4ª Totalidade - CF IV (8º e 9º ano)">
+                    <label for="totalityFour">4ª Totalidade - CF IV (8º e 9º ano)</label><br>
+                </div>    
+                <div>
+                    <input type="checkbox" name="outros_niveis" value="Outros níveis e/ou Modalidades de Ensino Ofertadas">
+                    <label for="othersLevels">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
                 </div>
+
  
                 <button class="sendData" type="submit">Enviar</button>
 
