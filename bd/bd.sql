@@ -241,3 +241,11 @@ ALTER TABLE filial ADD CONSTRAINT fk_tipoinst FOREIGN KEY (fk_tipoInstituicaoFil
 	outros_niveis VARCHAR(50)
 );
 */
+
+
+ALTER TABLE instituicao
+    ADD COLUMN n_convenio INT AFTER convenio_semec,
+    ADD COLUMN objeto VARCHAR(50) AFTER n_convenio,
+    ADD COLUMN vigencia DATE AFTER objeto;
+
+	

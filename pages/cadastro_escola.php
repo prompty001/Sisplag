@@ -45,8 +45,17 @@
             $whats_coordenador = $_POST['whats_coordenador'];
             $email_coordenador = $_POST['email_coordenador'];
 
+            $convenio_semec = $_POST['convenio_semec'];
+            $n_convenio = $_POST['n_convenio'];
+            $objeto = $_POST['objeto'];
+            $vigencia = $_POST['vigencia'];
+            $educacao_infantil = $_POST['educacao_infantil'];
+            $fundamental = $_POST['fundamental'];
+            $fundamental_eja = $_POST['fundamental_eja'];
+            $outros_niveis = $_POST['outros_niveis'];
 
-            $cadastroEscola = $conn->prepare("INSERT INTO INSTITUICAO (fk_tipoInstituicao, fk_sigla, fk_distrito, nome_instituicao, fundacao, codigo_inep, cnpj_escola, entidade_mantenedora, cnpj_conselho, vigencia_ce, cep_escola, uf, cidade, bairro, complemento, email_inst, telefone_inst, nome_gestor, email_gestor, whats_gestor, nome_secretario, email_secretario, whats_secretario, nome_coordenador, email_coordenador, whats_coordenador) VALUES ('$fk_tipoInstituicao', '$fk_sigla', '$fk_distrito', '$nome_instituicao', '$fundacao', '$codigo_inep', '$cnpj_escola', '$entidade_mantenedora', '$cnpj_conselho', '$vigencia_ce', '$cep_escola', '$uf',  '$cidade', '$bairro', '$complemento', '$email_inst', '$telefone_inst', '$nome_gestor', '$email_gestor', '$whats_gestor', '$nome_secretario', '$email_secretario', '$whats_secretario', '$nome_coordenador', '$email_coordenador', '$whats_coordenador')");
+
+            $cadastroEscola = $conn->prepare("INSERT INTO INSTITUICAO (fk_tipoInstituicao, fk_sigla, fk_distrito, nome_instituicao, fundacao, codigo_inep, cnpj_escola, entidade_mantenedora, cnpj_conselho, vigencia_ce, cep_escola, uf, cidade, bairro, complemento, email_inst, telefone_inst, nome_gestor, email_gestor, whats_gestor, nome_secretario, email_secretario, whats_secretario, nome_coordenador, email_coordenador, whats_coordenador, convenio_semec, n_convenio, objeto, vigencia, educacao_infantil, fundamental, fundamental_eja, outros_niveis) VALUES ('$fk_tipoInstituicao', '$fk_sigla', '$fk_distrito', '$nome_instituicao', '$fundacao', '$codigo_inep', '$cnpj_escola', '$entidade_mantenedora', '$cnpj_conselho', '$vigencia_ce', '$cep_escola', '$uf',  '$cidade', '$bairro', '$complemento', '$email_inst', '$telefone_inst', '$nome_gestor', '$email_gestor', '$whats_gestor', '$nome_secretario', '$email_secretario', '$whats_secretario', '$nome_coordenador', '$email_coordenador', '$whats_coordenador', '$convenio_semec', '$n_convenio', '$objeto', '$vigencia', '$educacao_infantil', '$fundamental', '$fundamental_eja', '$outros_niveis')");
 
             $cadastroEscola->execute();
         }
@@ -59,7 +68,7 @@
             <h3>Dados de Identificação</h3>
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
-            <form class="formPersonalDataInput" method="POST" action="cadastro_escola02.php">
+            <form class="formTechnicalData" method="POST" >
 
                 <p>Tipo da escola</p>
                 <div class="radioSchool">
@@ -146,141 +155,77 @@
                 <input type="text" class="allInput coordinatorWpp"  name="whats_coordenador" placeholder="Whatsapp"><br>
 
                 <input type="text" class="allInput coordinatorEmail"  name="email_coordenador" placeholder="Email">
+      
 
-        </div>
+                <!--                        DADOS TÉCNICOS                             -->
 
-        <div class="formTechnicalData">
+                
             <hr>
             <h3>Dados Técnicos</h3>
             <hr>
 
-            <form class="formTechnicalDataInput" action="/FORMULARIO.php" method="get">
+            
                 
                 <p>Celebra Convênio com a Semec</p>
-                <input type="radio" name="radioPact" value="no" onclick="handleClickPact(this)">
+                <input type="radio" name="convenio_semec" value="no" onclick="handleClickPact(this)">
                 <label for="Não">Não</label>
-                <input type="radio" name="radioPact" value="yes" onclick="handleClickPact(this)">
+                <input type="radio" name="convenio_semec" value="yes" onclick="handleClickPact(this)">
                 <label for="Sim">Sim</label><br>
                 
-                <div class="areaPact" style="display: none;">
-                    <input type="text" class="allInput noPact" name="noPact" placeholder="Nº do Convênio">
-                    <input type="text" class="allInput objPact" name="objPact" placeholder="Objeto"><br>
-                    <input type="text" class="allInput validityPact" name="validityPact" placeholder="Vigência">
+                <div>
+                    <input type="text" class="allInput noPact" name="n_convenio" placeholder="Nº do Convênio">
+                    <input type="text" class="allInput objPact" name="objeto" placeholder="Objeto">
+                    <input type="text" class="allInput validityPact" name="vigencia" placeholder="Vigência">
+                    <br>
+                    <br>
                 </div>  
 
                 <p>Etapa(s)/Modalidade(s) da Educação Básica Ofertada</p>
                 <p style="font-size: 18px;margin-left: 26px;">Educação Infantil</p>
                 <div class="childEducation">
-                    <input type="checkbox" name="nursery" value="nursery">
+                    <input type="checkbox" name="educacao_infantil" value="Creche">
                     <label for="nursery">Creche</label>
-                      <input type="checkbox" name="preSchool" value="preSchool">
+                      <input type="checkbox" name="educacao_infantil" value="Pré-Escola">
                     <label for="preSchool">Pré-Escola</label>
                 </div>
 
                 <p style="font-size: 18px;margin-left: 26px;">Educação Fundamental</p>
                 <div class="basicEducation">
-                    <input type="checkbox" name="cycleOne" value="cycleOne">
+                    <input type="checkbox" name="fundamental" value="CF I (1º, 2º e 3º ano)">
                     <label for="cycleOne">CF I (1º, 2º e 3º ano)</label>
-                      <input type="checkbox" name="cycleTwo" value="cycleTwp">
+                      <input type="checkbox" name="fundamental" value="CF II (4º e 5º ano)">
                     <label for="cycleTwo">CF II (4º e 5º ano)</label>
-                      <input type="checkbox" name="cycleThree" value="cycleThree">
+                      <input type="checkbox" name="fundamental" value="CF III (6º e 7º ano)">
                     <label for="cycleThree">CF III (6º e 7º ano)</label>
-                      <input type="checkbox" name="cycleFour" value="cycleFour">
+                      <input type="checkbox" name="fundamental" value="CF IV (8º e 9º ano)">
                     <label for="cycleFour">CF IV (8º e 9º ano)</label>
                 </div>
 
                 <P style="font-size: 18px; margin-left: 26px;">Ensino Fundamental - Educação de Jovens, Adultos e Idosos (Totalidades do Conhecimento) - Anos Iniciais e Finais</P>
                 <div class="basicEducationTwo">
-                    <input type="checkbox" name="totalityOne" value="totalityOne">
+                    <input type="checkbox" name="fundamental_eja" value="1ª Totalidade - CF I (1º, 2º e 3º ano)">
                     <label for="totalityOne">1ª Totalidade - CF I (1º, 2º e 3º ano)</label>
-                      <input type="checkbox" name="totalityTwo" value="totalityTwo">
+                      <input type="checkbox" name="fundamental_eja" value="2ª Totalidade - CF II (4º e 5º ano)">
                     <label for="totalityTwo">2ª Totalidade - CF II (4º e 5º ano)</label><br>
-                    <input type="checkbox" name="totalityThree" value="totalityThree">
+                    <input type="checkbox" name="fundamental_eja" value="3ª Totalidade - CF III (6º e 7º ano)">
                     <label for="totalityThree">3ª Totalidade - CF III (6º e 7º ano)</label>
-                      <input type="checkbox" name="totalityFour" value="totalityFour">
+                      <input type="checkbox" name="fundamental_eja" value="4ª Totalidade - CF IV (8º e 9º ano)">
                     <label for="totalityFour">4ª Totalidade - CF IV (8º e 9º ano)</label><br>
-                    <input type="checkbox" name="othersLevels" value="othersLevels">
+                </div>    
+                <div>
+                    <input type="checkbox" name="outros_niveis" value="Outros níveis e/ou Modalidades de Ensino Ofertadas">
                     <label for="othersLevels">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
                 </div>
 
-            </form>
-        </div>
-
-        <div class="formBranchData">
-            <hr>
-            <h3>Filiais</h3>
-            <hr>
-
-            <p>Possui Filiais</p>
-            <input type="radio" name="radioBranch" value="no" onclick="handleClickBranch(this)">
-            <label for="branch">Não</label>
-              <input type="radio" name="radioBranch" value="yes" onclick="handleClickBranch(this)">
-            <label for="branch">Sim</label><br>
-            
-            <form class="formBranchDataInput" action="/FORMULARIO.php" method="get">
-                <hr>
-                <select class="allInput selectInitialsBranch" name="initials">
-                    <option value="sigla">&ltSIGLA/TIPO&gt</SIGLA></option>
-                    <option value="emeif">EMEIF</option>
-                    <option value="emef">EMEF</option>
-                    <option value="emei">EMEI</option>
-                    <option value="uei">UEI</option>
-                    <option value="private">PRIVADA</option>
-                </select><br>
-
-                <input type="text" class="allInput instNameBranch" name="instName" placeholder="Nome Institucional">
-                <input type="text" class="allInput foundationBranch" name="fundacao" placeholder="Fundação">
-                <input type="text" class="allInput inepCodeBranch" name="inepCodeBranch" placeholder="Código INEP">
-                <input type="text" class="allInput addressBranch" name="addressBranch" placeholder="Endereço"><br>
-                <input type="text" class="allInput cepBranch" name="cepBranch" placeholder="CEP">
-                <input type="text" class="allInput phoneBranch" name="phoneBranch" placeholder="Telefone">
-                <input type="text" class="allInput instEmailBranch" name="instEmailBranch" placeholder="Email Institucional">
-                <input type="text" class="allInput legalResponsible" name="legalResponsible" placeholder="Responsável Legal"><br>
-                <input type="text" class="allInput emailLegalResponsible" name="emailLegalResponsible" placeholder="Email Responsável Legal">
-
-                <p>Etapa(s)/Modalidade(s) da Educação Básica Ofertada</p>
-                <p style="font-size: 18px;margin-left: 26px;">Educação Infantil</p>
-                <div class="childEducationBranch">
-                    <input type="checkbox" name="nurseryBranch" value="nurseryBranch">
-                    <label for="nurseryBranch">Creche</label>
-                      <input type="checkbox" name="preSchoolBranch" value="preSchoolBranch">
-                    <label for="preSchoolBranch">Pré-Escola</label>
-                </div>
-
-                <p style="font-size: 18px;margin-left: 26px;">Educação Fundamental</p>
-                <div class="basicEducationBranch">
-                    <input type="checkbox" name="cycleOneBranch" value="cycleOneBranch">
-                    <label for="cycleOneBranch">CF I (1º, 2º e 3º ano)</label>
-                      <input type="checkbox" name="cycleTwoBranch" value="cycleTwpBranch">
-                    <label for="cycleTwoBranch">CF II (4º e 5º ano)</label>
-                      <input type="checkbox" name="cycleThreeBranch" value="cycleThreeBranch">
-                    <label for="cycleThreeBranch">CF III (6º e 7º ano)</label>
-                      <input type="checkbox" name="cycleFourBranch" value="cycleFourBranch">
-                    <label for="cycleFourBranch">CF IV (8º e 9º ano)</label>
-                </div>
-
-                <P style="font-size: 18px; margin-left: 26px;">Ensino Fundamental - Educação de Jovens, Adultos e Idosos (Totalidades do Conhecimento) - Anos Iniciais e Finais</P>
-                <div class="basicEducationTwo">
-                    <input type="checkbox" name="totalityOneBranch" value="totalityOneBranch">
-                    <label for="totalityOneBranch">1ª Totalidade - CF I (1º, 2º e 3º ano)</label>
-                      <input type="checkbox" name="totalityTwoBranch" value="totalityTwoBranch">
-                    <label for="totalityTwoBranch">2ª Totalidade - CF II (4º e 5º ano)</label><br>
-                    <input type="checkbox" name="totalityThreeBranch" value="totalityThreeBranch">
-                    <label for="totalityThreeBranch">3ª Totalidade - CF III (6º e 7º ano)</label>
-                      <input type="checkbox" name="totalityFourBranch" value="totalityFourBranch">
-                    <label for="totalityFourBranch">4ª Totalidade - CF IV (8º e 9º ano)</label><br>
-                    <input type="checkbox" name="othersLevelsBranch" value="othersLevelsBranch">
-                    <label for="othersLevelsBranch">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
-                </div>
                 <br>
                 <hr>
-                <button class="sendData" type="submit">Enviar</button>
 
-            </form>
+                <button type="submit" class="btn btn-primary" type="button" name="enviar">Enviar</button>
 
-                <button class="addBranch">+ Filial</button><br><br>
-                <!--<button class="addBranch" onclick="changeId()">+ Filial</button>-->
-        </div>
+                <br>
+                <hr>
+        </form>
+
     </div>
 
     <script src="../js/cadastro_escola.js"></script>

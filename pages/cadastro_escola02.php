@@ -1,3 +1,7 @@
+<?php
+var_dump($_POST);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,42 +19,6 @@
     <?php
         require_once('../config/conexao.php');
         require_once('../config/painel.php');
-
-
-        if(isset($_POST['enviar'])){
-            $fk_tipoInstituicao = $_POST['radioPact'];
-            $fk_sigla = $_POST['fk_sigla'];
-            $fk_distrito = $_POST['fk_distrito'];
-            $nome_instituicao = $_POST['nome_instituicao'];
-            $fundacao = $_POST['fundacao'];
-            $codigo_inep = $_POST['codigo_inep'];
-            $cnpj_escola = $_POST['cnpj_escola'];
-            $entidade_mantenedora = $_POST['entidade_mantenedora'];
-            $cnpj_conselho = $_POST['cnpj_conselho'];
-            $vigencia_ce = $_POST['vigencia_ce'];
-            $cidade = $_POST['cidade'];
-            $uf = $_POST['uf'];
-            $complemento = $_POST['complemento'];
-            $bairro = $_POST['bairro'];
-            $cep_escola = $_POST['cep_escola'];
-            $telefone_inst = $_POST['telefone_inst'];
-            $email_inst = $_POST['email_inst'];
-            $nome_gestor = $_POST['nome_gestor'];
-            $whats_gestor = $_POST['whats_gestor'];
-            $email_gestor = $_POST['email_gestor'];
-            $nome_secretario = $_POST['nome_secretario'];
-            $whats_secretario = $_POST['whats_secretario'];
-            $email_secretario = $_POST['email_secretario'];
-            $nome_coordenador = $_POST['nome_coordenador'];
-            $whats_coordenador = $_POST['whats_coordenador'];
-            $email_coordenador = $_POST['email_coordenador'];
-
-
-            $cadastroEscola = $conn->prepare("INSERT INTO INSTITUICAO (fk_tipoInstituicao, fk_sigla, fk_distrito, nome_instituicao, fundacao, codigo_inep, cnpj_escola, entidade_mantenedora, cnpj_conselho, vigencia_ce, cep_escola, uf, cidade, bairro, complemento, email_inst, telefone_inst, nome_gestor, email_gestor, whats_gestor, nome_secretario, email_secretario, whats_secretario, nome_coordenador, email_coordenador, whats_coordenador) VALUES ('$fk_tipoInstituicao', '$fk_sigla', '$fk_distrito', '$nome_instituicao', '$fundacao', '$codigo_inep', '$cnpj_escola', '$entidade_mantenedora', '$cnpj_conselho', '$vigencia_ce', '$cep_escola', '$uf',  '$cidade', '$bairro', '$complemento', '$email_inst', '$telefone_inst', '$nome_gestor', '$email_gestor', '$whats_gestor', '$nome_secretario', '$email_secretario', '$whats_secretario', '$nome_coordenador', '$email_coordenador', '$whats_coordenador')");
-
-            $cadastroEscola->execute();
-        }
-
     ?>
 
     <div class=schoolForm>
