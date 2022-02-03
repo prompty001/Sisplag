@@ -7,7 +7,7 @@ function handleClickType(radioTypeSchool) {
 
     document.querySelector('.schoolForm .formPersonalData .formPersonalDataInput .selectInitials').style.display = 'inline';
     
-    if (valueRadioSchool === '2') {
+    if (valueRadioSchool === 'private') {
         document.querySelector('.selectInitials option[value="emeif"]').innerHTML = "Comunitária";
         document.querySelector('.selectInitials option[value="emef"]').innerHTML = "Confessional";
         document.querySelector('.selectInitials option[value="emei"]').innerHTML = "OSC";
@@ -53,3 +53,4 @@ function changeId() {
         father.children[i].id += idCount;
     }
 }
+

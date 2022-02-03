@@ -58,8 +58,19 @@
             $cadastroEscola = $conn->prepare("INSERT INTO INSTITUICAO (fk_tipoInstituicao, fk_sigla, fk_distrito, nome_instituicao, fundacao, codigo_inep, cnpj_escola, entidade_mantenedora, cnpj_conselho, vigencia_ce, cep_escola, uf, cidade, bairro, complemento, email_inst, telefone_inst, nome_gestor, email_gestor, whats_gestor, nome_secretario, email_secretario, whats_secretario, nome_coordenador, email_coordenador, whats_coordenador, convenio_semec, n_convenio, objeto, vigencia, educacao_infantil, fundamental, fundamental_eja, outros_niveis) VALUES ('$fk_tipoInstituicao', '$fk_sigla', '$fk_distrito', '$nome_instituicao', '$fundacao', '$codigo_inep', '$cnpj_escola', '$entidade_mantenedora', '$cnpj_conselho', '$vigencia_ce', '$cep_escola', '$uf',  '$cidade', '$bairro', '$complemento', '$email_inst', '$telefone_inst', '$nome_gestor', '$email_gestor', '$whats_gestor', '$nome_secretario', '$email_secretario', '$whats_secretario', '$nome_coordenador', '$email_coordenador', '$whats_coordenador', '$convenio_semec', '$n_convenio', '$objeto', '$vigencia', '$educacao_infantil', '$fundamental', '$fundamental_eja', '$outros_niveis')");
 
             $cadastroEscola->execute();
+            
+            header("Location: cadastro_escola02.php");
+            
         }
 
+       
+
+        
+
+
+        
+        
+       
     ?>
 
     <div class=schoolForm>
@@ -220,7 +231,7 @@
                 <br>
                 <hr>
 
-                <button type="submit" class="btn btn-primary" type="button" name="enviar">Enviar</button>
+                <button type="submit" class="btn btn-primary" type="button" name="enviar" >Enviar</button>
 
                 <br>
                 <hr>
@@ -229,6 +240,9 @@
     </div>
 
     <script src="../js/cadastro_escola.js"></script>
+
+ </script>
+
 </body>
 </html>
 
