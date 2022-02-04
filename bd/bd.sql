@@ -48,20 +48,20 @@ CREATE TABLE instituicao(
 	complemento VARCHAR(50),
 	email_inst VARCHAR(50) DEFAULT 'Sem email',
 	telefone_inst VARCHAR(13) DEFAULT 'Sem telefone',
-	nome_gestor VARCHAR(50),
+	nome_gestor VARCHAR(50) DEFAULT 'Sem Gestor',
 	email_gestor VARCHAR(50) DEFAULT 'Sem email',
 	whats_gestor VARCHAR(50) DEFAULT 'Sem WhatsApp',  
-	nome_secretario VARCHAR(50),
+	nome_secretario VARCHAR(50) DEFAULT 'Sem secretário',
 	email_secretario VARCHAR(50) DEFAULT 'Sem email',
 	whats_secretario VARCHAR(50) DEFAULT 'Sem WhatsApp',  
-	nome_coordenador VARCHAR(50),
+	nome_coordenador VARCHAR(50) DEFAULT 'Sem coordenador',
 	email_coordenador VARCHAR(50) DEFAULT 'Sem email',
 	whats_coordenador VARCHAR(50) DEFAULT 'Sem WhatsApp', 
-	convenio_semec VARCHAR(50), 
+	convenio_semec VARCHAR(50) DEFAULT 'Não', 
 	educacao_infantil VARCHAR(50), 
-	fundamental VARCHAR(50), 
-	fundamental_eja VARCHAR(50), 
-	outros_niveis VARCHAR(50), 
+	fundamental VARCHAR(50) DEFAULT 'Não há', 
+	fundamental_eja VARCHAR(50) DEFAULT 'Não há', 
+	outros_niveis VARCHAR(50) DEFAULT 'Não há', 
 	CONSTRAINT pk_escola PRIMARY KEY (id_instituicao)
 )
 
@@ -97,13 +97,13 @@ CREATE TABLE distritoAdm(
 CREATE TABLE filial( 
 	id_filial INT NOT NULL AUTO_INCREMENT, 
 	nome_filial VARCHAR(50),
-	possuiFilial VARCHAR(5),
-	fk_instituicao INT,
-	fk_sigla INT,
-	fundacao_filial VARCHAR(50),
-	codigo_inepfilial VARCHAR(50),
+	possuiFilial VARCHAR(5) DEFAULT 'Não',
+	fk_instituicao INT DEFAULT '1',
+	fk_sigla INT DEFAULT '1',
+	fundacao_filial VARCHAR(50) DEFAULT 'Não há data',
+	codigo_inepfilial VARCHAR(50) DEFAULT 'Sem informação',
 	cep_filial INT,
-	complemento VARCHAR(50)
+	complemento VARCHAR(50),
 	telefone_filial VARCHAR(13) DEFAULT 'Sem telefone',
 	email_filial VARCHAR(50) DEFAULT 'Sem email',
 	resp_filial VARCHAR(50) DEFAULT 'Sem responsável', 
@@ -250,11 +250,7 @@ ALTER TABLE instituicao
     ADD COLUMN vigencia DATE AFTER objeto;
 
 
-ALTER TABLE filial ADD CONSTRAINT fk_tipoFilial FOREIGN KEY (fk_tipoInstituicaoFilial) REFERENCES tipoInstituicao (id_inst);
 ALTER TABLE filial ADD CONSTRAINT fk_inst FOREIGN KEY (fk_instituicao) REFERENCES instituicao (id_instituicao);
 ALTER TABLE filial ADD CONSTRAINT fk_siglaFilial FOREIGN KEY (fk_sigla) REFERENCES siglaInstituicao (id_sigla);
 
 
-	
-ALTER TABLE filial
-    ADD COLUMN complemento VARCHAR(50) AFTER cep_filial;

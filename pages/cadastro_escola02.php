@@ -92,7 +92,7 @@
                         $consultaInst = $consultaInst->fetchAll();
                         foreach ($consultaInst as $consultaInst) {
                         ?>
-                            <option value="<?php echo $consultaInst['id_instiuicao']; ?>">
+                            <option value="<?php echo $consultaInst['id_instituicao']; ?>">
                                 <?php echo $consultaInst['nome_instituicao']; ?>
                             </option>
                         <?php } ?>
