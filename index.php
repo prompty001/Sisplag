@@ -29,7 +29,7 @@
         $sql = $conn->prepare("SELECT * FROM usuario WHERE nome_usuario =
         '$nome_usuario' AND senha_usuario = '$senha_usuario'") or die("erro ao selecionar");
           
-        header("Location: ./pages/main.php");
+        header("Location: ./pages/painelAdm.php");
         
     }
 ?>

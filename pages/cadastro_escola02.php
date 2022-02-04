@@ -41,7 +41,7 @@
 
             $cadastroEscola->execute();
             
-            header("Location: main.php");
+            header("Location: painelAdm.php");
 
         }
 

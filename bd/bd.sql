@@ -254,3 +254,4 @@ ALTER TABLE filial ADD CONSTRAINT fk_inst FOREIGN KEY (fk_instituicao) REFERENCE
 ALTER TABLE filial ADD CONSTRAINT fk_siglaFilial FOREIGN KEY (fk_sigla) REFERENCES siglaInstituicao (id_sigla);
 
 
+ALTER TABLE instituicao ADD status VARCHAR(3)  DEFAULT "Não";
