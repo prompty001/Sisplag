@@ -18,37 +18,36 @@
 
 
         if(isset($_POST['enviar'])){
-            $fk_tipoInstituicao = $_POST['radioTypeSchool'];
+
+            $nome_filial = $_POST['nome_filial'];
+            $possuiFilial = $_POST['possuiFilial'];
+            $fk_instituicao = $_POST['fk_instituicao'];
             $fk_sigla = $_POST['fk_sigla'];
-            $fk_distrito = $_POST['fk_distrito'];
-            $nome_instituicao = $_POST['nome_instituicao'];
-            $fundacao = $_POST['fundacao'];
-            $codigo_inep = $_POST['codigo_inep'];
-            $cnpj_escola = $_POST['cnpj_escola'];
-            $entidade_mantenedora = $_POST['entidade_mantenedora'];
-            $cnpencia_ce = $_POST['vigencia_ce'];
-            $cidj_conselho = $_POST['cnpj_conselho'];
-            $vigade = $_POST['cidade'];
-            $uf = $_POST['uf'];
-            $complemento = $_POST['complemento'];
-            $bairro = $_POST['bairro'];
-            $cep_escola = $_POST['cep_escola'];
-            $telefone_inst = $_POST['telefone_inst'];
-            $email_inst = $_POST['email_inst'];
-            $nome_gestor = $_POST['nome_gestor'];
+            $fundacao_filial = $_POST['fundacao_filial'];
+            $codigo_inepfilial = $_POST['codigo_inepfilial'];
+            $cep_filial = $_POST['cep_filial'];
+            $complemento = $_POST['complemento'];            
+            $telefone_filial = $_POST['telefone_filial'];
+            $email_filial = $_POST['email_filial'];
+            $resp_filial = $_POST['resp_filial'];
+            $email_respLegal = $_POST['email_respLegal'];
+
+            $educacao_infantil = $_POST['educacao_infantil'];
+            $fundamental_filial = $_POST['fundamental_filial'];
+            $fundamentaleja_filial = $_POST['fundamentaleja_filial'];
+            $outrosniveis_filial = $_POST['outrosniveis_filial'];
+
+            $cadastroEscola = $conn->prepare("INSERT INTO FILIAL (nome_filial, possuiFilial, fk_instituicao,fk_sigla, fundacao_filial, codigo_inepfilial, cep_filial, complemento, telefone_filial, email_filial, resp_filial, email_respLegal, educacao_infantil, fundamental_filial, fundamentaleja_filial, outrosniveis_filial) VALUES ('$nome_filial', '$possuiFilial', '$fk_instituicao', '$fk_sigla', '$fundacao_filial', '$codigo_inepfilial', '$cep_filial', '$complemento', '$telefone_filial', '$email_filial', '$resp_filial', '$email_respLegal', '$educacao_infantil', '$fundamental_filial', '$fundamentaleja_filial', '$outrosniveis_filial')");
+
+            $cadastroEscola->execute();
+            
+            header("Location: main.php");
 
         }
 
     ?>
 
     <div class=schoolForm>
-       
-            
-            <form class="formPersonalDataInput" action="/FORMULARIO.php" method="get">
-            </form>
-            
-            <form class="formTechnicalDataInput" action="/FORMULARIO.php" method="get">    
-            </form>
        
 
         <div class="formBranchData">
@@ -61,9 +60,9 @@
             <form class="formBranchDataInput" method="POST">
 
                 <p>Possui Filiais</p>
-                <input type="radio" name="radioBranch" value="no" onclick="handleClickBranch(this)">
+                <input type="radio" name="possuiFilial" value="Não" onclick="handleClickBranch(this)">
                 <label for="branch">Não</label>
-                  <input type="radio" name="radioBranch" value="yes" onclick="handleClickBranch(this)">
+                  <input type="radio" name="possuiFilial" value="Sim" onclick="handleClickBranch(this)">
                 <label for="branch">Sim</label><br>
 
 
@@ -82,17 +81,33 @@
                             </option>
                         <?php } ?>
                     ?>
+                </select>
+
+                <select class="allInput selectInitialsBranch" name="fk_instituicao">
+                <option>-Instituição-</Instituição></option>
+                    <!-- Consulta no banco - Instituição--->
+                    <?php
+                        $consultaInst = $conn->prepare('SELECT * FROM instituicao');
+                        $consultaInst->execute();
+                        $consultaInst = $consultaInst->fetchAll();
+                        foreach ($consultaInst as $consultaInst) {
+                        ?>
+                            <option value="<?php echo $consultaInst['id_instiuicao']; ?>">
+                                <?php echo $consultaInst['nome_instituicao']; ?>
+                            </option>
+                        <?php } ?>
+                    ?>
                 </select><br>
 
-                <input type="text" class="allInput instNameBranch" name="instName" placeholder="Nome Institucional">
-                <input type="text" class="allInput foundationBranch" name="fundacao" placeholder="Fundação">
-                <input type="text" class="allInput inepCodeBranch" name="inepCodeBranch" placeholder="Código INEP">
-                <input type="text" class="allInput addressBranch" name="addressBranch" placeholder="Endereço"><br>
-                <input type="text" class="allInput cepBranch" name="cepBranch" placeholder="CEP">
-                <input type="text" class="allInput phoneBranch" name="phoneBranch" placeholder="Telefone">
-                <input type="text" class="allInput instEmailBranch" name="instEmailBranch" placeholder="Email Institucional">
-                <input type="text" class="allInput legalResponsible" name="legalResponsible" placeholder="Responsável Legal"><br>
-                <input type="text" class="allInput emailLegalResponsible" name="emailLegalResponsible" placeholder="Email Responsável Legal">
+                <input type="text" class="allInput instNameBranch" name="nome_filial" placeholder="Nome Institucional">
+                <input type="text" class="allInput foundationBranch" name="fundacao_filial" placeholder="Fundação">
+                <input type="text" class="allInput inepCodeBranch" name="codigo_inepfilial" placeholder="Código INEP">
+                <input type="text" class="allInput addressBranch" name="complemento" placeholder="Endereço"><br>
+                <input type="text" class="allInput cepBranch" name="cep_filial" placeholder="CEP">
+                <input type="text" class="allInput phoneBranch" name="telefone_filial" placeholder="Telefone">
+                <input type="text" class="allInput instEmailBranch" name="email_filial" placeholder="Email Institucional">
+                <input type="text" class="allInput legalResponsible" name="resp_filial" placeholder="Responsável Legal"><br>
+                <input type="text" class="allInput emailLegalResponsible" name="email_respLegal" placeholder="Email Responsável Legal">
 
                 <hr>
 
@@ -107,39 +122,40 @@
 
                 <p style="font-size: 18px;margin-left: 26px;">Educação Fundamental</p>
                 <div class="basicEducation">
-                    <input type="checkbox" name="fundamental" value="CF I (1º, 2º e 3º ano)">
+                    <input type="checkbox" name="fundamental_filial" value="CF I (1º, 2º e 3º ano)">
                     <label for="cycleOne">CF I (1º, 2º e 3º ano)</label>
-                      <input type="checkbox" name="fundamental" value="CF II (4º e 5º ano)">
+                      <input type="checkbox" name="fundamental_filial" value="CF II (4º e 5º ano)">
                     <label for="cycleTwo">CF II (4º e 5º ano)</label>
-                      <input type="checkbox" name="fundamental" value="CF III (6º e 7º ano)">
+                      <input type="checkbox" name="fundamental_filial" value="CF III (6º e 7º ano)">
                     <label for="cycleThree">CF III (6º e 7º ano)</label>
-                      <input type="checkbox" name="fundamental" value="CF IV (8º e 9º ano)">
+                      <input type="checkbox" name="fundamental_filial" value="CF IV (8º e 9º ano)">
                     <label for="cycleFour">CF IV (8º e 9º ano)</label>
                 </div>
 
                 <P style="font-size: 18px; margin-left: 26px;">Ensino Fundamental - Educação de Jovens, Adultos e Idosos (Totalidades do Conhecimento) - Anos Iniciais e Finais</P>
                 <div class="basicEducationTwo">
-                    <input type="checkbox" name="fundamental_eja" value="1ª Totalidade - CF I (1º, 2º e 3º ano)">
+                    <input type="checkbox" name="fundamentaleja_filial" value="1ª Totalidade - CF I (1º, 2º e 3º ano)">
                     <label for="totalityOne">1ª Totalidade - CF I (1º, 2º e 3º ano)</label>
-                      <input type="checkbox" name="fundamental_eja" value="2ª Totalidade - CF II (4º e 5º ano)">
+                      <input type="checkbox" name="fundamentaleja_filial" value="2ª Totalidade - CF II (4º e 5º ano)">
                     <label for="totalityTwo">2ª Totalidade - CF II (4º e 5º ano)</label><br>
-                    <input type="checkbox" name="fundamental_eja" value="3ª Totalidade - CF III (6º e 7º ano)">
+                    <input type="checkbox" name="fundamentaleja_filial" value="3ª Totalidade - CF III (6º e 7º ano)">
                     <label for="totalityThree">3ª Totalidade - CF III (6º e 7º ano)</label>
-                      <input type="checkbox" name="fundamental_eja" value="4ª Totalidade - CF IV (8º e 9º ano)">
+                      <input type="checkbox" name="fundamentaleja_filial" value="4ª Totalidade - CF IV (8º e 9º ano)">
                     <label for="totalityFour">4ª Totalidade - CF IV (8º e 9º ano)</label><br>
                 </div>    
                 <div>
-                    <input type="checkbox" name="outros_niveis" value="Outros níveis e/ou Modalidades de Ensino Ofertadas">
+                    <input type="checkbox" name="outrosniveis_filial" value="Outros níveis e/ou Modalidades de Ensino Ofertadas">
                     <label for="othersLevels">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
                 </div>
-
+                <br>
+                <hr>
  
-                <button class="sendData" type="submit">Enviar</button>
+                <button type="submit" class="btn btn-primary" type="button" name="enviar" >Enviar</button>
 
+                <br>
+                <hr>
             </form>
 
-                <button class="addBranch">+ Filial</button><br><br>
-                <!--<button class="addBranch" onclick="changeId()">+ Filial</button>-->
         </div>
     </div>
 

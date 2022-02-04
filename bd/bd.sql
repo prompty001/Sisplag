@@ -97,24 +97,21 @@ CREATE TABLE distritoAdm(
 CREATE TABLE filial( 
 	id_filial INT NOT NULL AUTO_INCREMENT, 
 	nome_filial VARCHAR(50),
-	fk_tipoInstituicaoFilial INT,
-	fk_instituicao INT
-	fk_sigla VARCHAR(20),
+	possuiFilial VARCHAR(5),
+	fk_instituicao INT,
+	fk_sigla INT,
 	fundacao_filial VARCHAR(50),
 	codigo_inepfilial VARCHAR(50),
-	cep_escola INT,
-	uf VARCHAR(2),
-	cidade VARCHAR(50),
-	bairro VARCHAR(50),  
-	complemento VARCHAR(50),
+	cep_filial INT,
+	complemento VARCHAR(50)
 	telefone_filial VARCHAR(13) DEFAULT 'Sem telefone',
 	email_filial VARCHAR(50) DEFAULT 'Sem email',
-	resp_filial VARCHAR(50), 
+	resp_filial VARCHAR(50) DEFAULT 'Sem responsável', 
 	email_respLegal VARCHAR(50) DEFAULT 'Sem email',
-	educacao_infantil VARCHAR(50), 
-	fundamental_filial VARCHAR(50), 
-	fundamentaleja_filial VARCHAR(50), 
-	outrosniveis_filial VARCHAR(50),
+	educacao_infantil VARCHAR(50) DEFAULT 'Sem dados', 
+	fundamental_filial VARCHAR(50) DEFAULT 'Sem dados', 
+	fundamentaleja_filial VARCHAR(50) DEFAULT 'Sem dados', 
+	outrosniveis_filial VARCHAR(50) DEFAULT 'Sem dados',
 	CONSTRAINT pk_filial PRIMARY KEY (id_filial)
 )
 
@@ -259,3 +256,5 @@ ALTER TABLE filial ADD CONSTRAINT fk_siglaFilial FOREIGN KEY (fk_sigla) REFERENC
 
 
 	
+ALTER TABLE filial
+    ADD COLUMN complemento VARCHAR(50) AFTER cep_filial;
