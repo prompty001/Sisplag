@@ -65,7 +65,7 @@ CREATE TABLE instituicao(
 	fundamental VARCHAR(50) DEFAULT 'Não há', 
 	fundamental_eja VARCHAR(50) DEFAULT 'Não há', 
 	outros_niveis VARCHAR(50) DEFAULT 'Não há', 
-	status VARCHAR(3)  DEFAULT "Não",
+	status_inst VARCHAR(3)  DEFAULT "Não",
 	CONSTRAINT pk_escola PRIMARY KEY (id_instituicao)
 )
 
