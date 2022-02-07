@@ -45,8 +45,8 @@
             <div class="clearfix"></div>
 
             <h1>SISPLAG</h1>
-    <h2>AUTORIZAÇÃO DE CADASTRO</h2>
-    
+    <h2>APROVAR CADASTRO</h2>
+
 
     <?php
         require_once('../config/conexao.php');
@@ -64,47 +64,64 @@
         $consulta->execute();
         $consulta = $consulta->fetchAll();
 
-    
+        $consultaTudo = $conn->prepare('SELECT * FROM instituicao');
+        $consultaTudo->execute();
+        $consultaTudo = $consultaTudo->fetchAll();
 
     ?>
 
     <div class=schoolForm>
         <div class=formPersonalData>
-        <hr>
-            <!--Criação da Tabela-->
-            <table id="example" class="table  table-bordered" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Escola</th>
-                        <th>Tipo da Escola</th>
-                        <th>Sigla da Escola</th>
-                        <th>Distrito Adm</th>
-                        <th id="verificar" >Verificar Cadastro</th>
-                        <th id="confirmar" >Aprovar Transferencia</th>
-                    </tr>
-                </thead>
-                <tbody id="myTable">
+            <hr>
+                <h3>APROVAR CADASTRO</h3>
+            <hr>
+            <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
+            <form class="row g-3">
+            <?php
+                require_once('../config/conexao.php');
+                require_once('../config/painel.php');
 
-                    <?php 
-                    $id_instituicao = 0;
-                    foreach($consulta as $consulta){
-                        $id_instituicao = $consulta['id_instituicao']
-                        ?>
-                    <tr>
-                        <td><?php echo $consulta ['nome_instituicao'];?></td>
-                        <td><?php echo $consulta ['nome_inst'];?></td>
-                        <td><?php echo $consulta ['sigla'];?></td>
-                        <td><?php echo $consulta ['distritoAdm'];?></td>
-                        <td> <button type="button" class="btn btn-primary" name = "exampleModal" data-toggle="modal" data-target="#exampleModal2" >Abrir</button></td>
-                        <td> <a href="aprovar_cadastro.php"><button type="submit" type="button" class="btn btn-danger">Aprovar</button></a></td>
-                    </tr>
-                    <?php }?>
-                </tbody>   
-                
-                
-            </table>
-</form>     
 
+                $consultaTudo = $conn->prepare("SELECT * FROM instituicao WHERE status_inst = 'Não'");
+                $consultaTudo->execute();
+                $consultaTudo = $consultaTudo->fetchAll();
+                ?>
+
+                <?php foreach ($consultaTudo as $atualizar) { ?>
+
+                    <div class="col-md-6">
+                        <label for="input" class="form-label">Nome Escola</label>
+                        <input class="form-control" disabled value="<?php echo $atualizar['nome_instituicao']; ?>">
+                    </div>
+                    <div class="col-md-6">
+                    <label for="input" class="form-label">Fundação</label>
+                        <input class="form-control" disabled value="<?php echo $atualizar['fundacao']; ?>">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Endereço</label>
+                        <input type="text" class="form-control" id="inputAddress" disabled value="<?php echo $atualizar['complemento']; ?>">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress2" class="form-label">CEP</label>
+                        <input type="text" class="form-control" id="inputAddress2" disabled value="<?php echo $atualizar['cep_escola']; ?>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">Email Instituição</label>
+                        <input class="form-control" disabled value="<?php echo $atualizar['email_inst']; ?>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputState" class="form-label">Telefone Instituição</label>
+                        <input class="form-control" disabled value="<?php echo $atualizar['telefone_inst']; ?>">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Convenio Semec</label>
+                        <input class="form-control" disabled value="<?php echo $atualizar['convenio_semec']; ?>">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" name="aprovar" class="btn btn-primary">Aprovar</button>
+                    </div>
+                <?php } ?>
+            </form>
             <div class="clearfix"></div>
 
         </div>

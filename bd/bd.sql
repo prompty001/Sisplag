@@ -58,10 +58,14 @@ CREATE TABLE instituicao(
 	email_coordenador VARCHAR(50) DEFAULT 'Sem email',
 	whats_coordenador VARCHAR(50) DEFAULT 'Sem WhatsApp', 
 	convenio_semec VARCHAR(50) DEFAULT 'Não', 
-	educacao_infantil VARCHAR(50), 
+	n_convenio INT DEFAULT 0,
+    objeto VARCHAR(50) DEFAULT 'Sem Objeto',
+    vigencia DATE DEFAULT NULL,
+	educacao_infantil VARCHAR(50) DEFAULT 'Não há', 
 	fundamental VARCHAR(50) DEFAULT 'Não há', 
 	fundamental_eja VARCHAR(50) DEFAULT 'Não há', 
 	outros_niveis VARCHAR(50) DEFAULT 'Não há', 
+	status VARCHAR(3)  DEFAULT "Não",
 	CONSTRAINT pk_escola PRIMARY KEY (id_instituicao)
 )
 
@@ -250,8 +254,5 @@ ALTER TABLE instituicao
     ADD COLUMN vigencia DATE AFTER objeto;
 
 
-ALTER TABLE filial ADD CONSTRAINT fk_inst FOREIGN KEY (fk_instituicao) REFERENCES instituicao (id_instituicao);
+ALTER TABLE filial ADD FOREIGN KEY (fk_instituicao) REFERENCES instituicao (id_instituicao);
 ALTER TABLE filial ADD CONSTRAINT fk_siglaFilial FOREIGN KEY (fk_sigla) REFERENCES siglaInstituicao (id_sigla);
-
-
-ALTER TABLE instituicao ADD status VARCHAR(3)  DEFAULT "Não";

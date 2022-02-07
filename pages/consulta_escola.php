@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
-    <title>Autorização de Cadastro | Sisplag</title></head>
+    <title>CONSULTA ESCOLAS | SISPLAG</title></head>
 <body>
     <div class="sideNav">
         <div class="logo">
@@ -45,14 +45,14 @@
             <div class="clearfix"></div>
 
             <h1>SISPLAG</h1>
-    <h2>AUTORIZAÇÃO DE CADASTRO</h2>
+    <h2>CONSULTA DE ESCOLAS</h2>
     
 
     <?php
         require_once('../config/conexao.php');
         require_once('../config/painel.php');
 
-        $consulta = $conn->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
+        $consulta = $conn->prepare("SELECT I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
                                         FROM instituicao I
                                         INNER JOIN  tipoinstituicao T
                                             ON T.id_inst = I.fk_tipoInstituicao
@@ -60,10 +60,9 @@
                                             ON S.id_sigla = I.fk_sigla
                                         INNER JOIN distritoadm D 
                                             ON D.id_distrito=I.fk_distrito
-                                        WHERE status_inst = 'Não'");
+                                        WHERE status_inst = 'Sim'");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
-
     
 
     ?>
@@ -86,9 +85,11 @@
                 <tbody id="myTable">
 
                     <?php 
-                    $id_instituicao = 0;
+                    //$idPedido = 0;
                     foreach($consulta as $consulta){
-                        $id_instituicao = $consulta['id_instituicao']
+                    
+                    
+                        //$id = $consulta['id_dados_mov']
                         ?>
                     <tr>
                         <td><?php echo $consulta ['nome_instituicao'];?></td>
@@ -96,14 +97,13 @@
                         <td><?php echo $consulta ['sigla'];?></td>
                         <td><?php echo $consulta ['distritoAdm'];?></td>
                         <td> <button type="button" class="btn btn-primary" name = "exampleModal" data-toggle="modal" data-target="#exampleModal2" >Abrir</button></td>
-                        <td> <a href="aprovar_cadastro.php"><button type="submit" type="button" class="btn btn-danger">Aprovar</button></a></td>
                     </tr>
                     <?php }?>
                 </tbody>   
                 
                 
             </table>
-</form>     
+            
 
             <div class="clearfix"></div>
 
