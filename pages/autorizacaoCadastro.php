@@ -95,7 +95,7 @@
                         <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['sigla'];?></td>
                         <td><?php echo $consulta ['distritoAdm'];?></td>
-                        <td> <button type="button" class="btn btn-primary" name = "exampleModal" data-toggle="modal" data-target="#exampleModal2" >Verificar Cadastro</button></td>
+                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'> Verificar Cadastro</button></a></td>" ?>
                         <td> <a href="aprovar_cadastro.php"><button type="submit" type="button" class="btn btn-danger">Aprovar Transferencia</button></a></td>
                     </tr>
                     <?php }?>
