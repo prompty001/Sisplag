@@ -9,6 +9,8 @@ CREATE TABLE usuario(
 	inicio_mandato DATE, 
 	fim_mandato DATE, 
 	data_nascimento DATE, 
+	fk_cargo int,
+	fk_tipousuario int,
 	CONSTRAINT pk_usuario PRIMARY KEY (id_usuario) 
 )
 
@@ -41,7 +43,7 @@ CREATE TABLE instituicao(
 	entidade_mantenedora VARCHAR(50) DEFAULT 'SEMEC',
 	cnpj_conselho VARCHAR(20),
 	vigencia_ce VARCHAR(50),
-	cep_escola INT,
+	cep_escola INT ,
 	uf VARCHAR(2),
 	cidade VARCHAR(50),
 	bairro VARCHAR(50),  
@@ -102,8 +104,8 @@ CREATE TABLE filial(
 	id_filial INT NOT NULL AUTO_INCREMENT, 
 	nome_filial VARCHAR(50),
 	possuiFilial VARCHAR(5) DEFAULT 'Não',
-	fk_instituicao INT DEFAULT '1',
-	fk_sigla INT DEFAULT '1',
+	fk_instituicao INT,
+	fk_sigla INT,
 	fundacao_filial VARCHAR(50) DEFAULT 'Não há data',
 	codigo_inepfilial VARCHAR(50) DEFAULT 'Sem informação',
 	cep_filial INT,
@@ -181,12 +183,12 @@ INSERT INTO cargo(cargo)
 		('servidor/conselheiro')
 		
 
-INSERT INTO tipousuario(tipoUsuario, permissao) 
+INSERT INTO tipoUsuario(tipoUsuario, permissao) 
 	VALUES ('administrador', '1'),
     		('comum', '2')
 			
 			
-INSERT INTO distritoadm (distritoAdm) 
+INSERT INTO distritoAdm (distritoAdm) 
 	VALUES 	('DABEL'),
 			('DABEN'),
     		('DAGUA'),
@@ -196,62 +198,38 @@ INSERT INTO distritoadm (distritoAdm)
             ('DAENT'),
             ('DASAC')
 
-INSERT INTO usuario (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento) VALUES ('teste', 00000000000, 'teste@gmail.com', 'teste', '2022-01-22', '2022-01-30', '1920-05-01')
 
 INSERT INTO usuario (nome_usuario, cpf_usuario, senha_usuario) VALUES ('admin', 00, 'admin')
 
 
-INSERT INTO tipoInstituicao 
-	VALUES ('pública'),
-    		('privada')
+INSERT INTO tipoInstituicao (nome_inst)
+	VALUES ('Pública'),
+    		('Privada')
 
 
-INSERT INTO `siglainstituicao`(`sigla`) 
+INSERT INTO `siglaInstituicao`(`sigla`) 
 	VALUES ('Comunitária'),
     		('Confessional'),
             ('OSC'),
             ('Privada'),
-            ('None'),
             ('EMEIF'),
             ('EMEF'),
             ('EMEI'),
             ('UEI'),
-            ('Block')
+            ('Sem Informação')
 
 
 
 
 //ALTER
 
-ALTER TABLE usuario ADD fk_cargo int;
 ALTER TABLE usuario ADD CONSTRAINT fk_cg FOREIGN KEY (fk_cargo) REFERENCES cargo (id_cargo);
-ALTER TABLE usuario ADD fk_tipousuario int;
 ALTER TABLE usuario ADD CONSTRAINT fk_tipo FOREIGN KEY (fk_tipousuario) REFERENCES tipoUsuario (id_tipousuario);
 
 
 ALTER TABLE instituicao ADD CONSTRAINT fk_tip FOREIGN KEY (fk_tipoInstituicao) REFERENCES tipoInstituicao (id_inst);
-ALTER TABLE instituicao ADD CONSTRAINT fk_distritoadm FOREIGN KEY (fk_distrito) REFERENCES distritoadm (id_distrito);
-ALTER TABLE instituicao ADD CONSTRAINT fk_siglainst FOREIGN KEY (fk_sigla) REFERENCES siglainstituicao (id_sigla);
-
-ALTER TABLE filial ADD CONSTRAINT fk_tipoinst FOREIGN KEY (fk_tipoInstituicaoFilial) REFERENCES tipoInstituicao (id_inst);
-
-/*ALTER TABLE instituicao ADD fk_siglainst int;*/
-
-
-/*ALTER TABLE instituicao ADD (
-	convenio_semec VARCHAR(50), 
-	educacao_infantil VARCHAR(50), 
-	fundamental VARCHAR(50), 
-	fundamental_eja VARCHAR(50), 
-	outros_niveis VARCHAR(50)
-);
-*/
-
-
-ALTER TABLE instituicao
-    ADD COLUMN n_convenio INT AFTER convenio_semec,
-    ADD COLUMN objeto VARCHAR(50) AFTER n_convenio,
-    ADD COLUMN vigencia DATE AFTER objeto;
+ALTER TABLE instituicao ADD CONSTRAINT fk_distritoadm FOREIGN KEY (fk_distrito) REFERENCES distritoAdm (id_distrito);
+ALTER TABLE instituicao ADD CONSTRAINT fk_siglainst FOREIGN KEY (fk_sigla) REFERENCES siglaInstituicao (id_sigla);
 
 
 ALTER TABLE filial ADD FOREIGN KEY (fk_instituicao) REFERENCES instituicao (id_instituicao);

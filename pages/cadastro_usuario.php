@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/painelAdmStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <script src="../lib/mask/script_mask.js" defer></script>
 
     <title>Autorização de Cadastro | Sisplag</title></head>
 <body>
@@ -75,8 +75,9 @@
                 <h3>Dados de Identificação</h3>
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
-            <form method="POST">
+            <form method="POST" class="row g-3">
             <label>Cargo</label>
+            <div>
                 <select class="form-control" id="school-acronym" style="flex-grow: 2" name="fk_cargo">
                         <option value="selecopo" > -- Selecione Opção --</option>
                         <!-- Consulta no banco - Cargos dos Servidores--->
@@ -92,7 +93,8 @@
                             <?php } ?>
                         ?>
                     </select>
-
+                    </div>
+                    <div>
                     <label>Tipo Usuário</label>
                 <select class="form-control" id="school-acronym" style="flex-grow: 1" name="fk_tipousuario">
                         <option value="selecopo" > -- Selecione Opção --</option>
@@ -110,25 +112,49 @@
                         ?>
                         </select>
 
-                <div>
-                <label>Usuário</label>
-                <input type="text" class="form-control" name="nome_usuario" placeholder="Nome do Usuario" required>
-                <label>Data de Nascimento</label>
-                <input type="text" class="form-control" name="data_nascimento" date="dataNascimento" placeholder="Data de nascimento" required ><br>
-                <label>CPF</label>
-                <input type="text" class="form-control" name="cpf_usuario" placeholder="CPF" required><br>
+                        </div>
+                <div class="col-md-8">
+                    <label for="validationCustom01" class="form-label">Nome Usuário</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <div class="valid-feedback">
+                        Nome do Usuário Incorreto!
+                    </div>
+                </div>    
+                <div class="col-md-4">
+                    <label for="validationCustom02" class="form-label">Data de Nascimento</label>
+                    <input type="date" class="form-control" id="validationCustom01" name="data_nascimento" required>
+                </div>    
+                <div class="col-md-4">
+                    <label for="validationCustom03" class="form-label">CPF</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="cpf_usuario" required onkeypress="$(this).mask('000.000.000-00')">
+                    <label class="exemplo">Ex: 000.111.222-33</label>
+                    <div class="valid-feedback">
+                        CPF inválido!
+                    </div>
+                </div>    
+                <div class="col-md-8">
+                    <label for="validationCustom04" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="email_usuario" placeholder="E-mail" required>
+                    <label class="exemplo">Ex: joao_bosco@gmail.com</label>
+                    <div class="valid-feedback">
+                        Email inválido!
+                    </div>
+                </div> 
 
-                <div>
-                <label>Email</label>
-                <input type="text" class="form-control" name="email_usuario" placeholder="E-mail" required>
-                <label>Senha</label>
-                <input type="text" class="form-control" name="senha_usuario" placeholder="Senha" required><br>
-
-                <div>
-                <label>Início do Mandato</label>
-                <input type="text" class="form-control" name="inicio_mandato" date="inicioMandato" placeholder="Início Mandato" required>
-                <label>Fim do Mandato</label>
-                <input type="text" class="form-control" name="fim_mandato" date="fimMandato" placeholder="Fim Mandato" required>
+                <div class="col-md-4">
+                    <label for="validationCustom05" class="form-label">Início do Mandato</label>
+                    <input type="date" class="form-control" id="validationCustom01" name="inicio_mandato" required>
+                    <div class="valid-feedback">
+                        Data inválida!
+                    </div>
+                </div> 
+                <div class="col-md-4">
+                    <label for="validationCustom06" class="form-label">Fim do Mandato</label>
+                    <input type="date" class="form-control" id="validationCustom01" name="fim_mandato" required>
+                    <div class="valid-feedback">
+                        Data inválida!
+                    </div>
+                </div>
 
                 <div>
 

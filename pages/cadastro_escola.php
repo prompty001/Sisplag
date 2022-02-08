@@ -178,9 +178,9 @@
             
                 
                 <p>Celebra Convênio com a Semec</p>
-                <input type="radio" name="convenio_semec" value="no" onclick="handleClickPact(this)">
+                <input type="radio" name="convenio_semec" value="Não" onclick="handleClickPact(this)">
                 <label for="Não">Não</label>
-                <input type="radio" name="convenio_semec" value="yes" onclick="handleClickPact(this)">
+                <input type="radio" name="convenio_semec" value="Sim" onclick="handleClickPact(this)">
                 <label for="Sim">Sim</label><br>
                 
                 <div>
