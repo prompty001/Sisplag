@@ -65,6 +65,8 @@
             $cadastroUsuario = $conn->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
 
             $cadastroUsuario->execute();
+
+            header("Location: painelAdm.php");
         }
 
     ?>
@@ -113,18 +115,27 @@
                         </select>
 
                         </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Nome Usuário</label>
                     <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
                     <div class="valid-feedback">
-                        Nome do Usuário Incorreto!
+                        Nome não inserido!
                     </div>
-                </div>    
-                <div class="col-md-4">
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Senha</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="senha_usuario" placeholder="Senha do Usuario" required>
+                    <div class="valid-feedback">
+                        Dados Incorretos!
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
                     <label for="validationCustom02" class="form-label">Data de Nascimento</label>
                     <input type="date" class="form-control" id="validationCustom01" name="data_nascimento" required>
                 </div>    
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">CPF</label>
                     <input type="text" class="form-control" id="validationCustom01" name="cpf_usuario" required onkeypress="$(this).mask('000.000.000-00')">
                     <label class="exemplo">Ex: 000.111.222-33</label>
@@ -132,7 +143,7 @@
                         CPF inválido!
                     </div>
                 </div>    
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <label for="validationCustom04" class="form-label">Email</label>
                     <input type="text" class="form-control" id="validationCustom01" name="email_usuario" placeholder="E-mail" required>
                     <label class="exemplo">Ex: joao_bosco@gmail.com</label>
@@ -157,6 +168,8 @@
                 </div>
 
                 <div>
+
+                <hr>
 
                 <button type="submit" class="btn btn-primary" type="button" name="enviar">Enviar</button>
             

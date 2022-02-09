@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/table.css">
     <link rel="stylesheet" href="../css/painelAdmStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
 
-
-    <title>CONSULTA ESCOLAS | SISPLAG</title></head>
+    <title>Autorização de Cadastro | Sisplag</title></head>
 <body>
     <div class="sideNav">
         <div class="logo">
@@ -45,14 +46,14 @@
             <div class="clearfix"></div>
 
             <h1>SISPLAG</h1>
-    <h2>CONSULTA DE ESCOLAS</h2>
+    <h2>AUTORIZAÇÃO DE CADASTRO</h2>
     
 
     <?php
         require_once('../config/conexao.php');
         require_once('../config/painel.php');
 
-        $consulta = $conn->prepare("SELECT I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
+        $consulta = $conn->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
                                         FROM instituicao I
                                         INNER JOIN  tipoinstituicao T
                                             ON T.id_inst = I.fk_tipoInstituicao
@@ -63,17 +64,20 @@
                                         WHERE status_inst = 'Sim'");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
+
     
 
     ?>
 
     <div class=schoolForm>
-        <div class=formPersonalData>
+        
         <hr>
+        <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" />
             <!--Criação da Tabela-->
-            <table id="example" class="table  table-bordered" style="width:100%">
+            <table id="example" class="lista-clientes" style="width:100%">
                 <thead>
                     <tr>
+                        <th>Ordem</th>
                         <th>Escola</th>
                         <th>Tipo da Escola</th>
                         <th>Sigla da Escola</th>
@@ -85,33 +89,87 @@
                 <tbody id="myTable">
 
                     <?php 
-                    //$idPedido = 0;
+                    $id_instituicao = 0;
                     foreach($consulta as $consulta){
-                    
-                    
-                        //$id = $consulta['id_dados_mov']
+                        $id_instituicao = $consulta['id_instituicao']
                         ?>
                     <tr>
+                        <td><?php echo $consulta ['id_instituicao'];?></td>
                         <td><?php echo $consulta ['nome_instituicao'];?></td>
                         <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['sigla'];?></td>
                         <td><?php echo $consulta ['distritoAdm'];?></td>
-                        <td> <button type="button" class="btn btn-primary" name = "exampleModal" data-toggle="modal" data-target="#exampleModal2" >Abrir</button></td>
+                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'> Verificar</button></a></td>" ?>
+                        <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-danger'>Aprovar</button></a></td>" ?>
                     </tr>
                     <?php }?>
                 </tbody>   
                 
                 
-            </table>
-            
-
-            <div class="clearfix"></div>
-
-        </div>
-
+            </table>    
+        
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script src="../lib/datatables/js/pdfmake.min.js"></script>
+    <script src="../lib/datatables/js/pdfmake_vfs_fonts.js"></script>
+    <script src="../lib/datatables/js/buttons.html5.min.js"></script> 
+    <script src="../lib/datatables/js/buttons.print.min.js"></script>      
 </body>
+
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+    dom: 'Bfrtip',   
+    colReorder: true,
+        buttons: [
+     //      'colvis',
+           
+               {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+            },
+               {
+                extend: 'csv',
+                orientation: 'landscape',
+                
+            },
+             {
+                extend: 'print',
+                orientation: 'landscape',
+            },
+              {
+                extend: 'copy',
+                orientation: 'landscape',
+            },
+        ], 
+      
+     "order": [[ 8, "desc" ]],
+       responsive: true,
+       "language": {
+            "lengthMenu": "Mostrando _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado",
+            "info": "Mostrando página  _PAGE_ de _PAGES_",
+            "infoEmpty": "Nenhum registro disponível",
+            "infoFiltered": "(filtrado de _MAX_ registros no total )",
+           "sSearch": "Pesquisar",
+            "oPaginate": {
+            "sFirst": "Primeiro",
+            "sPrevious": "Anterior",
+            "sNext": "Próximo",
+            "sLast": "Último"
+          }
+        },
+    } );  
+    
+
+      
+    
+    });
+
+</script>
+
 </html>

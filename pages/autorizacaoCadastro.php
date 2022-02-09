@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/table.css">
     <link rel="stylesheet" href="../css/painelAdmStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
@@ -69,10 +70,11 @@
     ?>
 
     <div class=schoolForm>
-        <div class=formPersonalData>
+        
         <hr>
+        <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" />
             <!--Criação da Tabela-->
-            <table id="example" class="table  table-bordered" style="width:100%">
+            <table id="example" class="lista-clientes" style="width:100%">
                 <thead>
                     <tr>
                         <th>Ordem</th>
@@ -104,16 +106,70 @@
                 </tbody>   
                 
                 
-            </table>
-</form>     
-
-            <div class="clearfix"></div>
-
-        </div>
-
+            </table>    
+        
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
+    <script src="../lib/datatables/js/pdfmake.min.js"></script>
+    <script src="../lib/datatables/js/pdfmake_vfs_fonts.js"></script>
+    <script src="../lib/datatables/js/buttons.html5.min.js"></script> 
+    <script src="../lib/datatables/js/buttons.print.min.js"></script>
 </body>
+
+
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+    dom: 'Bfrtip',   
+    colReorder: true,
+        buttons: [
+     //      'colvis',
+           
+               {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+            },
+               {
+                extend: 'csv',
+                orientation: 'landscape',
+                
+            },
+             {
+                extend: 'print',
+                orientation: 'landscape',
+            },
+              {
+                extend: 'copy',
+                orientation: 'landscape',
+            },
+        ], 
+      
+     "order": [[ 8, "desc" ]],
+       responsive: true,
+       "language": {
+            "lengthMenu": "Mostrando _MENU_ registros por página",
+            "zeroRecords": "Nada encontrado",
+            "info": "Mostrando página  _PAGE_ de _PAGES_",
+            "infoEmpty": "Nenhum registro disponível",
+            "infoFiltered": "(filtrado de _MAX_ registros no total )",
+           "sSearch": "Pesquisar",
+            "oPaginate": {
+            "sFirst": "Primeiro",
+            "sPrevious": "Anterior",
+            "sNext": "Próximo",
+            "sLast": "Último"
+          }
+        },
+    } );  
+    
+
+      
+    
+    });
+
+</script>
 </html>

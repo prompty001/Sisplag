@@ -72,8 +72,7 @@ h4 {
   position: fixed;
   top: 0;
   left: -30%;
-  width: 240px;
-  /*width: var(--nav-width);*/
+  width: var(--nav-width);
   height: 100vh;
   background-color: var(--first-color);
   padding: 0.5rem 1rem 0 0;
@@ -168,15 +167,24 @@ h4 {
   align-items: center;
 }
 
+
+
 @media screen and (min-width: 768px) {
   body {
     margin: calc(var(--header-height) + 1rem) 0 0 0;
     padding-left: calc(var(--nav-width) + 2rem);
   }
+  .nav_logo-icon{
+    padding-left: calc(var(--nav-width) - 110px);
+  }
+
+  img.sisplag{
+    padding-left: calc(var(--nav-width) + 188px);
+  }
 
   .header {
     height: calc(var(--header-height) + 1rem);
-    padding: 0 2rem 0 calc(var(--nav-width) + 12rem);
+    padding: 0 2rem 0 calc(var(--nav-width) + 1rem);
   }
 
   .header_img {
