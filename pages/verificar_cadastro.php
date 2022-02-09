@@ -275,6 +275,8 @@
 
                 <div>
 
+                <hr>
+
                 <button type="submit" class="btn btn-primary" type="button" name="enviar">Atualizar</button>
             
 
