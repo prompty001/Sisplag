@@ -50,10 +50,10 @@
     
 
     <?php
-        require_once('../config/conexao.php');
+        
         require_once('../config/painel.php');
 
-        $consulta = $conn->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
+        $consulta = Conexao::conectar()->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
                                         FROM instituicao I
                                         INNER JOIN  tipoinstituicao T
                                             ON T.id_inst = I.fk_tipoInstituicao

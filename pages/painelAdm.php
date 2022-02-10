@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+    if (!isset($_SESSION['login']))
+    {
+        header("Location:../index.php");
+    }
+    
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +24,12 @@
     <title>Painel Administrativo - Sisplag</title>
 </head>
 <body>
+
     
     <div class="sideNav">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               <?php echo $_SESSION['nome_usuario']; ?>
+            </a>
         <div class="logo">
             <img src=../assets/new_sisplag.png>
         </div>
@@ -27,7 +42,7 @@
             <a href="consulta_escola.php" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-itim2101-fill-itim2101/54/000000/external-school-back-to-school-itim2101-fill-itim2101.png" class="consultationIcons"></i>&nbsp;&nbsp;<span class="teste">Consulta de Escolas/Processos</span></a>
             <a href="#" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/54/000000/external-graph-business-vitaliy-gorbachev-fill-vitaly-gorbachev-1.png" class="tablesIcons"></i>&nbsp;&nbsp;<span class="teste"><span>Tabelas e Gráficos</span></span></a>
             <a href="cadastro_escola.php" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-itim2101-fill-itim2101/54/000000/external-school-back-to-school-itim2101-fill-itim2101.png" class="tablesIcons"></i>&nbsp;&nbsp;<span class="teste"><span>Cadastro de Escola</span></span></a>
-            <a href="#" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-sbts2018-solid-sbts2018/54/000000/external-logout-social-media-sbts2018-solid-sbts2018.png" class="logoutIcons"></i>&nbsp;&nbsp;<span class="teste">Logout</span></a>
+            <a href="logout.php" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-sbts2018-solid-sbts2018/54/000000/external-logout-social-media-sbts2018-solid-sbts2018.png" class="logoutIcons"></i>&nbsp;&nbsp;<span class="teste">Logout</span></a>
             
         </div>
     
@@ -35,6 +50,8 @@
 
     <div id="main">
         <div class="head">
+            
+
             <div class="dashboardButton">
                 
                 <div class="buttonOne">
@@ -50,6 +67,7 @@
             <div class="clearfix"></div>
 
             <h1 class="welcome">Boas vindas ao Sistema de Planejamento e Gestão (Sisplag).</h1>
+
 
             <div class="rightNav">
                 <div class="box">

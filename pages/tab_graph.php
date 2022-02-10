@@ -108,44 +108,7 @@ session_start();
 
     </nav>
     </div>
-            
-            <h1 class="welcome">Boas vindas ao Sistema de Planejamento e Gestão (Sisplag).</h1>
 
-
-            <div class="rightNav">
-                <div class="box">
-                <a href="cadastro_usuario.php" class="iconsSideNav"><p>Cadastro de Usuários<br/><span>20 usuários cadastrados</span></p> </a>
-                <a href="cadastro_usuario.php" class="iconsSideNav"><img src="https://img.icons8.com/small/35/000000/user.png"/> </a>
-                </div>
-            </div>
-
-            <div class="rightNav">
-                <div class="box">
-                <a href="autorizacaoCadastro.php" class="iconsSideNav"><p>Autorização de Cadastro<br/><span>30 escolas aguardando</span></p></a>
-                <a href="autorizacaoCadastro.php" class="iconsSideNav"><img src="https://img.icons8.com/ios/38/000000/password-check.png"/></a>
-                </div>
-            </div>
-
-            <div class="rightNav">
-                <div class="box">
-                    <a href="consulta_escola.php" class="iconsSideNav"><p>Consulta de Escolas/Processos<br/><span>50 escolas cadastradas</span></p></a>
-                    <a href="consulta_escola.php" class="iconsSideNav"><img src="https://img.icons8.com/ios/35/000000/school.png"/></a>
-                </div>
-            </div>
-
-            <div class="rightNav">
-                <div class="box">
-                    <a href="tab_graph.php" class="iconsSideNav"><p>Tabelas e Gráficos<br/><span></span></p></a>
-                    <p></p>
-                    <br>
-                    <br>
-                    <a position="center" href="tab_graph.php" class="iconsSideNav"><img src="https://img.icons8.com/small/35/000000/ranking.png"/></a>
-                </div>
-            </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/painelAdmConfig.js"></script>
-   
-</body>
-
-</html>
+            <h1>SISPLAG</h1>
+            <hr>
+    <h2>Tabelas e Gráficos</h2>

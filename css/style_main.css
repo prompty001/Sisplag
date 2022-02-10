@@ -1,7 +1,7 @@
 :root {
   --header-height: 3rem;
   --nav-width: 68px;
-  --first-color: #7eb5e9;
+  --first-color: #041f50;
   --first-color-light: #000000;
   --white-color: #ffffff;
   --body-font: "Nunito", sans-serif;
@@ -25,7 +25,8 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: solid;
+  color: white;
 }
 
 h4 {

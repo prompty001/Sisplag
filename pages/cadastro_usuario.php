@@ -1,55 +1,120 @@
+<?php
+session_start();
+
+    if (!isset($_SESSION['login']))
+    {
+        header("Location:../index.php");
+    }
+    
+    
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
+
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/painelAdmStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="../lib/mask/script_mask.js" defer></script>
 
-    <title>Autorização de Cadastro | Sisplag</title></head>
-<body>
-    <div class="sideNav">
-        <div class="logo">
-            <img src=../assets/new_sisplag.png>
-        </div>
-        
-        <div class="itemsSideNav">
-            <a href="painelAdm.php" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/54/000000/external-dashboard-ui-essential-kmg-design-glyph-kmg-design.png" class="dashboardIcons"></i>&nbsp;&nbsp;<span class="teste">Início</span></a>
-            <a href="#" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/54/000000/external-profile-blogger-vitaliy-gorbachev-fill-vitaly-gorbachev.png" class="userIcons"></i>&nbsp;&nbsp;<span class="teste">Perfil</span></a>
-            <a href="cadastro_usuario.php" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/54/000000/external-users-cyber-security-kiranshastry-solid-kiranshastry.png" class="userRegIcons"></i>&nbsp;&nbsp;<span class="teste">Cadastro de Usuários</span></a>
-            <a href="autorizacaoCadastro.php" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/ios-filled/50/000000/approval.png" class="authorizationIcons"></i>&nbsp;&nbsp;<span class="teste">Autorização de Cadastro</span></a>
-            <a href="consulta_escola.php" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-itim2101-fill-itim2101/54/000000/external-school-back-to-school-itim2101-fill-itim2101.png" class="consultationIcons"></i>&nbsp;&nbsp;<span class="teste">Consulta de Escolas/Processos</span></a>
-            <a href="#" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-vitaliy-gorbachev-fill-vitaly-gorbachev/54/000000/external-graph-business-vitaliy-gorbachev-fill-vitaly-gorbachev-1.png" class="tablesIcons"></i>&nbsp;&nbsp;<span class="teste"><span>Tabelas e Gráficos</span></span></a>
-            <a href="#" class="iconsSideNav"><i class="icons"><img src="https://img.icons8.com/external-sbts2018-solid-sbts2018/54/000000/external-logout-social-media-sbts2018-solid-sbts2018.png" class="logoutIcons"></i>&nbsp;&nbsp;<span class="teste">Logout</span></a>
-            
-        </div>
-    
-    </div>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Empréstimo de Maletas</title>
 
-    <div id="main">
-        <div class="head">
-            <div class="dashboardButton">
-                
-                <div class="buttonOne">
-                    <span style="font-size: 30px; cursor: pointer; color: black; font-weight: bold;" class="navOne">&#8676;</span> <!--&#9776;-->
-                </div>
+    <script src="../lib/jquery/jquery.js" defer></script>
 
-                <div class="buttonTwo">
-                    <span style="font-size: 30px; cursor: pointer; color: black; font-weight: bold;" class="navTwo">&#8677;</span>
-                </div>   
-                 
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="../js/script_main.js" defer></script>
+    <link rel="stylesheet" href="../css/style_main.css">
+
+    <script src="../lib/mask/script_mask.js" defer></script>
+
+    <link rel="stylesheet" href="../lib/icons/css/icons.css">
+
+     
+
+</head>
+
+<body id="body-pd">
+
+    <header class="header" id="header">
+        <div class="header_toggle" id="header-toggle"><i class="gg-menu" id="bt-menu"></i></div>
+        <button class="btn btn-dark"><a  href="stand_by.php" id="navbarDropdown">
+                Usuário: 
+               <?php echo $_SESSION['nome_usuario']; ?>
+        </a></button>
+
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="stand_by.php" class="nav_logo">
+                    <img src="../assets/new_sisplag.png" style="width: 38%" class="bx bx-layer nav_logo-icon">
+                    <span class="nav_logo-name" ></span>
+                </a>
+
+                <div class=" nav_list">
+
+
+
+                        <a href="cadastro_usuario.php" class="nav_link" id="cadastro">
+                            <div class="grid-icon">
+                                <i class="gg-profile nav_icon"></i>
+                                <span class="nav_name">Cadastrar Usuários</span>
+                            </div>
+                        </a>
+
+                        <a href="cadastro_escola.php" class="nav_link" id="emprestimo">
+                            <div class="grid-icon">
+                                <i><img src="https://img.icons8.com/ios/22/000000/school.png"/></i>
+                                <span class="nav_name">Cadastro de Escolas</span>
+                            </div>
+                        </a>
+
+                        <a href="consulta_escola.php" class="nav_link" id="ativos">
+                            <div class="grid-icon">
+                                <i><img src="https://img.icons8.com/ios/20/000000/school.png"/></i>
+                                <span class="nav_name">Consulta de Escolas</span>
+                            </div>
+                        </a>
+
+                        <a href="tab_graph.php" class="nav_link">
+                            <div class="grid-icon">
+                                <i><img src="https://img.icons8.com/small/22/000000/ranking.png"/></i>
+                                <span class="nav_name">Tabelas e Gráficos</span>
+                            </div>
+                        </a>
+
+                        <a href="logout.php" class="nav_link">
+                            <div class="grid-icon">
+                                <i><img src="https://img.icons8.com/ios/22/000000/shutdown--v1.png"/></i>
+                                <span class="nav_name">Logout</span>
+                            </div>
+                        </a>
+
             </div>
+        </div>
 
-            <div class="clearfix"></div>
+    </nav>
+    </div>
 
             <h1>SISPLAG</h1>
     <h2>CADASTRO DE USUÁRIOS</h2>
 
 
     <?php
-        require_once('../config/conexao.php');
+        include ('../config/conexao.php');
 
         if(isset($_POST['enviar'])){
             $nome_usuario = $_POST['nome_usuario'];
@@ -62,11 +127,11 @@
             $fk_cargo = $_POST['fk_cargo'];
             $fk_tipousuario = $_POST['fk_tipousuario'];
 
-            $cadastroUsuario = $conn->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
+            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
 
             $cadastroUsuario->execute();
-
-            header("Location: painelAdm.php");
+            Painel::alert('sucesso',' cadastro realizado com sucesso!');
+            header("Location: stand_by.php");
         }
 
     ?>
@@ -84,7 +149,7 @@
                         <option value="selecopo" > -- Selecione Opção --</option>
                         <!-- Consulta no banco - Cargos dos Servidores--->
                         <?php
-                            $consultaCargo = $conn->prepare('SELECT * FROM cargo');
+                            $consultaCargo = Conexao::conectar()->prepare('SELECT * FROM cargo');
                             $consultaCargo->execute();
                             $consultaCargo = $consultaCargo->fetchAll();
                             foreach ($consultaCargo as $consultaCargo) {
@@ -102,7 +167,7 @@
                         <option value="selecopo" > -- Selecione Opção --</option>
                         <!-- Consulta no banco - Tipo de Usuario--->
                         <?php
-                            $consultaTipoUsuario = $conn->prepare('SELECT * FROM tipousuario');
+                            $consultaTipoUsuario = Conexao::conectar()->prepare('SELECT * FROM tipousuario');
                             $consultaTipoUsuario->execute();
                             $consultaTipoUsuario = $consultaTipoUsuario->fetchAll();
                             foreach ($consultaTipoUsuario as $consultaTipoUsuario) {

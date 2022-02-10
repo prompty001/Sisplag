@@ -13,7 +13,7 @@
     <h2>CADASTRO DE ESCOLA</h2>
 
     <?php
-        require_once('../config/conexao.php');
+        
         require_once('../config/painel.php');
 
 
@@ -37,7 +37,7 @@
             $fundamentaleja_filial = $_POST['fundamentaleja_filial'];
             $outrosniveis_filial = $_POST['outrosniveis_filial'];
 
-            $cadastroEscola = $conn->prepare("INSERT INTO FILIAL (nome_filial, possuiFilial, fk_instituicao,fk_sigla, fundacao_filial, codigo_inepfilial, cep_filial, complemento, telefone_filial, email_filial, resp_filial, email_respLegal, educacao_infantil, fundamental_filial, fundamentaleja_filial, outrosniveis_filial) VALUES ('$nome_filial', '$possuiFilial', '$fk_instituicao', '$fk_sigla', '$fundacao_filial', '$codigo_inepfilial', '$cep_filial', '$complemento', '$telefone_filial', '$email_filial', '$resp_filial', '$email_respLegal', '$educacao_infantil', '$fundamental_filial', '$fundamentaleja_filial', '$outrosniveis_filial')");
+            $cadastroEscola = Conexao::conectar()->prepare("INSERT INTO FILIAL (nome_filial, possuiFilial, fk_instituicao,fk_sigla, fundacao_filial, codigo_inepfilial, cep_filial, complemento, telefone_filial, email_filial, resp_filial, email_respLegal, educacao_infantil, fundamental_filial, fundamentaleja_filial, outrosniveis_filial) VALUES ('$nome_filial', '$possuiFilial', '$fk_instituicao', '$fk_sigla', '$fundacao_filial', '$codigo_inepfilial', '$cep_filial', '$complemento', '$telefone_filial', '$email_filial', '$resp_filial', '$email_respLegal', '$educacao_infantil', '$fundamental_filial', '$fundamentaleja_filial', '$outrosniveis_filial')");
 
             $cadastroEscola->execute();
             
@@ -71,7 +71,7 @@
                 <option>-Sigla-</SIGLA></option>
                     <!-- Consulta no banco - Siglas--->
                     <?php
-                        $consultaSigla = $conn->prepare('SELECT * FROM siglainstituicao');
+                        $consultaSigla = Conexao::conectar()->prepare('SELECT * FROM siglainstituicao');
                         $consultaSigla->execute();
                         $consultaSigla = $consultaSigla->fetchAll();
                         foreach ($consultaSigla as $consultaSigla) {
@@ -87,7 +87,7 @@
                 <option>-Instituição-</Instituição></option>
                     <!-- Consulta no banco - Instituição--->
                     <?php
-                        $consultaInst = $conn->prepare('SELECT * FROM instituicao');
+                        $consultaInst = Conexao::conectar()->prepare('SELECT * FROM instituicao');
                         $consultaInst->execute();
                         $consultaInst = $consultaInst->fetchAll();
                         foreach ($consultaInst as $consultaInst) {

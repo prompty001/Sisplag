@@ -49,7 +49,6 @@
 
 
     <?php
-        require_once('../config/conexao.php');
         require_once('../config/painel.php');
 
         $id_instituicao = (!empty($_GET['id_instituicao']) ? $_GET['id_instituicao'] : '');
@@ -65,7 +64,7 @@
             $fk_cargo = $_POST['fk_cargo'];
             $fk_tipousuario = $_POST['fk_tipousuario'];
 
-            $cadastroUsuario = $conn->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
+            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
 
             $cadastroUsuario->execute();
         }

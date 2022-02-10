@@ -13,7 +13,7 @@
     <h2>CADASTRO DE ESCOLA</h2>
 
     <?php
-        require_once('../config/conexao.php');
+        
         require_once('../config/painel.php');
 
 
@@ -55,7 +55,7 @@
             $outros_niveis = $_POST['outros_niveis'];
 
 
-            $cadastroEscola = $conn->prepare("INSERT INTO INSTITUICAO (fk_tipoInstituicao, fk_sigla, fk_distrito, nome_instituicao, fundacao, codigo_inep, cnpj_escola, entidade_mantenedora, cnpj_conselho, vigencia_ce, cep_escola, uf, cidade, bairro, complemento, email_inst, telefone_inst, nome_gestor, email_gestor, whats_gestor, nome_secretario, email_secretario, whats_secretario, nome_coordenador, email_coordenador, whats_coordenador, convenio_semec, n_convenio, objeto, vigencia, educacao_infantil, fundamental, fundamental_eja, outros_niveis) VALUES ('$fk_tipoInstituicao', '$fk_sigla', '$fk_distrito', '$nome_instituicao', '$fundacao', '$codigo_inep', '$cnpj_escola', '$entidade_mantenedora', '$cnpj_conselho', '$vigencia_ce', '$cep_escola', '$uf',  '$cidade', '$bairro', '$complemento', '$email_inst', '$telefone_inst', '$nome_gestor', '$email_gestor', '$whats_gestor', '$nome_secretario', '$email_secretario', '$whats_secretario', '$nome_coordenador', '$email_coordenador', '$whats_coordenador', '$convenio_semec', '$n_convenio', '$objeto', '$vigencia', '$educacao_infantil', '$fundamental', '$fundamental_eja', '$outros_niveis')");
+            $cadastroEscola = Conexao::conectar()->prepare("INSERT INTO INSTITUICAO (fk_tipoInstituicao, fk_sigla, fk_distrito, nome_instituicao, fundacao, codigo_inep, cnpj_escola, entidade_mantenedora, cnpj_conselho, vigencia_ce, cep_escola, uf, cidade, bairro, complemento, email_inst, telefone_inst, nome_gestor, email_gestor, whats_gestor, nome_secretario, email_secretario, whats_secretario, nome_coordenador, email_coordenador, whats_coordenador, convenio_semec, n_convenio, objeto, vigencia, educacao_infantil, fundamental, fundamental_eja, outros_niveis) VALUES ('$fk_tipoInstituicao', '$fk_sigla', '$fk_distrito', '$nome_instituicao', '$fundacao', '$codigo_inep', '$cnpj_escola', '$entidade_mantenedora', '$cnpj_conselho', '$vigencia_ce', '$cep_escola', '$uf',  '$cidade', '$bairro', '$complemento', '$email_inst', '$telefone_inst', '$nome_gestor', '$email_gestor', '$whats_gestor', '$nome_secretario', '$email_secretario', '$whats_secretario', '$nome_coordenador', '$email_coordenador', '$whats_coordenador', '$convenio_semec', '$n_convenio', '$objeto', '$vigencia', '$educacao_infantil', '$fundamental', '$fundamental_eja', '$outros_niveis')");
 
             $cadastroEscola->execute();
             
@@ -93,7 +93,7 @@
                 <option>-Sigla-</SIGLA></option>
                     <!-- Consulta no banco - Siglas--->
                     <?php
-                        $consultaSigla = $conn->prepare('SELECT * FROM siglainstituicao');
+                        $consultaSigla = Conexao::conectar()->prepare('SELECT * FROM siglainstituicao');
                         $consultaSigla->execute();
                         $consultaSigla = $consultaSigla->fetchAll();
                         foreach ($consultaSigla as $consultaSigla) {
@@ -109,7 +109,7 @@
                 <option >- Distrito -</option>
                     <!-- Consulta no banco - Distritos ADM--->
                     <?php
-                        $consultaCargo = $conn->prepare('SELECT * FROM distritoadm');
+                        $consultaCargo = Conexao::conectar()->prepare('SELECT * FROM distritoadm');
                         $consultaCargo->execute();
                         $consultaCargo = $consultaCargo->fetchAll();
                         foreach ($consultaCargo as $consultaCargo) {
