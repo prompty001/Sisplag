@@ -6,6 +6,7 @@
     --first-color: #4723D9;
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB;
+    --black-color: #000000;
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
     --z-fixed: 100
@@ -27,7 +28,8 @@ body {
 }
 
 a {
-    text-decoration: none
+    
+    color: var(--white-color)
 }
 
 .header {

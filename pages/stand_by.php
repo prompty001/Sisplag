@@ -40,6 +40,7 @@ session_start();
     <script src="../lib/mask/script_mask.js" defer></script>
 
     <link rel="stylesheet" href="../lib/icons/css/icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
      
 
@@ -70,35 +71,35 @@ session_start();
 
                         <a href="cadastro_usuario.php" class="nav_link" id="cadastro">
                             <div class="grid-icon">
-                                <i class="gg-profile nav_icon"></i>
+                                <i class="bi bi-person-plus"></i>
                                 <span class="nav_name">Cadastrar Usuários</span>
                             </div>
                         </a>
 
                         <a href="cadastro_escola.php" class="nav_link" id="emprestimo">
                             <div class="grid-icon">
-                                <i><img src="https://img.icons8.com/ios/22/000000/school.png"/></i>
+                                <i class="bi bi-house"></i>
                                 <span class="nav_name">Cadastro de Escolas</span>
                             </div>
                         </a>
 
                         <a href="consulta_escola.php" class="nav_link" id="ativos">
                             <div class="grid-icon">
-                                <i><img src="https://img.icons8.com/ios/20/000000/school.png"/></i>
+                                <i class="bi bi-search"></i>
                                 <span class="nav_name">Consulta de Escolas</span>
                             </div>
                         </a>
 
                         <a href="tab_graph.php" class="nav_link">
                             <div class="grid-icon">
-                                <i><img src="https://img.icons8.com/small/22/000000/ranking.png"/></i>
+                                <i class="bi bi-file-bar-graph"></i>
                                 <span class="nav_name">Tabelas e Gráficos</span>
                             </div>
                         </a>
 
                         <a href="logout.php" class="nav_link">
                             <div class="grid-icon">
-                                <i><img src="https://img.icons8.com/ios/22/000000/shutdown--v1.png"/></i>
+                                <i class="bi bi-x-square"></i>
                                 <span class="nav_name">Logout</span>
                             </div>
                         </a>
@@ -115,21 +116,21 @@ session_start();
             <div class="rightNav">
                 <div class="box">
                 <a href="cadastro_usuario.php" class="iconsSideNav"><p>Cadastro de Usuários<br/><span>20 usuários cadastrados</span></p> </a>
-                <a href="cadastro_usuario.php" class="iconsSideNav"><img src="https://img.icons8.com/small/35/000000/user.png"/> </a>
+                <a href="cadastro_usuario.php" class="iconsSideNav"><i class="bi bi-person-plus"></i></i></a>
                 </div>
             </div>
 
             <div class="rightNav">
                 <div class="box">
                 <a href="autorizacaoCadastro.php" class="iconsSideNav"><p>Autorização de Cadastro<br/><span>30 escolas aguardando</span></p></a>
-                <a href="autorizacaoCadastro.php" class="iconsSideNav"><img src="https://img.icons8.com/ios/38/000000/password-check.png"/></a>
+                <a href="autorizacaoCadastro.php" class="iconsSideNav"><i class="bi bi-card-checklist"></i></a>
                 </div>
             </div>
 
             <div class="rightNav">
                 <div class="box">
                     <a href="consulta_escola.php" class="iconsSideNav"><p>Consulta de Escolas/Processos<br/><span>50 escolas cadastradas</span></p></a>
-                    <a href="consulta_escola.php" class="iconsSideNav"><img src="https://img.icons8.com/ios/35/000000/school.png"/></a>
+                    <a href="consulta_escola.php" class="iconsSideNav"><i class="bi bi-search"></i></a>
                 </div>
             </div>
 
@@ -139,7 +140,7 @@ session_start();
                     <p></p>
                     <br>
                     <br>
-                    <a position="center" href="tab_graph.php" class="iconsSideNav"><img src="https://img.icons8.com/small/35/000000/ranking.png"/></a>
+                    <a position="center" href="tab_graph.php" class="iconsSideNav"><i class="bi bi-file-bar-graph"></i></a>
                 </div>
             </div>
 

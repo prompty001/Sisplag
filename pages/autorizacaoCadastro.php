@@ -25,7 +25,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Empréstimo de Maletas</title>
 
-    <script src="../lib/jquery/jquery.js" defer></script>
+    
 
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
@@ -180,62 +180,7 @@ session_start();
     <script src="../js/painelAdmConfig.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
 
-    <script src="../lib/datatables/js/pdfmake.min.js"></script>
-    <script src="../lib/datatables/js/pdfmake_vfs_fonts.js"></script>
-    <script src="../lib/datatables/js/buttons.html5.min.js"></script> 
-    <script src="../lib/datatables/js/buttons.print.min.js"></script>
 </body>
-
-
-<script>
-    $(document).ready(function() {
-    $('#example').DataTable( {
-    dom: 'Bfrtip',   
-    colReorder: true,
-        buttons: [
-     //      'colvis',
-           
-               {
-                extend: 'pdfHtml5',
-                orientation: 'landscape',
-            },
-               {
-                extend: 'csv',
-                orientation: 'landscape',
-                
-            },
-             {
-                extend: 'print',
-                orientation: 'landscape',
-            },
-              {
-                extend: 'copy',
-                orientation: 'landscape',
-            },
-        ], 
-      
-     "order": [[ 8, "desc" ]],
-       responsive: true,
-       "language": {
-            "lengthMenu": "Mostrando _MENU_ registros por página",
-            "zeroRecords": "Nada encontrado",
-            "info": "Mostrando página  _PAGE_ de _PAGES_",
-            "infoEmpty": "Nenhum registro disponível",
-            "infoFiltered": "(filtrado de _MAX_ registros no total )",
-           "sSearch": "Pesquisar",
-            "oPaginate": {
-            "sFirst": "Primeiro",
-            "sPrevious": "Anterior",
-            "sNext": "Próximo",
-            "sLast": "Último"
-          }
-        },
-    } );  
-    
-
-      
-    
-    });
 
 </script>
 </html>
