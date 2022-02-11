@@ -1,6 +1,6 @@
 <?php
-ob_start();
 session_start();
+
     if (!isset($_SESSION['login']))
     {
         header("Location:../index.php");
@@ -8,6 +8,7 @@ session_start();
     
     
 ?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -113,13 +114,12 @@ session_start();
 
 
     <?php
-        include ('../config/painel.php');
+        include ('../config/conexao.php');
 
         if(isset($_POST['enviar'])){
             $nome_usuario = $_POST['nome_usuario'];
             $cpf_usuario = $_POST['cpf_usuario'];
             $email_usuario = $_POST['email_usuario'];
-            $login_usuario = $_POST['login_usuario'];
             $senha_usuario = $_POST['senha_usuario'];
             $inicio_mandato = $_POST['inicio_mandato'];
             $fim_mandato = $_POST['fim_mandato'];
@@ -127,7 +127,7 @@ session_start();
             $fk_cargo = $_POST['fk_cargo'];
             $fk_tipousuario = $_POST['fk_tipousuario'];
 
-            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, login_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$login_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
+            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
 
             $cadastroUsuario->execute();
             Painel::alert('sucesso',' cadastro realizado com sucesso!');
@@ -187,7 +187,15 @@ session_start();
                         Nome não inserido!
                     </div>
                 </div>
-
+                
+                <div class="col-md-6">
+                    <label for="validationCustom01" class="form-label">Senha</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="senha_usuario" placeholder="Senha do Usuario" required>
+                    <div class="valid-feedback">
+                        Dados Incorretos!
+                    </div>
+                </div>
+                
                 <div class="col-md-3">
                     <label for="validationCustom02" class="form-label">Data de Nascimento</label>
                     <input type="date" class="form-control" id="validationCustom01" name="data_nascimento" required>
@@ -199,26 +207,8 @@ session_start();
                     <div class="valid-feedback">
                         CPF inválido!
                     </div>
-                </div>  
-                
-                <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">Login</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="login_usuario" placeholder="Login do Usuario" required>
-                    <div class="valid-feedback">
-                        Dados Incorretos!
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="validationCustom01" name="senha_usuario" placeholder="Senha do Usuario" required>
-                    <div class="valid-feedback">
-                        Dados Incorretos!
-                    </div>
-                </div>
-                
-                
-                <div class="col-md-4">
+                </div>    
+                <div class="col-md-6">
                     <label for="validationCustom04" class="form-label">Email</label>
                     <input type="text" class="form-control" id="validationCustom01" name="email_usuario" placeholder="E-mail" required>
                     <label class="exemplo">Ex: joao_bosco@gmail.com</label>
@@ -261,4 +251,4 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>
 </body>
-</html><?php ob_end_flush(); ?>
+</html>

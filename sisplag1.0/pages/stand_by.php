@@ -136,8 +136,9 @@ session_start();
 
             <div class="rightNav">
                 <div class="box">
-                    <a href="tab_graph.php" class="iconsSideNav"><p>Tabelas e<br> Gráficos<br/><span></span></p></a>
+                    <a href="tab_graph.php" class="iconsSideNav"><p>Tabelas e Gráficos<br/><span></span></p></a>
                     <p></p>
+                    <br>
                     <br>
                     <a position="center" href="tab_graph.php" class="iconsSideNav"><i class="bi bi-file-bar-graph"></i></a>
                 </div>

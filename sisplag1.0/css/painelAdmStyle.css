@@ -1,0 +1,255 @@
+.schoolForm .formPersonalData, .formTechnicalData, .formBranchData {
+    margin-left: 18%;
+    margin-right: 18%;
+    text-align: left;
+}
+
+.schoolForm .formPersonalData .formPersonalDataInput .allInput {
+    border: 1px solid black;
+    background-color: #192335;
+    padding: 7px;
+    width: 49.5%;
+}
+
+.schoolForm .formPersonalData .formPersonalDataInput .allInput:hover {
+    background-color: #263552;
+}
+
+.schoolForm .formPersonalData .formPersonalDataInput .selectInitials {
+    font-size: 16px;
+    width: 12%;
+    display: none;
+    cursor: pointer;
+    /*transition: 0.2s ease-in;*/
+}
+
+.schoolForm .formPersonalData .formPersonalDataInput .selectDistrict {
+    font-size: 16px;
+    width: 12%;
+    cursor: pointer;
+}
+
+/*Dados técnicos*/
+
+.schoolForm .formTechnicalData .formTechnicalDataInput .allInput {
+    border: 1px solid black;
+    background-color: #192335;
+    padding: 7px;
+    width: 49.5%;
+}
+
+.schoolForm .formBranchData .allInput {
+    border: 1px solid black;
+    background-color: #192335;
+    padding: 7px;
+    width: 49.5%;
+}
+
+.schoolForm .formBranchData .allInput:hover {
+    background-color: #263552;
+}
+
+.schoolForm .formBranchData .formBranchDataInput .selectInitialsBranch {
+    font-size: 16px;
+    width: 14%;
+    cursor: pointer;
+}
+
+.schoolForm .formBranchData .addBranch, .sendData {
+    background-color: black;
+    border: 0.5px ridge black;
+    width: 8%;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.schoolForm .formBranchData .addBranch:hover, .sendData:hover {
+    background-color: #444
+}
+
+label{
+    font-weight: bold;
+}
+
+h1, h2 {
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Roboto Mono', monospace;
+    
+}
+tr, th{
+    text-align: center;
+    
+}
+
+h2 {
+    font-size: 25px;
+}
+
+hr {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+h3 {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(128, 123, 123);
+    text-transform: uppercase;
+}
+
+p {
+    font-weight: bold;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    
+    /* background-color: #558FC2; */
+}
+
+.sideNav {
+    height: 100%;
+    width: 340px;
+    position: fixed;
+    z-index: 1;
+    margin-top: 0;
+    margin-left: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+    background-color: #394c6e; /*#141a36*/
+}
+
+.sideNav .logo {
+    height: 20%;
+    margin-left: 20px;
+}
+
+.sideNav img {
+    margin-top: -10px;
+    width: 300px;
+}
+
+.sideNav .itemsSideNav {
+    margin-top: 65px;
+}
+
+.sideNav a {
+    padding: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.sideNav a:hover {
+    color: black;
+    background-color: #404869;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+    margin-left: 300px;
+}
+
+.head {
+    margin-left: 30px;
+}
+
+
+.itemsSideNav img {
+    width: 40px;
+    margin-bottom: -12px;
+}
+
+.itemsSideNav .dashboardIcons {
+    height: 35px;
+    margin-bottom: -12px;
+}
+
+.itemsSideNav .userRegIcons {
+    margin-bottom: -16px;
+}
+
+.itemsSideNav .authorizationIcons {
+    margin-bottom: -14px;
+}
+
+.itemsSideNav .tablesIcons {
+    margin-bottom: -12px;
+}
+
+.itemsSideNav .consultationIcons {
+    margin-bottom: -11px;
+}
+
+.itemsSideNav .logoutIcons {
+    margin-bottom: -14px;
+}
+
+.navOne {
+    margin-left: 10px;
+}
+
+.navTwo {
+    display: none;
+}
+
+.rightNav {
+    margin-top: 8%;
+    width: 25%;
+    float: left;
+}
+
+.welcome {
+    padding: 50px;
+    text-align: center;
+}
+
+.box {
+    width: 85%;
+    height: 155px;
+    background-color: #041f50;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.box:hover {
+    background-color: #184199;
+}
+
+.box p {
+    margin-top: -1px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 30px;
+    color: white;
+}
+
+.box p span {
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+}
+
+.rightNav .rightNavIcons {
+    margin-top: -20px;
+    margin-left: 80px;
+}
+
+a{
+    text-decoration: solid;
+    color: white;
+}
+

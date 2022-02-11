@@ -25,7 +25,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Empréstimo de Maletas</title>
 
-    <script src="../lib/jquery/jquery.js" defer></script>
+    
 
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
@@ -36,11 +36,11 @@ session_start();
 
     <script src="../js/script_main.js" defer></script>
     <link rel="stylesheet" href="../css/style_main.css">
+    <link rel="stylesheet" href="../css/table.css">
 
     <script src="../lib/mask/script_mask.js" defer></script>
 
     <link rel="stylesheet" href="../lib/icons/css/icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
      
 
@@ -71,35 +71,35 @@ session_start();
 
                         <a href="cadastro_usuario.php" class="nav_link" id="cadastro">
                             <div class="grid-icon">
-                                <i class="bi bi-person-plus"></i>
+                                <i class="gg-profile nav_icon"></i>
                                 <span class="nav_name">Cadastrar Usuários</span>
                             </div>
                         </a>
 
                         <a href="cadastro_escola.php" class="nav_link" id="emprestimo">
                             <div class="grid-icon">
-                                <i class="bi bi-house"></i>
+                                <i><img src="https://img.icons8.com/ios/22/000000/school.png"/></i>
                                 <span class="nav_name">Cadastro de Escolas</span>
                             </div>
                         </a>
 
                         <a href="consulta_escola.php" class="nav_link" id="ativos">
                             <div class="grid-icon">
-                                <i class="bi bi-search"></i>
+                                <i><img src="https://img.icons8.com/ios/20/000000/school.png"/></i>
                                 <span class="nav_name">Consulta de Escolas</span>
                             </div>
                         </a>
 
                         <a href="tab_graph.php" class="nav_link">
                             <div class="grid-icon">
-                                <i class="bi bi-file-bar-graph"></i>
+                                <i><img src="https://img.icons8.com/small/22/000000/ranking.png"/></i>
                                 <span class="nav_name">Tabelas e Gráficos</span>
                             </div>
                         </a>
 
                         <a href="logout.php" class="nav_link">
                             <div class="grid-icon">
-                                <i class="bi bi-x-square"></i>
+                                <i><img src="https://img.icons8.com/ios/22/000000/shutdown--v1.png"/></i>
                                 <span class="nav_name">Logout</span>
                             </div>
                         </a>
@@ -109,43 +109,78 @@ session_start();
 
     </nav>
     </div>
-            
-            <h1 class="welcome">Boas vindas ao Sistema de Planejamento e Gestão (Sisplag).</h1>
+    
+    </div>
 
+            <h1>SISPLAG</h1>
+    <h2>AUTORIZAÇÃO DE CADASTRO</h2>
+    
 
-            <div class="rightNav">
-                <div class="box">
-                <a href="cadastro_usuario.php" class="iconsSideNav"><p>Cadastro de Usuários<br/><span>20 usuários cadastrados</span></p> </a>
-                <a href="cadastro_usuario.php" class="iconsSideNav"><i class="bi bi-person-plus"></i></i></a>
-                </div>
-            </div>
+    <?php
+        include ('../config/painel.php');
 
-            <div class="rightNav">
-                <div class="box">
-                <a href="autorizacaoCadastro.php" class="iconsSideNav"><p>Autorização de Cadastro<br/><span>30 escolas aguardando</span></p></a>
-                <a href="autorizacaoCadastro.php" class="iconsSideNav"><i class="bi bi-card-checklist"></i></a>
-                </div>
-            </div>
+        $consulta = Conexao::conectar()->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
+                                        FROM instituicao I
+                                        INNER JOIN  tipoinstituicao T
+                                            ON T.id_inst = I.fk_tipoInstituicao
+                                        INNER JOIN siglainstituicao S
+                                            ON S.id_sigla = I.fk_sigla
+                                        INNER JOIN distritoadm D 
+                                            ON D.id_distrito=I.fk_distrito
+                                        WHERE status_inst = 'Não'");
+        $consulta->execute();
+        $consulta = $consulta->fetchAll();
 
-            <div class="rightNav">
-                <div class="box">
-                    <a href="consulta_escola.php" class="iconsSideNav"><p>Consulta de Escolas/Processos<br/><span>50 escolas cadastradas</span></p></a>
-                    <a href="consulta_escola.php" class="iconsSideNav"><i class="bi bi-search"></i></a>
-                </div>
-            </div>
+    
 
-            <div class="rightNav">
-                <div class="box">
-                    <a href="tab_graph.php" class="iconsSideNav"><p>Tabelas e<br> Gráficos<br/><span></span></p></a>
-                    <p></p>
-                    <br>
-                    <a position="center" href="tab_graph.php" class="iconsSideNav"><i class="bi bi-file-bar-graph"></i></a>
-                </div>
-            </div>
+    ?>
+
+    <div class=schoolForm>
+        
+        <hr>
+        <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" />
+            <!--Criação da Tabela-->
+            <table id="example" class="lista-clientes" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Ordem</th>
+                        <th>Escola</th>
+                        <th>Tipo da Escola</th>
+                        <th>Sigla da Escola</th>
+                        <th>Distrito Adm</th>
+                        <th id="verificar" >Verificar Cadastro</th>
+                        <th id="confirmar" >Aprovar Transferencia</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+
+                    <?php 
+                    $id_instituicao = 0;
+                    foreach($consulta as $consulta){
+                        $id_instituicao = $consulta['id_instituicao']
+                        ?>
+                    <tr>
+                        <td><?php echo $consulta ['id_instituicao'];?></td>
+                        <td><?php echo $consulta ['nome_instituicao'];?></td>
+                        <td><?php echo $consulta ['nome_inst'];?></td>
+                        <td><?php echo $consulta ['sigla'];?></td>
+                        <td><?php echo $consulta ['distritoAdm'];?></td>
+                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'> Verificar</button></a></td>" ?>
+                        <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-danger'>Aprovar</button></a></td>" ?>
+                    </tr>
+                    <?php }?>
+                </tbody>   
+                
+                
+            </table>    
+        
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>
-   
+    <script type="text/javascript" src="../js/jquery.js"></script>
+
 </body>
 
+</script>
 </html>
