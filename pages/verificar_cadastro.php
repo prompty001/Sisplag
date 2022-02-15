@@ -117,21 +117,17 @@
 
         $id_instituicao = (!empty($_GET['id_instituicao']) ? $_GET['id_instituicao'] : '');
 
-        if(isset($_POST['enviar'])){
-            $nome_usuario = $_POST['nome_usuario'];
-            $cpf_usuario = $_POST['cpf_usuario'];
-            $email_usuario = $_POST['email_usuario'];
-            $senha_usuario = $_POST['senha_usuario'];
-            $inicio_mandato = $_POST['inicio_mandato'];
-            $fim_mandato = $_POST['fim_mandato'];
-            $data_nascimento = $_POST['data_nascimento'];
-            $fk_cargo = $_POST['fk_cargo'];
-            $fk_tipousuario = $_POST['fk_tipousuario'];
-
-            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
-
-            $cadastroUsuario->execute();
-        }
+        $consulta = Conexao::conectar()->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm, I.fundacao, I.codigo_inep, I.cnpj_escola, I.entidade_mantenedora, I.cnpj_conselho, I.vigencia_ce, I.cep_escola, I.uf, I.cidade, I.bairro, I.complemento, I.email_inst, I.telefone_inst, I.nome_gestor, I.email_gestor, I.whats_gestor, I.nome_secretario, I.whats_secretario, I.email_secretario, I.nome_coordenador, I.whats_coordenador, I.email_coordenador, I.convenio_semec, I.n_convenio, I.objeto, I.vigencia, I.educacao_infantil, I.fundamental, I.fundamental_eja, I.outros_niveis, I.status_inst 
+                                        FROM instituicao I
+                                        INNER JOIN  tipoinstituicao T
+                                            ON T.id_inst = I.fk_tipoInstituicao
+                                        INNER JOIN siglainstituicao S
+                                            ON S.id_sigla = I.fk_sigla
+                                        INNER JOIN distritoadm D 
+                                            ON D.id_distrito=I.fk_distrito
+                                        WHERE id_instituicao=$id_instituicao;");
+        $consulta->execute();
+        $consulta = $consulta->fetchAll();
 
     ?>
 
@@ -141,193 +137,181 @@
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
             <form method="POST" class="row g-3">
+            <?php foreach ($consulta as $consulta) { ?>
+                <div class="col-md-2">
+                    <label for="validationCustom01" class="form-label">Token Escola</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="id_instituicao" value="<?php echo $consulta['id_instituicao']; ?>" disabled>
+                </div>
+
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Tipo Escola</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="tipo" >
+                    <input type="text" class="form-control" id="validationCustom01" name="tipo" value="<?php echo $consulta['nome_inst']; ?>" disabled>
                 </div>
                 
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Sigla</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="sigla">
+                    <input type="text" class="form-control" id="validationCustom01" name="sigla" value="<?php echo $consulta['sigla']; ?>" disabled>
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Distrito Administrativo</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="distrito" >
+                    <input type="text" class="form-control" id="validationCustom01" name="distrito" value="<?php echo $consulta['distritoAdm']; ?>" disabled>
                 </div>
             
                 <div class="col-md-8">
                     <label for="validationCustom01" class="form-label">Nome Escola</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="nome_instituicao" value="<?php echo $consulta['nome_instituicao']; ?>" disabled>
                     
                 </div>    
                 <div class="col-md-4">
                     <label for="validationCustom02" class="form-label">Fundação</label>
-                    <input type="date" class="form-control" id="validationCustom01" name="data_nascimento" required>
+                    <input type="date" class="form-control" id="validationCustom01" name="fundacao" value="<?php echo $consulta['fundacao']; ?>" disabled>
                 </div>    
                 <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">Codigo Inep</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="cpf_usuario" required onkeypress="$(this).mask('000.000.000-00')">
-                    <label class="exemplo">Ex: 000.111.222-33</label>
-                    <div class="valid-feedback">
-                        CPF inválido!
-                    </div>
+                    <input type="text" class="form-control" id="validationCustom01" name="codigo_inep" value="<?php echo $consulta['codigo_inep']; ?>" disabled>
+                    
                 </div>    
                 <div class="col-md-3">
                     <label for="validationCustom03" class="form-label">CNPJ</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="cpf_usuario" required onkeypress="$(this).mask('000.000.000-00')">
-                    <label class="exemplo">Ex: 000.111.222-33</label>
-                    <div class="valid-feedback">
-                        CPF inválido!
-                    </div>
+                    <input type="text" class="form-control" id="validationCustom01" name="cnpj_escola" value="<?php echo $consulta['cnpj_escola']; ?>">
                 </div>  
 
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Entidade Mantenedora</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="entidade_mantenedora" value="<?php echo $consulta['entidade_mantenedora']; ?>" disabled>
                     
                 </div> 
 
                 <div class="col-md-6">
                     <label for="validationCustom03" class="form-label">CNPJ Conselho</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="cpf_usuario" required onkeypress="$(this).mask('000.000.000-00')">
-                    <label class="exemplo">Ex: 000.111.222-33</label>
-                    <div class="valid-feedback">
-                        CPF inválido!
-                    </div>
+                    <input type="text" class="form-control" id="validationCustom01" name="cnpj_conselho" value="<?php echo $consulta['cnpj_conselho']; ?>" disabled>
                 </div>
                 
 
                 <div class="col-md-6">
                     <label for="validationCustom05" class="form-label">Vigencia CE</label>
-                    <input type="date" class="form-control" id="validationCustom01" name="inicio_mandato" required>
-                    <div class="valid-feedback">
-                        Data inválida!
-                    </div>
+                    <input type="date" class="form-control" id="validationCustom01" name="vigencia_ce" value="<?php echo $consulta['vigencia_ce']; ?>" disabled>
                 </div>
 
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">CEP</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="cep_escola" value="<?php echo $consulta['cep_escola']; ?>" disabled>
                     
                 </div>
                 
                 <div class="col-md-7">
                     <label for="validationCustom01" class="form-label">Cidade</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="cidade" value="<?php echo $consulta['cidade']; ?>" disabled>
                     
                 </div> 
                 
                 <div class="col-md-1">
                     <label for="validationCustom01" class="form-label">UF</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="uf" value="<?php echo $consulta['uf']; ?>" disabled>
                     
                 </div> 
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Endereço</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="complemento" value="<?php echo $consulta['complemento']; ?>" disabled>
                     
                 </div>
 
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Bairro</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="bairro" value="<?php echo $consulta['bairro']; ?>" disabled>
                     
                 </div>
 
 
                 <div class="col-md-5">
                     <label for="validationCustom01" class="form-label">Telefone</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="telefone_inst" value="<?php echo $consulta['telefone_inst']; ?>" disabled>
                     
                 </div>
 
                 <div class="col-md-5">
                     <label for="validationCustom04" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="email_usuario" placeholder="E-mail" required>
-                    <label class="exemplo">Ex: joao_bosco@gmail.com</label>
-                    <div class="valid-feedback">
-                        Email inválido!
-                    </div>
+                    <input type="text" class="form-control" id="validationCustom01" name="email_inst" value="<?php echo $consulta['email_inst']; ?>" disabled>
                 </div> 
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Diretor</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="nome_gestor" value="<?php echo $consulta['nome_gestor']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Whatsapp</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="whats_gestor" value="<?php echo $consulta['whats_gestor']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="email_gestor" value="<?php echo $consulta['email_gestor']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Secretário</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="nome_secretario" value="<?php echo $consulta['nome_secretario']; ?>" disabled>
                     
                 </div>
 
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Whatsapp</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="whats_secretario" value="<?php echo $consulta['whats_secretario']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="email_secretario" value="<?php echo $consulta['email_secretario']; ?>" disabled>
                     
                 </div>
 
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Coordenador</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="nome_coordenador" value="<?php echo $consulta['nome_coordenador']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Whatsapp</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="whats_coordenador" value="<?php echo $consulta['whats_coordenador']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="email_coordenador" value="<?php echo $consulta['email_coordenador']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Celebra Convenio SEMEC</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="convenio_semec" value="<?php echo $consulta['convenio_semec']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Nº do Convenio</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="n_convenio" value="<?php echo $consulta['n_convenio']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-6">
-                    <label for="validationCustom01" class="form-label">Modalidades da Educação Básica</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <label for="validationCustom01" class="form-label">Educação Infantil</label>
+                    <input type="text" class="form-control" id="validationCustom01" name="educacao_infantil" value="<?php echo $consulta['educa cao_infantil']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Educação Fundamental</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="fundamental" value="<?php echo $consulta['fundamental']; ?>" disabled>
                     
                 </div>
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Educação Fundamental EJA</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="fundamental_eja" value="<?php echo $consulta['fundamental_eja']; ?>" disabled>
                     
                 </div>
 
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Outros</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="outros_niveis" value="<?php echo $consulta['outros_niveis']; ?>" disabled>
                     
                 </div>
-              
+                <?php } ?>
                 <div>
 
                 <hr>

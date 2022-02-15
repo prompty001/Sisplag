@@ -3,7 +3,7 @@
 
     require_once ("../lib/dompdf/autoload.inc.php");
 
-    $dompdf = new Dompdf(["enable_remote" => true]);
+    $dompdf = new Dompdf();
     $dompdf->loadHtml(str: "<h1> Teste </h1>");
 
     ob_start();

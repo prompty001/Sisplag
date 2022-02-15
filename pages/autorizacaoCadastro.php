@@ -25,7 +25,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Empréstimo de Maletas</title>
 
-    <script src="../lib/mask/script_mask.js" defer></script>
+    
 
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
@@ -38,7 +38,6 @@ session_start();
     <link rel="stylesheet" href="../css/style_main.css">
     <link rel="stylesheet" href="../css/table.css">
 
-    <script src="../lib/mask/script_mask.js" defer></script>
 
     <link rel="stylesheet" href="../lib/icons/css/icons.css">
 
@@ -139,7 +138,7 @@ session_start();
         <hr>
         <div class="d-flex justify-content-between">
         <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" /> 
-        <a href='../expo/impress.php'><button type='button' class='btn btn-outline-info'>Imprimir</button></a>
+        <a href='../expo/impress.php'><button type='button' class='btn btn-outline-info' >Imprimir</button><i class="bi bi-printer"></i></a>
         </div>    
         <!--Criação da Tabela-->
             <table id="example" class="lista-clientes" style="width:100%">
