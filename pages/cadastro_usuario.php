@@ -50,7 +50,7 @@ session_start();
         <div class="header_toggle" id="header-toggle"><i class="gg-menu" id="bt-menu"></i></div>
         <button class="btn btn-dark"><a  href="stand_by.php" id="navbarDropdown">
                 Usuário: 
-               <?php echo $_SESSION['nome_usuario']; ?>
+               <?php echo $_SESSION['login_usuario']; ?>
         </a></button>
 
     </header>
@@ -125,9 +125,8 @@ session_start();
             $fim_mandato = $_POST['fim_mandato'];
             $data_nascimento = $_POST['data_nascimento'];
             $fk_cargo = $_POST['fk_cargo'];
-            $fk_tipousuario = $_POST['fk_tipousuario'];
 
-            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, login_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo, fk_tipousuario) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$login_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo', '$fk_tipousuario')");
+            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, login_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$login_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo')");
 
             $cadastroUsuario->execute();
             Painel::alert('sucesso',' cadastro realizado com sucesso!');
@@ -161,25 +160,7 @@ session_start();
                         ?>
                     </select>
                     </div>
-                    <div>
-                    <label>Tipo Usuário</label>
-                <select class="form-control" id="school-acronym" style="flex-grow: 1" name="fk_tipousuario">
-                        <option value="selecopo" > -- Selecione Opção --</option>
-                        <!-- Consulta no banco - Tipo de Usuario--->
-                        <?php
-                            $consultaTipoUsuario = Conexao::conectar()->prepare('SELECT * FROM tipousuario');
-                            $consultaTipoUsuario->execute();
-                            $consultaTipoUsuario = $consultaTipoUsuario->fetchAll();
-                            foreach ($consultaTipoUsuario as $consultaTipoUsuario) {
-                            ?>
-                                <option value="<?php echo $consultaTipoUsuario['id_tipousuario']; ?>">
-                                    <?php echo $consultaTipoUsuario['tipoUsuario']; ?>
-                                </option>
-                            <?php } ?>
-                        ?>
-                        </select>
-
-                        </div>
+                    
                 <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Nome Usuário</label>
                     <input type="text" class="form-control" id="validationCustom01" name="nome_usuario" placeholder="Nome do Usuario" required>

@@ -14,9 +14,9 @@
 			echo '<div class="box-alert erro">'.$messagem.'</div>';
 		}
     }
-    public static function userExists($nome_usuario,$senha_usuario){
-			$sql = Conexao::conectar()->prepare("SELECT * FROM usuario WHERE nome_usuario=? AND senha_usuario=?");
-			$sql->execute(array($nome_usuario, $senha_usuario));
+    public static function userExists($login_usuario,$senha_usuario){
+			$sql = Conexao::conectar()->prepare("SELECT * FROM usuario WHERE login_usuario=? AND senha_usuario=?");
+			$sql->execute(array($login_usuario, $senha_usuario));
 			if($sql->rowCount() == 1)
 				return true;
 			else

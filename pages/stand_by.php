@@ -52,7 +52,7 @@ session_start();
         <div class="header_toggle" id="header-toggle"><i class="gg-menu" id="bt-menu"></i></div>
         <button class="btn btn-dark"><a  href="stand_by.php" id="navbarDropdown">
                 Usuário: 
-               <?php echo $_SESSION['nome_usuario']; ?>
+               <?php echo $_SESSION['login_usuario']; ?>
         </a></button>
 
     </header>
@@ -113,23 +113,54 @@ session_start();
             <h1 class="welcome">Boas vindas ao Sistema de Planejamento e Gestão (Sisplag).</h1>
 
 
+
+            <?php
+                require_once('../config/painel.php');
+
+
+                $consultaUsuario = Conexao::conectar()->prepare("SELECT count(id_usuario) AS total_usuario FROM USUARIO");
+                $consultaUsuario->execute();
+                $consultaUsuario = $consultaUsuario->fetchAll();
+                ?>
+
+                <?php foreach ($consultaUsuario as $consulta1) { ?>
             <div class="rightNav">
                 <div class="box">
-                <a href="cadastro_usuario.php" class="iconsSideNav"><p>Cadastro de Usuários<br/><span>20 usuários cadastrados</span></p> </a>
+                <a href="cadastro_usuario.php" class="iconsSideNav"><p>Cadastro de Usuários<br/><span><?php echo $consulta1['total_usuario']; ?> usuário(s) cadastrado(s)</span></p> </a>
+                <?php } ?>
                 <a href="cadastro_usuario.php" class="iconsSideNav"><i class="bi bi-person-plus"></i></i></a>
                 </div>
             </div>
+            
+            <?php
+                require_once('../config/painel.php');
 
+                $consultaAutorizacao = Conexao::conectar()->prepare("SELECT count(id_instituicao) AS total_pendente FROM instituicao WHERE status_inst='Não'");
+                    $consultaAutorizacao->execute();
+                    $consultaAutorizacao = $consultaAutorizacao->fetchAll();
+            ?>
+
+                <?php foreach ($consultaAutorizacao as $consulta2) { ?>
             <div class="rightNav">
                 <div class="box">
-                <a href="autorizacaoCadastro.php" class="iconsSideNav"><p>Autorização de Cadastro<br/><span>30 escolas aguardando</span></p></a>
+                <a href="autorizacaoCadastro.php" class="iconsSideNav"><p>Autorização de Cadastro<br/><span><?php echo $consulta2['total_pendente']; ?>  escolas aguardando</span></p></a>
+                <?php } ?>
                 <a href="autorizacaoCadastro.php" class="iconsSideNav"><i class="bi bi-card-checklist"></i></a>
                 </div>
             </div>
 
+            <?php
+                require_once('../config/painel.php');
+
+                $consultaEscola = Conexao::conectar()->prepare("SELECT count(id_instituicao) AS total_escola FROM instituicao WHERE status_inst='Sim'");
+                    $consultaEscola->execute();
+                    $consultaEscola = $consultaEscola->fetchAll();
+            ?>
+            <?php foreach ($consultaEscola as $consulta3) { ?>
             <div class="rightNav">
                 <div class="box">
-                    <a href="consulta_escola.php" class="iconsSideNav"><p>Consulta de Escolas/Processos<br/><span>50 escolas cadastradas</span></p></a>
+                    <a href="consulta_escola.php" class="iconsSideNav"><p>Consulta de Escolas/Processos<br/><span><?php echo $consulta3['total_escola']; ?> escola(s) cadastrada(s)</span></p></a>
+                    <?php } ?>
                     <a href="consulta_escola.php" class="iconsSideNav"><i class="bi bi-search"></i></a>
                 </div>
             </div>

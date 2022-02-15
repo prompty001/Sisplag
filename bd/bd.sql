@@ -1,11 +1,14 @@
 //CREATE
 
+CREATE DATABASE sisplag;
+
 CREATE TABLE usuario( 
 	id_usuario INT NOT NULL AUTO_INCREMENT, 
-	nome_usuario VARCHAR(50) NOT NULL , 
-	cpf_usuario INT(11) NOT NULL , 
-	email_usuario VARCHAR(50), 
-	senha_usuario VARCHAR(50) NOT NULL, 
+	nome_usuario VARCHAR(50) NOT NULL, 
+	cpf_usuario INT(11) NOT NULL, 
+	login_usuario VARCHAR(50), 
+	senha_usuario VARCHAR(50) NOT NULL,
+	email_usuario VARCHAR(50) DEFAULT "Sem email",  
 	inicio_mandato DATE, 
 	fim_mandato DATE, 
 	data_nascimento DATE, 
@@ -17,9 +20,12 @@ CREATE TABLE usuario(
 
 CREATE TABLE cargo( 
 	id_cargo INT NOT NULL AUTO_INCREMENT, 
-	cargo VARCHAR(50) NOT NULL , 
+	cargo VARCHAR(50) NOT NULL,
+	fk_tipouser INT, 
 	CONSTRAINT pk_cargo PRIMARY KEY (id_cargo) 
 )
+
+
 
 
 
@@ -176,11 +182,11 @@ CREATE TABLE coordenador(
 
 //INSERT
 
-INSERT INTO cargo(cargo) 
-	VALUES ('presidente'),
-		('secretario geral'),
-		('secretario'),
-		('servidor/conselheiro')
+INSERT INTO cargo(cargo, fk_tipouser) 
+	VALUES ('presidente', 1),
+		('secretario geral', 1),
+		('secretario', 2),
+		('servidor/conselheiro', 2)
 		
 
 INSERT INTO tipoUsuario(tipoUsuario, permissao) 
@@ -196,10 +202,11 @@ INSERT INTO distritoAdm (distritoAdm)
             ('DAOUT'),
             ('DAMOS'),
             ('DAENT'),
-            ('DASAC')
+            ('DASAC'),
+			('Sem Informação')
 
 
-INSERT INTO usuario (nome_usuario, cpf_usuario, senha_usuario) VALUES ('admin', 00, 'admin')
+INSERT INTO usuario (nome_usuario, cpf_usuario, login_usuario, senha_usuario) VALUES ('Administrador', 00, 'admin', 'admin')
 
 
 INSERT INTO tipoInstituicao (nome_inst)
@@ -225,6 +232,10 @@ INSERT INTO `siglaInstituicao`(`sigla`)
 
 ALTER TABLE usuario ADD CONSTRAINT fk_cg FOREIGN KEY (fk_cargo) REFERENCES cargo (id_cargo);
 ALTER TABLE usuario ADD CONSTRAINT fk_tipo FOREIGN KEY (fk_tipousuario) REFERENCES tipoUsuario (id_tipousuario);
+
+ALTER TABLE cargo ADD CONSTRAINT fk_tpUser FOREIGN KEY (fk_tipouser) REFERENCES tipoUsuario (id_tipousuario);
+ALTER TABLE cargo ADD CONSTRAINT fk_tpUser FOREIGN KEY (fk_tipouser) REFERENCES tipoUsuario (id_tipousuario);
+
 
 
 ALTER TABLE instituicao ADD CONSTRAINT fk_tip FOREIGN KEY (fk_tipoInstituicao) REFERENCES tipoInstituicao (id_inst);

@@ -25,7 +25,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Empréstimo de Maletas</title>
 
-    
+    <script src="../lib/mask/script_mask.js" defer></script>
 
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
@@ -52,7 +52,7 @@ session_start();
         <div class="header_toggle" id="header-toggle"><i class="gg-menu" id="bt-menu"></i></div>
         <button class="btn btn-dark"><a  href="stand_by.php" id="navbarDropdown">
                 Usuário: 
-               <?php echo $_SESSION['nome_usuario']; ?>
+               <?php echo $_SESSION['login_usuario']; ?>
         </a></button>
 
     </header>

@@ -21,15 +21,15 @@
     session_start();
 
     if (isset($_POST['enviar'])) {
-        $nome_usuario = $_POST['nome_usuario'];
+        $login_usuario = $_POST['login_usuario'];
         $senha_usuario = $_POST['senha_usuario'];
 
-        $sql = Conexao::conectar()->prepare("SELECT * FROM usuario WHERE nome_usuario = ? AND senha_usuario = ?");
-        $sql->execute(array($nome_usuario,$senha_usuario));
+        $sql = Conexao::conectar()->prepare("SELECT * FROM usuario WHERE login_usuario = ? AND senha_usuario = ?");
+        $sql->execute(array($login_usuario,$senha_usuario));
         if($sql->rowCount() == 1){
             //Logado com Sucesso;
             $_SESSION['login'] = true;
-            $_SESSION['nome_usuario'] = $nome_usuario;
+            $_SESSION['login_usuario'] = $login_usuario;
             $_SESSION['senha_usuario'] = $senha_usuario;
             
         
@@ -51,7 +51,7 @@
 
             <div class="box-input">
                 <label for="field-email" required>Login</label>
-                <input type="text" name="nome_usuario" class="field" id="field-email">
+                <input type="text" name="login_usuario" class="field" id="field-email">
             </div>
 
             <div class="box-input">
