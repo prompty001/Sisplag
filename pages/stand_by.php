@@ -1,12 +1,10 @@
 <?php
-session_start();
-
-    if (!isset($_SESSION['login']))
-    {
-        header("Location:../index.php");
-    }
-    
-    
+    ob_start();
+    session_start();
+        if (!isset($_SESSION['login']))
+        {
+            header("Location:../index.php");
+        }       
 ?>
 
 <!DOCTYPE html>
@@ -179,4 +177,4 @@ session_start();
    
 </body>
 
-</html>
+</html><?php ob_end_flush(); ?>

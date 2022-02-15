@@ -1,0 +1,248 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(245, 245, 245)
+}
+
+.menu {
+    list-style: none;
+    background-color: rgb(4, 67, 138);
+    text-align: right;
+    font-family: sans-serif;
+    font-size: 15pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px groove rgb(36, 35, 35);
+}
+
+.menu li {
+    display: inline;
+}
+
+.menu li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    transition: 0.5s ease-in;
+}
+
+.menu li a:hover {
+    color: black;
+}
+
+.areaLogo-content {
+    margin-block-end: 2em;
+}
+
+.areaLogo-content .cmeLogo {
+    text-align: center;
+    transition: 0.5s ease-in;
+}
+
+.areaLogo-content .catchphrase-content {
+    margin-top: -70px;
+    text-align: center;
+    transition: 0.5s ease-in;
+}
+
+.areaLogo-content .catchphrase-content p {
+    font-size: 14pt;
+    color: rgba(0, 0, 0, 0.678);
+    font-family: DejaVu Sans Mono, monospace;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    font-weight: bold;
+
+    margin-inline-start: 10em;
+    margin-inline-end: 10em;
+}
+
+.areaLogo-content .catchphrase-content a {
+    color: rgba(0, 0, 0, 0.678);
+}
+
+.shell-footer {
+    background-color: rgb(36, 35, 35)
+}
+
+.shell-footer {
+    text-align: right;
+    height: 120px;
+
+}
+
+.shell-footer .footer-logoPrefeitura {
+    float: left;
+    padding: 15px;
+
+    margin-inline-start: 20rem;
+}
+
+.shell-footer .footer-logoUFPA {
+    padding: 10px;
+
+    margin-inline-end: 42rem;
+}
+
+.shell-footer .footer-contact {
+    display: flex;
+
+    margin-inline-start: 49rem;
+    
+}
+
+
+.shell-footer .footer-logoPrefeitura img {
+    height: 85px;
+
+}
+
+.shell-footer .footer-logoUFPA img {
+    height: 90px;
+
+}
+
+.shell-footer .footer-contact p {
+    font-size: 14pt;
+    color: white;
+    font-family: DejaVu Sans Mono, monospace;
+    font-weight: bold;
+    text-transform: bold;
+    text-align: justify;
+    
+    margin-top: -75px;
+}
+/* Styles Dias - Botões e Login popup*/
+.button:hover{opacity: 0.5}
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+
+button {
+    background-color: #0f0a33;
+    color: rgb(248, 242, 242);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 12px;
+    align-self: center;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+  }
+  
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 20%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: rgb(240, 234, 234);
+  
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
