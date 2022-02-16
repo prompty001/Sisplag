@@ -4,13 +4,13 @@
     require_once ("../lib/dompdf/autoload.inc.php");
 
     $dompdf = new Dompdf();
-    $dompdf->loadHtml(str: "<h1> Teste </h1>");
+    //$dompdf->loadHtml(str: "<h1> Teste </h1>");
 
     ob_start();
     include("impress_autorizacao.php");
     $dompdf->loadHtml(ob_get_clean());
 
-    $dompdf->setPaper(size: "A4");
+    //$dompdf->setPaper(size: "A4");
 
     $dompdf->render();
     $dompdf->stream( "file.pdf", ["Attachment" => false]);

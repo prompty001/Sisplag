@@ -33,7 +33,7 @@
             $_SESSION['senha_usuario'] = $senha_usuario;
             
         
-            header('Location: pages/stand_by.php');
+            header('Location: pages/main.php');
             die();
     }else{
         echo "<div class='alert alert-danger' role='alert'> Usuário ou Senha Incorretos!</div>";

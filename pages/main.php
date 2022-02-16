@@ -59,7 +59,7 @@
 
     <header class="header" id="header">
         <div class="header_toggle" id="header-toggle"><i class="gg-menu" id="bt-menu"></i></div>
-        <button class="btn btn-dark"><a  href="stand_by.php" id="navbarDropdown">
+        <button class="btn btn-dark"><a  href="main.php" id="navbarDropdown">
                 Usuário: 
                <?php echo $_SESSION['login_usuario']; ?>
         </a></button>
@@ -69,7 +69,7 @@
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-                <a href="stand_by.php" class="nav_logo">
+                <a href="main.php" class="nav_logo">
                     <img src="../assets/new_sisplag.png" style="width: 38%" class="bx bx-layer nav_logo-icon">
                     <span class="nav_logo-name" ></span>
                 </a>
@@ -77,7 +77,7 @@
                 <div class=" nav_list">
 
 
-                        <a href="stand_by.php" class="nav_link" id="cadastro">
+                        <a href="main.php" class="nav_link" id="cadastro">
                             <div class="grid-icon">
                                 <i class="bi bi-grid-1x2"></i>
                                 <span class="nav_name">Início</span>

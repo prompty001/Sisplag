@@ -18,7 +18,7 @@ session_start();
         $consulta = $consulta->fetchAll();
 
         Painel::alert('sucesso',' cadastro deletado com sucesso!');
-        header("Location: stand_by.php");
+        header("Location: main.php");
         
 
     ?>
