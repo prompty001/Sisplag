@@ -3,4 +3,4 @@
   session_start();
   session_destroy();
  ?>
- <script>location.href='../tunnel.php';</script>
+ <script>location.href='../index.php';</script>

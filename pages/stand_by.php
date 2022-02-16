@@ -66,6 +66,19 @@
                 <div class=" nav_list">
 
 
+                        <a href="stand_by.php" class="nav_link" id="cadastro">
+                            <div class="grid-icon">
+                                <i class="bi bi-grid-1x2"></i>
+                                <span class="nav_name">Início</span>
+                            </div>
+                        </a>
+
+                        <a href="perfil.php" class="nav_link" id="cadastro">
+                            <div class="grid-icon">
+                                </i><i class="bi bi-person-check"></i>
+                                <span class="nav_name">Perfil</span>
+                            </div>
+                        </a>
 
                         <a href="cadastro_usuario.php" class="nav_link" id="cadastro">
                             <div class="grid-icon">
@@ -78,6 +91,13 @@
                             <div class="grid-icon">
                                 <i class="bi bi-house"></i>
                                 <span class="nav_name">Cadastro de Escolas</span>
+                            </div>
+                        </a>
+
+                        <a href="cadastro_escola.php" class="nav_link" id="emprestimo">
+                            <div class="grid-icon">
+                                <i class="bi bi-card-checklist"></i>
+                                <span class="nav_name">Autorização de Cadastro <br>de Escolas</span>
                             </div>
                         </a>
 

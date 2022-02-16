@@ -138,7 +138,7 @@ session_start();
         <hr>
         <div class="d-flex justify-content-between">
         <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" /> 
-        <a href='../expo/impress.php'><button type='button' class='btn btn-outline-info' >Imprimir</button><i class="bi bi-printer"></i></a>
+        <a href='../expo/impress.php' target="_black"><button type='button' class='btn btn-outline-info' >Imprimir</button><i class="bi bi-printer"></i></a>
         </div>    
         <!--Criação da Tabela-->
             <table id="example" class="lista-clientes" style="width:100%">
