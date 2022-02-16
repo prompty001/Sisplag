@@ -46,6 +46,17 @@
 
 <body id="body-pd">
 
+    <?php
+        require_once('../config/painel.php');
+
+       
+
+        $consulta = Conexao::conectar()->prepare("SELECT * FROM usuario");
+        $consulta->execute();
+        $consulta = $consulta->fetchAll();
+
+    ?>
+
     <header class="header" id="header">
         <div class="header_toggle" id="header-toggle"><i class="gg-menu" id="bt-menu"></i></div>
         <button class="btn btn-dark"><a  href="stand_by.php" id="navbarDropdown">
@@ -73,12 +84,20 @@
                             </div>
                         </a>
 
-                        <a href="perfil.php" class="nav_link" id="cadastro">
+                        <?php 
+                            $id_usuario = 0;
+                            foreach($consulta as $consulta){
+                                $id_usuario = $consulta['id_usuario']
+                        ?>
+
+                        <?php echo "<a href='perfil.php?id_usuario=$id_usuario' class='nav_link' id='cadastro'>" ?>
                             <div class="grid-icon">
                                 </i><i class="bi bi-person-check"></i>
                                 <span class="nav_name">Perfil</span>
                             </div>
                         </a>
+
+                        <?php } ?>
 
                         <a href="cadastro_usuario.php" class="nav_link" id="cadastro">
                             <div class="grid-icon">
