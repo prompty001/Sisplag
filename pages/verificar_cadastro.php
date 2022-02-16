@@ -341,7 +341,9 @@
         var janela = window.open('','', 'width=800, height=600');
         janela.document.write('<html><head>');
         janela.document.write('<style>input, textarea {font: 1em sans-serif; width: 450px; -moz-box-sizing: border-box; box-sizing: border-box; border: 3px solid #999;}</style>');
-        janela.document.write('<style>label{ display: inline-block; width: 200px; text-align: left;border: 3px solid #999; }</style>');
+        janela.document.write(`<style>label{display: inline-block; width: 200px; text-align: left;
+                                border: 3px solid #999; }</style>`);
+                                janela.document.write(`<style>:root{--bs-gutter-y: 1rem;} .col-md-1{flex:0 0 auto;width:8.3333333333%}.col-md-2{flex:0 0 auto;width:16.6666666667%}.col-md-3{flex:0 0 auto;width:25%}.col-md-4{flex:0 0 auto;width:33.3333333333%}.col-md-5{flex:0 0 auto;width:41.6666666667%}.col-md-6{flex:0 0 auto;width:50%}.col-md-7{flex:0 0 auto;width:58.3333333333%}.col-md-8{flex:0 0 auto;width:66.6666666667%} .form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;-webkit-appearance:none;-moz-appearance:none;appearance:none;border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out} .form-label{margin-bottom:.5rem}.row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(var(--bs-gutter-y) * -1);margin-right:calc(var(--bs-gutter-x)/ -2);margin-left:calc(var(--bs-gutter-x)/ -2)}.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)/ 2);padding-left:calc(var(--bs-gutter-x)/ 2);margin-top:var(--bs-gutter-y)}.col{flex:1 0 0%}</style>`);
         janela.document.write('<style>form {margin: 0 auto; width: 700px; padding: 1em; border: 1px solid #CCC; border-radius: 1em;}</style>');
         janela.document.write('<style>h3{text-align: center; text-decoration: bold}</style>');
         janela.document.write('<title>Relatório SISPLAG - Verificação de Cadastro de Escola</title></head>');
