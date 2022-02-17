@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="imgs/sisplag_fundo.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="css/styleHome.css">
-    <title>CME - Conselho Municipal de Educaçã<object data="" type=""></object></title>
+    <title>CME - Conselho Municipal de Educação<object data="" type=""></object></title>
 
     <style>
 
@@ -66,7 +66,7 @@
         <ul class="menu">
             <li>
                 <!-- <a href="">Cadastro de Escolas</a> -->
-                <button style="width:auto;">Cadastro de Escola</button>
+                <a href='./pages/cadastro_escola.php' target="_black"><button style="width:auto;">Cadastro de Escola</button></a>
             </li>
             <li>
                 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
@@ -82,7 +82,7 @@
 
         <div class="catchphrase-content">
             <p>Seja bem vindo(a) ao Sistema de Planejamento e Gestão (Sisplag) do Conselho Municipal de 
-                Educação (CME) de Belém. Para realizar o cadastro de sua escola, clique <a href="">aqui</a>.
+                Educação (CME) de Belém. Para realizar o cadastro de sua escola, clique <a href='./pages/cadastro_escola.php' target="_black">aqui</a>.
             </p>
         </div>
     </div>
@@ -110,7 +110,7 @@
       
           <div class="container" style="background-color:#f1f1f1">
             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
-            <span class="psw">Esqueci <a href="#">senha?</a></span>
+            <span class="psw"><a href="./pages/cadastro_usuarioext.php" target="_black">Esqueci senha?</a></span>
           </div>
         </form>
       </div>
