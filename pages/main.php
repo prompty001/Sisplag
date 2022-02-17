@@ -106,7 +106,7 @@
                             </div>
                         </a>
 
-                        <a href="cadastro_escola.php" class="nav_link" id="emprestimo">
+                        <a href="cadastro_escolaint.php" class="nav_link" id="emprestimo">
                             <div class="grid-icon">
                                 <i class="bi bi-house"></i>
                                 <span class="nav_name">Cadastro de Escolas</span>

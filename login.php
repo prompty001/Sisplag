@@ -55,7 +55,8 @@
             header('Location: pages/main.php');
             die();
     }else{
-        echo "<div class='alert alert-danger' role='alert'> Usuário ou Senha Incorretos!</div>";
+        echo "<div class='alert alert-danger'> Usuário ou Senha Incorretos!</div>";
+        //header("Location: index.php");
         }
     }
     ?>
