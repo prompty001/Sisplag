@@ -13,4 +13,7 @@
 ### Alterar Cadastro
 * criar a tela para realizar update
 
+### Alterar email da HOME
+* professora enviará
+
 

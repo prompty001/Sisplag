@@ -31,6 +31,14 @@
           }
         }
     </style>
+
+  <script type="text/javascript">
+    function redirecionar(){
+      if(confirm("Você será redirecioando para o cadastro de filiais. Caso não tenha feito o cadastro da sua escola, não prossiga com esse cadastro. Deseja continuar?")){
+        window.location="pages/cadastro_filialExt.php";
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -64,16 +72,25 @@
 
     <nav>
         <ul class="menu">
+            
             <li>
                 <!-- <a href="">Cadastro de Escolas</a> -->
                 <a href='./pages/cadastro_escola.php' target="_black"><button style="width:auto;">Cadastro de Escola</button></a>
             </li>
+                <!-- modal -->
+            <li>
+            <button onclick="redirecionar();" style="width:auto;">Cadastro de Filial</button></a>
+              
+              <!-- Modal -->
+
             <li>
                 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
                 <!---- <a href="">Login</a> -->
             </li>
         </ul>
     </nav>
+
+    
 
     <div class="areaLogo-content">
         <div class="cmeLogo">

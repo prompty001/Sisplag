@@ -149,7 +149,7 @@ session_start();
                         <th>Sigla da Escola</th>
                         <th>Distrito Adm</th>
                         <th id="verificar" >Verificar Cadastro</th>
-                        <th id="confirmar" >Aprovar Transferencia</th>
+                        <th id="confirmar" >Aprovar Cadastro</th>
                         <th id="deletar" >Deletar Cadastro</th>
                     </tr>
                 </thead>

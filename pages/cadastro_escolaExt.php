@@ -66,7 +66,7 @@
  
              $cadastroEscola->execute();
             Painel::alert('sucesso',' cadastro realizado com sucesso!');
-            header("Location: cadastro_escola02.php");
+            header("Location: ../login.php");
         }
 
     ?>

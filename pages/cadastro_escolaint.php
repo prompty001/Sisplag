@@ -200,7 +200,7 @@
  
              $cadastroEscola->execute();
             Painel::alert('sucesso',' cadastro realizado com sucesso!');
-            header("Location: cadastro_escola02int.php");
+            header("Location: main.php");
         }
 
     ?>

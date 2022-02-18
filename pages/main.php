@@ -21,7 +21,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Empréstimo de Maletas</title>
+    <title>SISPLAG - Home</title>
 
     <script src="../lib/jquery/jquery.js" defer></script>
 
@@ -84,20 +84,17 @@
                             </div>
                         </a>
 
-                        <?php 
-                            $id_usuario = 0;
-                            foreach($consulta as $consulta){
-                                $id_usuario = $consulta['id_usuario']
-                        ?>
+                        <!--Ta pegando todos os dados da tabela usuario -->
+               
 
-                        <?php echo "<a href='perfil.php?id_usuario=$id_usuario' class='nav_link' id='cadastro'>" ?>
+                       <a href='cadastro_filialInt.php' class='nav_link' id='cadastro'>
                             <div class="grid-icon">
                                 </i><i class="bi bi-person-check"></i>
-                                <span class="nav_name">Perfil</span>
+                                <span class="nav_name">Cadastro Filial</span>
                             </div>
                         </a>
 
-                        <?php } ?>
+                        
 
                         <a href="cadastro_usuario.php" class="nav_link" id="cadastro">
                             <div class="grid-icon">
