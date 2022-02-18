@@ -22,3 +22,5 @@ session_start();
         
 
     ?>
+
+<?php ob_end_flush(); ?>
