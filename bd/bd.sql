@@ -127,6 +127,43 @@ CREATE TABLE filial(
 	CONSTRAINT pk_filial PRIMARY KEY (id_filial)
 )
 
+CREATE TABLE documento( 
+	id_doc INT NOT NULL AUTO_INCREMENT, 
+	fk_instituicao INT,
+	requerimento,
+	req_escolar,
+	proj_ped,
+	quadro_demo,
+	crono_impl,
+	detalha_impl,
+	declara_equip,
+	alvara_func,
+	laudo_vs,
+	laudo_cb,
+	proj_acess,
+	relat_curso,
+	comprov_censo,
+	escola_anexada,
+	relacao_aluno,
+	plano_curso,
+	termo_conv,
+	req_cme,
+	comp_atos,
+	comp_insc,
+	comp_contmunicipal,
+	certidao_regulfiscais,
+	certidao_regulfgts,
+	demo_patr,
+	bibliot,
+	acessibilidade,
+	lab_info,
+	recurso_multi,
+	area_esportiva,
+	brinquedoteca,
+	CONSTRAINT pk_doc PRIMARY KEY (id_doc) 
+)
+
+
 /* ************RETIRADO**************
 CREATE TABLE contato( 
 	id_contato INT NOT NULL AUTO_INCREMENT, 

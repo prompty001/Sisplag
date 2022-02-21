@@ -16,4 +16,14 @@
 ### Alterar email da HOME
 * professora enviará
 
+### Paginas de impressoes
+* Colocar a imagem da ufpa ou prefeitura nas impressoes
+
+### Upload e Download de arquivos
+* https://www.youtube.com/watch?v=9iFw-jsGyyY
+* https://www.youtube.com/watch?v=iNm86iordCQ
+
+
+
+
 

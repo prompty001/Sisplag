@@ -62,18 +62,40 @@
         <form method="POST" class="row g-3">
         <label class="form-check-label" for="flexRadioDefault1">Possui Filial</label>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="possui_filial" value="sim" id="inlineRadio1">
+                <input class="form-check-input" type="radio" name="possui_filial" value="sim" id="inlineRadio1" onclick="hideShowDiv(1)">
                 <label class="label" for="inlineRadio1">
                     Sim
                 </label>
                 
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="possui_filial" value="não" id="inlineRadio2">
+                <input class="form-check-input" type="radio" name="possui_filial" value="não" id="inlineRadio2" onclick="hideShowDiv(2)">
                 <label class="label" for="inlineRadio2" style="text-decoration: none;">
                     Não
                 </label>
             </div>
+
+            <div>
+            <label>Instituição</label>
+            <select class="form-control" id="school-acronym" style="flex-grow: 1" name="fk_instituicao">
+                <option>-Instituição-</Instituição></option>
+                    <!-- Consulta no banco - Instituição--->
+                    <?php
+                        $consultaInst = Conexao::conectar()->prepare('SELECT * FROM instituicao');
+                        $consultaInst->execute();
+                        $consultaInst = $consultaInst->fetchAll();
+                        foreach ($consultaInst as $consultaInst) {
+                        ?>
+                            <option value="<?php echo $consultaInst['id_instituicao']; ?>">
+                                <?php echo $consultaInst['nome_instituicao']; ?>
+                            </option>
+                        <?php } ?>
+                    ?>
+                </select><br>
+
+            </div>
+
+        <div id="mostrar">
 
             <div>
                     <label>Sigla</label>
@@ -94,25 +116,7 @@
                         </select>
 
                         </div>
-            <div>
-            <label>Instituição</label>
-            <select class="form-control" id="school-acronym" style="flex-grow: 1" name="fk_instituicao">
-                <option>-Instituição-</Instituição></option>
-                    <!-- Consulta no banco - Instituição--->
-                    <?php
-                        $consultaInst = Conexao::conectar()->prepare('SELECT * FROM instituicao');
-                        $consultaInst->execute();
-                        $consultaInst = $consultaInst->fetchAll();
-                        foreach ($consultaInst as $consultaInst) {
-                        ?>
-                            <option value="<?php echo $consultaInst['id_instituicao']; ?>">
-                                <?php echo $consultaInst['nome_instituicao']; ?>
-                            </option>
-                        <?php } ?>
-                    ?>
-                </select><br>
-
-            </div>
+            
             <div class="col-md-6">
                     <label for="validationCustom01" class="form-label">Nome da Filial</label>
                     <input type="text" class="form-control" id="validationCustom01" name="nome_filial" placeholder="Nome do Usuario" required>
@@ -237,7 +241,7 @@
                     <label for="othersLevels">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
                 </div>
 
-
+                        </div>
             <hr>
             
             <div>
@@ -252,5 +256,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>
+    <script src="../js/mostrarDiv.js"></script>
 </body>
 </html>

@@ -84,10 +84,16 @@
                             </div>
                         </a>
 
-                        <!--Ta pegando todos os dados da tabela usuario -->
                
+                        <a href="cadastro_escolaint.php" target="_blank" class="nav_link" id="emprestimo">
+                            <div class="grid-icon">
+                                <i class="bi bi-house"></i>
+                                <span class="nav_name">Cadastro de Escolas</span>
+                            </div>
+                        </a>
 
-                       <a href='cadastro_filialInt.php' class='nav_link' id='cadastro'>
+
+                       <a href='cadastro_filialInt.php' target="_blank" class='nav_link' id='cadastro'>
                             <div class="grid-icon">
                                 </i><i class="bi bi-person-check"></i>
                                 <span class="nav_name">Cadastro Filial</span>
@@ -100,13 +106,6 @@
                             <div class="grid-icon">
                                 <i class="bi bi-person-plus"></i>
                                 <span class="nav_name">Cadastrar Usuários</span>
-                            </div>
-                        </a>
-
-                        <a href="cadastro_escolaint.php" class="nav_link" id="emprestimo">
-                            <div class="grid-icon">
-                                <i class="bi bi-house"></i>
-                                <span class="nav_name">Cadastro de Escolas</span>
                             </div>
                         </a>
 
@@ -144,7 +143,7 @@
     </nav>
     </div>
             
-            <h1 class="welcome">Boas vindas ao Sistema de Planejamento e Gestão (Sisplag).</h1>
+            <h1 class="welcome">Sistema de Planejamento e Gestão - SISPLAG.</h1>
 
 
 

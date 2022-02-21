@@ -11,6 +11,7 @@
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
     <script src="../lib/mask/script_mask.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body id="body-pd">
@@ -323,39 +324,42 @@
             <hr>
                 <label class="form-check-label" for="flexRadioDefault1">Convenio com a Semec</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="convenio_semec" id="inlineRadio1" value="Sim">
+                    <input class="form-check-input" type="radio" name="convenio_semec" id="inlineRadio1" onclick="hideShowDiv(1)" value="Sim">
                     <label class="form-check-label" for="inlineRadio1">Sim</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="convenio_semec" id="inlineRadio2" value="Não">
+                    <input class="form-check-input" type="radio" name="convenio_semec" id="inlineRadio2" onclick="hideShowDiv(2)" value="Não">
                     <label class="form-check-label" for="inlineRadio2">Não</label>
                 </div>
-
-                <div class="col-md-5">
-                    <label for="validationCustom04" class="form-label">Nº do Convenio</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="n_convenio" placeholder="E-mail" required>
-                    <div class="valid-feedback">
+                <div id="mostrar">
+                <div class="col-md-6" id="mostrar">
+                    <label for="validationCustom04" class="form-label" id="opcao">Nº do Convenio</label>
+                    <input type="text" class="form-control" id="opcao" name="n_convenio" placeholder="E-mail" required>
+                    <div class="valid-feedback" id="mostrar">
                         Número inválido!
                     </div>
                 </div>
 
-                <div class="col-md-5">
-                    <label for="validationCustom03" class="form-label">Objeto</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="objeto" required>
-                    <div class="valid-feedback">
+                <div class="col-md-6" id="mostrar">
+                    <label for="validationCustom03" class="form-label" id="opcao">Objeto</label>
+                    <input type="text" class="form-control" id="opcao" name="objeto" required>
+                    <div class="valid-feedback" id="mostrar">
                         Campo inválido!
                     </div>
                 </div>
 
 
-                <div class="col-md-2">
-                    <label for="validationCustom04" class="form-label">vigencia</label>
-                    <input type="date" class="form-control" id="validationCustom01" name="vigencia" placeholder="Vigência" required>
-                    <div class="valid-feedback">
+                <div class="col-md-6" id="mostrar">
+                    <label for="validationCustom04" class="form-label" id="opcao">vigencia</label>
+                    <input type="date" class="form-control" id="opcao" name="vigencia" placeholder="Vigência" required>
+                    <div class="valid-feedback" id="mostrar">
                         Email inválido!
                     </div>
-            </div> 
+                </div> 
 
+            </div>
+
+            
             <hr>
 
                 <div class="form-check">
@@ -416,5 +420,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>
+    <script src="../js/mostrarDiv.js"></script>
 </body>
 </html>
