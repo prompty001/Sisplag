@@ -85,7 +85,7 @@
     <div class=schoolForm>
         <div class=formPersonalData>
             <hr>
-            <h4>O Sisplag solicita o envio dos seguintes documentos por parte das escolas, 
+            <h4>O SISPLAG solicita o envio dos seguintes documentos por parte das escolas, 
                 continuando o ato de Cadastro.<br>Obs.: Se algum estiver faltando, ainda assim 
                 enviar todos os outros que estiverem disponíveis.
             </h4>  

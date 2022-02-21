@@ -129,6 +129,22 @@ session_start();
         $consulta->execute();
         $consulta = $consulta->fetchAll();
 
+        if(isset($_POST['excluir'])){
+
+            $id_instituicao = (!empty($_GET['id_instituicao']) ? $_GET['id_instituicao'] : '');
+
+            $delete01 = Conexao::conectar()->prepare("DELETE FROM FILIAL WHERE fk_instituicao = $id_instituicao;");
+            $delete01->execute();
+            $delete01 = $delete01->fetchAll();
+
+            $delete02 = Conexao::conectar()->prepare("DELETE FROM INSTITUICAO WHERE id_instituicao=$id_instituicao;");
+            $delete02->execute();
+            $delete02 = $delete02->fetchAll();
+
+            Painel::alert('sucesso',' cadastro deletado com sucesso!');
+            header("Location: autorizacaoCadastro.php");
+        }
+
 
     ?>
 
@@ -168,7 +184,7 @@ session_start();
                         <td><?php echo $consulta ['distritoAdm'];?></td>
                         <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'> Verificar</button></a></td>" ?>
                         <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'>Aprovar</button></a></td>" ?>
-                        <td><form method="get"><button type="submit" class="btn btn-danger" name="excluir" value="<?php echo $consulta['id_instituicao'] ?>">Deletar</button></form></td>
+                        <?php echo " <td><a href='deletar_escola.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-danger'>Deletar</button></a></td>" ?>
                     </tr>
                     <?php }?>
                 </tbody>   
@@ -177,22 +193,6 @@ session_start();
             </table>    
         
     </div>
-
-    <?php
-        require_once('../config/painel.php');
-        if(isset($_POST['excluir'])){
-
-            $id_instituicao = (!empty($_POST['id_instituicao']) ? $_POST['id_instituicao'] : '');
-
-            $consulta = Conexao::conectar()->prepare("DELETE FROM INSTITUICAO WHERE id_instituicao=$id_instituicao;");
-            $consulta->execute();
-            $consulta = $consulta->fetchAll();
-
-            Painel::alert('sucesso',' cadastro deletado com sucesso!');
-            header("Location: main.php");
-        }
-
-    ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>

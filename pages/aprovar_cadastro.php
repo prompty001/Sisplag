@@ -115,21 +115,34 @@
     <?php
         require_once('../config/painel.php');
 
-        $consulta = Conexao::conectar()->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
-                                        FROM instituicao I
-                                        INNER JOIN  tipoinstituicao T
-                                            ON T.id_inst = I.fk_tipoInstituicao
-                                        INNER JOIN siglainstituicao S
-                                            ON S.id_sigla = I.fk_sigla
-                                        INNER JOIN distritoadm D 
-                                            ON D.id_distrito=I.fk_distrito
-                                        WHERE status_inst = 'Não'");
+        $id_instituicao = (!empty($_GET['id_instituicao']) ? $_GET['id_instituicao'] : '');
+
+        if (isset($_POST['aprovar'])) {
+            
+        
+            $status_inst = 'Sim';
+        
+        
+            $sql = Conexao::conectar()->prepare("UPDATE INSTITUICAO SET status_inst = ? WHERE id_instituicao=$id_instituicao");
+            
+            $sql->execute($staus_inst);
+            Painel::alert('sucesso','Item atualizado com sucesso!');
+            header("Location: autorizacaoCadastro.php");
+        
+        
+        }
+
+        $consulta = Conexao::conectar()->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm, I.fundacao, I.codigo_inep, I.cnpj_escola, I.entidade_mantenedora, I.cnpj_conselho, I.vigencia_ce, I.cep_escola, I.uf, I.cidade, I.bairro, I.complemento, I.email_inst, I.telefone_inst, I.nome_gestor, I.email_gestor, I.whats_gestor, I.nome_secretario, I.whats_secretario, I.email_secretario, I.nome_coordenador, I.whats_coordenador, I.email_coordenador, I.convenio_semec, I.n_convenio, I.objeto, I.vigencia, I.educacao_infantil, I.fundamental, I.fundamental_eja, I.outros_niveis, I.status_inst 
+                                                FROM instituicao I
+                                                INNER JOIN  tipoinstituicao T
+                                                    ON T.id_inst = I.fk_tipoInstituicao
+                                                INNER JOIN siglainstituicao S
+                                                    ON S.id_sigla = I.fk_sigla
+                                                INNER JOIN distritoadm D 
+                                                    ON D.id_distrito=I.fk_distrito
+                                                WHERE id_instituicao=$id_instituicao;");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
-
-        $consultaTudo = Conexao::conectar()->prepare('SELECT * FROM instituicao');
-        $consultaTudo->execute();
-        $consultaTudo = $consultaTudo->fetchAll();
 
     ?>
 
@@ -147,42 +160,41 @@
                 $consultaTudo = $consultaTudo->fetchAll();
                 ?>
 
-                <?php foreach ($consultaTudo as $atualizar) { ?>
+                <?php foreach ($consulta as $consulta) { ?>
 
                     <div class="col-md-6">
                         <label for="input" class="form-label">Nome Escola</label>
-                        <input class="form-control" disabled value="<?php echo $atualizar['nome_instituicao']; ?>">
+                        <input class="form-control" disabled placeholder="<?php echo $consulta['nome_instituicao']; ?>">
                     </div>
                     <div class="col-md-6">
                     <label for="input" class="form-label">Fundação</label>
-                        <input class="form-control" disabled value="<?php echo $atualizar['fundacao']; ?>">
+                        <input class="form-control" disabled placeholder="<?php echo $consulta['fundacao']; ?>">
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Endereço</label>
-                        <input type="text" class="form-control" id="inputAddress" disabled value="<?php echo $atualizar['complemento']; ?>">
+                        <input type="text" class="form-control" id="inputAddress" disabled placeholder="<?php echo $consulta['complemento']; ?>">
                     </div>
                     <div class="col-12">
                         <label for="inputAddress2" class="form-label">CEP</label>
-                        <input type="text" class="form-control" id="inputAddress2" disabled value="<?php echo $atualizar['cep_escola']; ?>">
+                        <input type="text" class="form-control" id="inputAddress2" disabled placeholder="<?php echo $consulta['cep_escola']; ?>">
                     </div>
                     <div class="col-md-6">
                         <label for="inputCity" class="form-label">Email Instituição</label>
-                        <input class="form-control" disabled value="<?php echo $atualizar['email_inst']; ?>">
+                        <input class="form-control" disabled placeholder="<?php echo $consulta['email_inst']; ?>">
                     </div>
                     <div class="col-md-6">
                         <label for="inputState" class="form-label">Telefone Instituição</label>
-                        <input class="form-control" disabled value="<?php echo $atualizar['telefone_inst']; ?>">
+                        <input class="form-control" disabled placeholder="<?php echo $consulta['telefone_inst']; ?>">
                     </div>
                     <div class="col-md-4">
                         <label class="form-label">Convenio Semec</label>
-                        <input class="form-control" disabled value="<?php echo $atualizar['convenio_semec']; ?>">
+                        <input class="form-control" disabled placeholder="<?php echo $consulta['convenio_semec']; ?>">
                     </div>
                     <div class="col-12">
                         <button type="submit" name="aprovar" class="btn btn-primary">Aprovar</button>
                     </div>
                 <?php } ?>
-            </form>
-            <div class="clearfix"></div>
+                </form>
 
         </div>
 

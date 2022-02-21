@@ -113,7 +113,7 @@ session_start();
     </div>
 
             <h1>SISPLAG</h1>
-    <h2>AUTORIZAÇÃO DE CADASTRO</h2>
+    <h2>CONSULTA DE ESCOLAS</h2>
     
 
     <?php

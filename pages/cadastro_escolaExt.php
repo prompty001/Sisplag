@@ -331,28 +331,27 @@
                     <input class="form-check-input" type="radio" name="convenio_semec" id="inlineRadio2" onclick="hideShowDiv(2)" value="Não">
                     <label class="form-check-label" for="inlineRadio2">Não</label>
                 </div>
-                <div id="mostrar">
-                <div class="col-md-6" id="mostrar">
-                    <label for="validationCustom04" class="form-label" id="opcao">Nº do Convenio</label>
-                    <input type="text" class="form-control" id="opcao" name="n_convenio" placeholder="E-mail" required>
-                    <div class="valid-feedback" id="mostrar">
+                <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">Nº do Convenio</label>
+                    <input type="text" class="form-control" name="n_convenio" placeholder="E-mail" required>
+                    <div class="valid-feedback">
                         Número inválido!
                     </div>
                 </div>
 
-                <div class="col-md-6" id="mostrar">
-                    <label for="validationCustom03" class="form-label" id="opcao">Objeto</label>
-                    <input type="text" class="form-control" id="opcao" name="objeto" required>
-                    <div class="valid-feedback" id="mostrar">
+                <div class="col-md-6">
+                    <label for="validationCustom03" class="form-label">Objeto</label>
+                    <input type="text" class="form-control"  name="objeto" required>
+                    <div class="valid-feedback">
                         Campo inválido!
                     </div>
                 </div>
 
 
-                <div class="col-md-6" id="mostrar">
-                    <label for="validationCustom04" class="form-label" id="opcao">vigencia</label>
-                    <input type="date" class="form-control" id="opcao" name="vigencia" placeholder="Vigência" required>
-                    <div class="valid-feedback" id="mostrar">
+                <div class="col-md-6">
+                    <label for="validationCustom04" class="form-label">vigencia</label>
+                    <input type="date" class="form-control" name="vigencia" placeholder="Vigência" required>
+                    <div class="valid-feedback">
                         Email inválido!
                     </div>
                 </div> 
