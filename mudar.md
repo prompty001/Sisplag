@@ -3,9 +3,6 @@
 ### Tabelas e Gráficos
 * terminar as tabelas e graficos
 
-### Autorização de Cadastro
-* deletar cadastro inicial
-
 ### Alterar Cadastro
 * criar a tela para realizar update
 
@@ -18,6 +15,10 @@
 ### Upload e Download de arquivos
 * https://www.youtube.com/watch?v=9iFw-jsGyyY
 * https://www.youtube.com/watch?v=iNm86iordCQ
+* enviar e realizar upload dos arquivos
+* integrar com o cadastro de escola
+
+https://www.youtube.com/watch?v=tzAXG3ZNBHc
 
 
 

@@ -91,7 +91,7 @@
             </h4>  
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
-        <form method="POST" class="row g-3">
+        <form method="POST" class="row g-3" enctype="multipart/form-data">
             <div class="input-group mb-3">
                 <label class="input-group-text" for="inputGroupFile01">Requerimento</label>
                 <input type="file" class="form-control" id="inputGroupFile01">

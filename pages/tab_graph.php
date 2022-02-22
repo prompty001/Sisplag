@@ -212,8 +212,8 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Quantidade Total de Escolas</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="../tabelas/qtdtotal_escola.php" class="btn btn-primary">Go somewhere</a>
+                    <p class="card-text">Esse gráfico e tabela retorna a quantidade total de escolas autorizadas, e a quantidade por sigla.</p>
+                    <a href="../tabelas/qtdtotal_escola.php" class="btn btn-primary">Abrir</a>
                 </div>
             </div>
         </div>

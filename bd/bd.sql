@@ -127,6 +127,17 @@ CREATE TABLE filial(
 	CONSTRAINT pk_filial PRIMARY KEY (id_filial)
 )
 
+/*
+teste
+CREATE TABLE documento( 
+	id_doc INT NOT NULL AUTO_INCREMENT,
+	requerimento VARCHAR(50) DEFAULT 'Sem arquivo',
+    data_envio TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT pk_doc PRIMARY KEY (id_doc) 
+)
+
+*/
+
 CREATE TABLE documento( 
 	id_doc INT NOT NULL AUTO_INCREMENT, 
 	fk_instituicao INT,
