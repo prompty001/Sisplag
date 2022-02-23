@@ -356,7 +356,7 @@
                     </div>
                 </div> 
 
-            </div>
+            
 
             
             <hr>
@@ -369,7 +369,6 @@
                     <input type="checkbox" name="educacao_infantil" value="Pré-Escola">
                     <label for="preSchool">Pré-Escola</label>
                 </div>
-
                 <br>
 
                 <div class="form-check">
@@ -403,6 +402,7 @@
                     <input type="checkbox" name="outros_niveis" value="Outros níveis e/ou Modalidades de Ensino Ofertadas">
                     <label for="othersLevels">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
                 </div>
+                        
 
 
             <hr>
@@ -411,9 +411,9 @@
                 <button type="submit" class="btn btn-primary" type="button" name="enviar">Enviar</button>
         </form>
 
-            
+                        </div>
 
-        
+                     
 
     </div>
 

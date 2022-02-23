@@ -1,85 +1,148 @@
-<?php 
-
-require_once('../config/painel.php');
-
-$link = "";
-$link_status = "display: none;";
-
-if (isset($_POST['upload'])) { // If isset upload button or not
-	// Declaring Variables
-	$location = "uploads/";
-	$file_new_name = date("dmy") . time() . $_FILES["file"]["name"]; // New and unique name of uploaded file
-	$file_name = $_FILES["file"]["name"]; // Get uploaded file name
-	$file_temp = $_FILES["file"]["tmp_name"]; // Get uploaded file temp
-	$file_size = $_FILES["file"]["size"]; // Get uploaded file size
-
-	/*
-	How we can get mb from bytes
-	(mb*1024)*1024
-
-	In my case i'm 10 mb limit
-	(10*1024)*1024
-	*/
-
-	if ($file_size > 10485760) { // Check file size 10mb or not
-		echo "<script>alert('Woops! File is too big. Maximum file size allowed for upload 10 MB.')</script>";
-	} else {
-		$sql = Conexao::conectar()->prepare("INSERT INTO uploaded_files (name, new_name)
-				VALUES ('$file_name', '$file_new_name')");
-		$sql->execute();
-        $sql = $sql->fetchAll();
-		if ($sql) {
-			move_uploaded_file($file_temp, $location . $file_new_name);
-			echo "<script>alert('Wow! File uploaded successfully.')</script>";
-			// Select id from database
-			$sql = Conexao::conectar()->prepare("SELECT id FROM uploaded_files ORDER BY id DESC");
-			$sql->execute();
-            $sql = $sql->fetchAll();
-			if ($row = mysqli_fetch_assoc($sql)) {
-				$link = $base_url . "download_doc.php?id=" . $row['id'];
-				$link_status = "display: block;";
-			}
-		} else {
-			echo "<script>alert('Woops! Something wong went.')</script>";
-		}
-	}
-}
-
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="pt">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/painelAdmStyle.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Cadastro de Escolas</title>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+    <script src="../lib/mask/script_mask.js" defer></script>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	
-
-	<title>File Upload PHP Script - Pure Coding</title>
+    <style>
+        h4 {
+            text-align: center;
+            font-size: 20px;
+            color: black;
+        }
+    </style>
 </head>
-<body>
-	<div class="file__upload">
-		<div class="header">
-			<p><i class="fa fa-cloud-upload fa-2x"></i><span><span>up</span>load</span></p>			
-		</div>
-		<form action="" method="POST" enctype="multipart/form-data" class="body">
-			<!-- Sharable Link Code -->
-			<input type="checkbox" id="link_checkbox">
-			<input type="text" value="<?php echo $link; ?>" id="link" readonly>
-			<label for="link_checkbox" style="<?php echo $link_status; ?>">Get Sharable Link</label>
 
-			<input type="file" name="file" id="upload" required>
-			<label for="upload">
-				<i class="fa fa-file-text-o fa-3x"></i>
-				<p>
-					<strong>Drag and drop</strong> files here<br>
-					or <span>browse</span> to begin the upload
-				</p>
-			</label>
-			<button name="upload" class="btn">Upload</button>
-		</form>
-	</div>
+<body id="body-pd">
+
+
+            <h1>SISPLAG</h1>
+    <h2>ENVIO DE DOCUMENTOS</h2>
+
+
+    <?php
+         require_once('../config/painel.php');
+
+        
+         if(isset($_FILES['arquivo']) && ($_FILES['arquivo2'])){
+            $arquivo = $_FILES['arquivo'];
+            $arquivo2 = $_FILES['arquivo2'];
+            if($arquivo['error'] || $arquivo2['error']){
+                die("Falha ao enviar Arquivo");
+            }
+            if($arquivo['size'] > 3097152 || $arquivo2['size'] > 3097152){
+                 die("Arquivo grande! Max: 3MB");
+             }
+             var_dump($_FILES['arquivo']);
+
+             $pasta = "arquivos/";
+             $nomeArquivo = $arquivo['name'];
+             $novoNome = uniqid();
+             $extensao = strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION));
+
+             $nomeArquivo2 = $arquivo2['name'];
+             $novoNome2 = uniqid();
+             $extensao2 = strtolower(pathinfo($nomeArquivo2, PATHINFO_EXTENSION));
+
+             if($extensao != "pdf" || $extensao2 != "pdf"){
+                 die ("Arquivo nao aceito");
+             }
+             $path = $pasta . $novoNome.".".$extensao;
+             $certo = move_uploaded_file($arquivo["tmp_name"], $path);
+
+             $path2 = $pasta . $novoNome2.".".$extensao2;
+             $certo2 = move_uploaded_file($arquivo2["tmp_name"], $path2);
+             
+             
+
+            if($certo){
+                $inseriDoc = Conexao::conectar()->prepare("INSERT INTO documento (nome, path) VALUES ('$path', '$path2')");
+                $inseriDoc->execute();
+
+                echo "<p>Envio sucesso. </p>";
+            }else{
+                echo "<p>Falha ao enviar! </p>";
+            }
+        }
+
+        $selectDoc = Conexao::conectar()->prepare("SELECT * FROM documento");
+        $selectDoc->execute();
+
+    ?>
+
+
+
+    <div class=schoolForm>
+        <div class=formPersonalData>
+            <hr>
+            <hr>
+            <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
+        <form method="POST" class="row g-3" enctype="multipart/form-data" action="">
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Requerimento</label>
+                <input name="arquivo" type="file" class="form-control" id="inputGroupFile01">
+                
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Requerimento Escolar</label>
+                <input name="arquivo2" type="file" class="form-control" id="inputGroupFile01">
+                
+            </div>
+            
+            <hr>
+            
+            <div>
+                <button type="submit" class="btn btn-primary" type="button" name="upload">Enviar</button>
+        </form>
+
+
+        <table id="example" class="lista-clientes" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Ordem</th>
+                        <th>Nome</th>
+                        <th>Path</th>
+                        <th>Data/Hora</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+
+                    <?php 
+                    
+                    foreach($selectDoc as $selectDoc){
+                        
+                        ?>
+                    <tr>
+                        <td><?php echo $selectDoc ['id_doc'];?></td>
+                        <td><a target="_blank" href="<?php echo $selectDoc ['nome'];?>"><?php echo $selectDoc ['nome'];?></a></td>
+                        <td><a target="_blank" href="<?php echo $selectDoc ['path'];?>"><?php echo $selectDoc ['path'];?></a></td>
+                        <td><?php echo date("d/m/Y H:i", strtotime($selectDoc ['data_upload']));?></td>
+                        
+                    </tr>
+                    <?php }?>
+                </tbody>   
+                
+                
+            </table>    
+
+            
+
+        
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/painelAdmConfig.js"></script>
 </body>
 </html>
