@@ -33,40 +33,46 @@
          require_once('../config/painel.php');
 
         
-         if(isset($_FILES['arquivo']) && ($_FILES['arquivo2'])){
+         if(isset($_FILES['arquivo'])){
+             //VERIFICAÇÃO DOS ARQUIVOS ANEXADOS
+             //DECLARAÇÃO DOS ARQUIVOS
             $arquivo = $_FILES['arquivo'];
-            $arquivo2 = $_FILES['arquivo2'];
-            if($arquivo['error'] || $arquivo2['error']){
+            
+
+
+            //FALHA AO ENVIAR O ARQUIVO
+            if($arquivo['error']){
                 die("Falha ao enviar Arquivo");
             }
-            if($arquivo['size'] > 3097152 || $arquivo2['size'] > 3097152){
+
+            //VERIFICANDO O TAMANHO
+            if($arquivo['size'] > 3097152){
                  die("Arquivo grande! Max: 3MB");
              }
-             var_dump($_FILES['arquivo']);
+             //var_dump($_FILES['arquivo']);
 
              $pasta = "arquivos/";
              $nomeArquivo = $arquivo['name'];
              $novoNome = uniqid();
              $extensao = strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION));
 
-             $nomeArquivo2 = $arquivo2['name'];
-             $novoNome2 = uniqid();
-             $extensao2 = strtolower(pathinfo($nomeArquivo2, PATHINFO_EXTENSION));
 
-             if($extensao != "pdf" || $extensao2 != "pdf"){
+            
+
+             if($extensao != "pdf"){
                  die ("Arquivo nao aceito");
              }
+
              $path = $pasta . $novoNome.".".$extensao;
              $certo = move_uploaded_file($arquivo["tmp_name"], $path);
 
-             $path2 = $pasta . $novoNome2.".".$extensao2;
-             $certo2 = move_uploaded_file($arquivo2["tmp_name"], $path2);
-             
-             
 
             if($certo){
-                $inseriDoc = Conexao::conectar()->prepare("INSERT INTO documento (nome, path) VALUES ('$path', '$path2')");
-                $inseriDoc->execute();
+                $fk_instituicao	 = $_POST['fk_instituicao'];
+                $inseriDoc = Conexao::conectar()->prepare("UPDATE DOCUMENTO SET requerimento = ? WHERE fk_instituicao=$fk_instituicao");
+                $inseriDoc->execute(array($path));
+                Painel::alert('sucesso','Item atualizado com sucesso!');
+                header("Location: documentos.php");
 
                 echo "<p>Envio sucesso. </p>";
             }else{
@@ -74,67 +80,52 @@
             }
         }
 
-        $selectDoc = Conexao::conectar()->prepare("SELECT * FROM documento");
-        $selectDoc->execute();
-
+        
     ?>
-
-
 
     <div class=schoolForm>
         <div class=formPersonalData>
             <hr>
+            <h4>O SISPLAG solicita o envio dos seguintes documentos por parte das escolas, 
+                continuando o ato de Cadastro.<br>Obs.: Se algum estiver faltando, ainda assim 
+                enviar todos os outros que estiverem disponíveis.
+            </h4>  
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
         <form method="POST" class="row g-3" enctype="multipart/form-data" action="">
+        <div>
+            <label>Instituição</label>
+            <select class="form-control" id="school-acronym" style="flex-grow: 1" name="fk_instituicao">
+                <option>-Instituição-</Instituição></option>
+                    <!-- Consulta no banco - Instituição--->
+                    <?php
+                        $consultaInst = Conexao::conectar()->prepare('SELECT * FROM instituicao');
+                        $consultaInst->execute();
+                        $consultaInst = $consultaInst->fetchAll();
+                        foreach ($consultaInst as $consultaInst) {
+                        ?>
+                            <option value="<?php echo $consultaInst['id_instituicao']; ?>">
+                                <?php echo $consultaInst['nome_instituicao']; ?>
+                            </option>
+                        <?php } ?>
+                    ?>
+                </select><br>
+
+            </div>
 
             <div class="input-group mb-3">
                 <label class="input-group-text" for="inputGroupFile01">Requerimento</label>
                 <input name="arquivo" type="file" class="form-control" id="inputGroupFile01">
-                
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile01">Requerimento Escolar</label>
-                <input name="arquivo2" type="file" class="form-control" id="inputGroupFile01">
-                
             </div>
             
+            
+
+
             <hr>
             
             <div>
                 <button type="submit" class="btn btn-primary" type="button" name="upload">Enviar</button>
         </form>
-
-
-        <table id="example" class="lista-clientes" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Ordem</th>
-                        <th>Nome</th>
-                        <th>Path</th>
-                        <th>Data/Hora</th>
-                        
-                    </tr>
-                </thead>
-                <tbody id="myTable">
-
-                    <?php 
-                    
-                    foreach($selectDoc as $selectDoc){
-                        
-                        ?>
-                    <tr>
-                        <td><?php echo $selectDoc ['id_doc'];?></td>
-                        <td><a target="_blank" href="<?php echo $selectDoc ['nome'];?>"><?php echo $selectDoc ['nome'];?></a></td>
-                        <td><a target="_blank" href="<?php echo $selectDoc ['path'];?>"><?php echo $selectDoc ['path'];?></a></td>
-                        <td><?php echo date("d/m/Y H:i", strtotime($selectDoc ['data_upload']));?></td>
-                        
-                    </tr>
-                    <?php }?>
-                </tbody>   
-                
-                
-            </table>    
 
             
 

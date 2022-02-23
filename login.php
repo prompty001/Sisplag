@@ -41,6 +41,16 @@
       }
     }
   </script>
+
+<script type="text/javascript">
+    function redirecionar2(){
+      if(confirm("Você será redirecioando para o ENVIO DE DOCUMENTOS. Caso não tenha feito o cadastro da sua ESCOLA, não prossiga com esse cadastro. Deseja continuar?")){
+        //window.location="pages/cadastro_filialExt.php", "_blank";
+        window.open('docs/documentos.php', "_blank") || window.location.replace('docs/documentos.php');
+
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -86,6 +96,12 @@
               <!-- Modal -->
 
             <li>
+            <button onclick="redirecionar2();" style="width:auto;">Envio de Documentos</button></a>
+              
+              <!-- Modal -->
+
+            <li>
+              
                 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
                 <!---- <a href="">Login</a> -->
             </li>

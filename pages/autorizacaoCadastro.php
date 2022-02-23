@@ -148,9 +148,11 @@ session_start();
                         <th>Tipo da Escola</th>
                         <th>Sigla da Escola</th>
                         <th>Distrito Adm</th>
-                        <th id="verificar" >Verificar Cadastro</th>
-                        <th id="confirmar" >Aprovar Cadastro</th>
-                        <th id="deletar" >Deletar Cadastro</th>
+                        <th id="verificar">Cadastro da Escola</th>
+                        <th id="filial">Cadastro da Filial</th>
+                        <th id="docs">Documentação</th>
+                        <th id="confirmar">Aprovar Cadastro</th>
+                        <th id="deletar">Deletar Cadastro</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -167,6 +169,8 @@ session_start();
                         <td><?php echo $consulta ['sigla'];?></td>
                         <td><?php echo $consulta ['distritoAdm'];?></td>
                         <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'> Verificar</button></a></td>" ?>
+                        <?php echo " <td><a href='verifica_filial.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'>Abrir</button></a></td>" ?>
+                        <?php echo " <td><a href='../docs/lista_doc.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'>Abrir</button></a></td>" ?>
                         <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'>Aprovar</button></a></td>" ?>
                         <?php echo " <td><a href='deletar_escola.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-danger'>Deletar</button></a></td>" ?>
                     </tr>
