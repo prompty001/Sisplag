@@ -127,50 +127,40 @@ CREATE TABLE filial(
 	CONSTRAINT pk_filial PRIMARY KEY (id_filial)
 )
 
-/*
-teste
-CREATE TABLE documento( 
-	id_doc INT NOT NULL AUTO_INCREMENT,
-	requerimento VARCHAR(50) DEFAULT 'Sem arquivo',
-    data_envio TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-	CONSTRAINT pk_doc PRIMARY KEY (id_doc) 
-)
-
-*/
-
 CREATE TABLE documento( 
 	id_doc INT NOT NULL AUTO_INCREMENT, 
 	fk_instituicao INT,
-	requerimento,
-	req_escolar,
-	proj_ped,
-	quadro_demo,
-	crono_impl,
-	detalha_impl,
-	declara_equip,
-	alvara_func,
-	laudo_vs,
-	laudo_cb,
-	proj_acess,
-	relat_curso,
-	comprov_censo,
-	escola_anexada,
-	relacao_aluno,
-	plano_curso,
-	termo_conv,
-	req_cme,
-	comp_atos,
-	comp_insc,
-	comp_contmunicipal,
-	certidao_regulfiscais,
-	certidao_regulfgts,
-	demo_patr,
-	bibliot,
-	acessibilidade,
-	lab_info,
-	recurso_multi,
-	area_esportiva,
-	brinquedoteca,
+	requerimento VARCHAR(100),
+	req_escolar VARCHAR(100),
+	proj_ped VARCHAR(100),
+	quadro_demo VARCHAR(100),
+	crono_impl VARCHAR(100),
+	detalha_impl VARCHAR(100),
+	declara_equip VARCHAR(100),
+	alvara_func VARCHAR(100),
+	laudo_vs VARCHAR(100),
+	laudo_cb VARCHAR(100),
+	proj_acess VARCHAR(100),
+	relat_curso VARCHAR(100),
+	comprov_censo VARCHAR(100),
+	escola_anexada VARCHAR(100),
+	relacao_aluno VARCHAR(100),
+	plano_curso VARCHAR(100),
+	termo_conv VARCHAR(100),
+	req_cme VARCHAR(100),
+	comp_atos VARCHAR(100),
+	comp_insc VARCHAR(100),
+	comp_contmunicipal VARCHAR(100),
+	certidao_regulfiscais VARCHAR(100),
+	certidao_regulfgts VARCHAR(100),
+	demo_patr VARCHAR(100),
+	bibliot VARCHAR(100),
+	acessibilidade VARCHAR(100),
+	lab_info VARCHAR(100),
+	recurso_multi VARCHAR(100),
+	area_esportiva VARCHAR(100),
+	brinquedoteca VARCHAR(100),
+	data_upload datetime DEFAULT current_timestamp(),
 	CONSTRAINT pk_doc PRIMARY KEY (id_doc) 
 )
 
