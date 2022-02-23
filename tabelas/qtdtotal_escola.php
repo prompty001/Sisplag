@@ -145,7 +145,7 @@ session_start();
     </div>
 
             <h1>SISPLAG</h1>
-    <h2>AUTORIZAÇÃO DE CADASTRO</h2>
+    <h2>QUANTIDADE TOTAL DE ESCOLAS</h2>
     
 
     <?php
@@ -155,14 +155,14 @@ session_start();
                                                     FROM instituicao I 
                                                     INNER JOIN siglainstituicao S 
                                                     ON S.id_sigla = I.fk_sigla 
-                                                    WHERE status_inst = 'Não' 
+                                                    WHERE status_inst = 'Sim' 
                                                     GROUP BY (sigla);");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
 
         $qtdTotal = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtdTot
                                                     FROM instituicao I 
-                                                    WHERE status_inst = 'Não'");
+                                                    WHERE status_inst = 'Sim'");
         $qtdTotal->execute();
         $qtdTotal = $qtdTotal->fetchAll();
 
@@ -210,7 +210,7 @@ session_start();
         
     </div>
 
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+   <!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->
 
 
 

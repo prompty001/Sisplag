@@ -9,6 +9,7 @@ session_start();
     
 ?>
 
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -41,7 +42,40 @@ session_start();
 
     <link rel="stylesheet" href="../lib/icons/css/icons.css">
 
-     
+
+    <!--
+        Grafico de Pizza
+-->
+   
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+
+
 
 </head>
 
@@ -59,7 +93,7 @@ session_start();
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
             <div>
-               <a href="main.php" class="nav_logo">
+               <a href="../pages/main.php" class="nav_logo">
                     <img src="../assets/new_sisplag.png" style="width: 38%" class="bx bx-layer nav_logo-icon">
                     <span class="nav_logo-name" ></span>
                 </a>
@@ -111,23 +145,28 @@ session_start();
     </div>
 
             <h1>SISPLAG</h1>
-    <h2>AUTORIZAÇÃO DE CADASTRO</h2>
+    <h2>QUANTIDADE TOTAL DE ESCOLAS</h2>
     
 
     <?php
         include ('../config/painel.php');
 
-        $consulta = Conexao::conectar()->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
-                                        FROM instituicao I
-                                        INNER JOIN  tipoinstituicao T
-                                            ON T.id_inst = I.fk_tipoInstituicao
-                                        INNER JOIN siglainstituicao S
-                                            ON S.id_sigla = I.fk_sigla
-                                        INNER JOIN distritoadm D 
-                                            ON D.id_distrito=I.fk_distrito
-                                        WHERE status_inst = 'Não'");
+        $consulta = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtd, S.sigla,  D.distritoadm
+        FROM instituicao I 
+        INNER JOIN siglainstituicao S 
+        ON S.id_sigla = I.fk_sigla 
+        INNER JOIN distritoadm D 
+        ON D.id_distrito = I.fk_distrito 
+        WHERE status_inst = 'Sim' 
+        GROUP BY (sigla) and (distritoadm);");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
+
+        $qtdTotal = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtdTot
+                                                    FROM instituicao I 
+                                                    WHERE status_inst = 'Sim'");
+        $qtdTotal->execute();
+        $qtdTotal = $qtdTotal->fetchAll();
 
 
     ?>
@@ -137,50 +176,45 @@ session_start();
         <hr>
         <div class="d-flex justify-content-between">
         <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" /> 
-        <a href='../expo/impress.php' target="_black"><button type='button' class='btn btn-outline-info' >Imprimir</button><i class="bi bi-printer"></i></a>
+        <a href='#' target="_black"><button type='button' class='btn btn-outline-info' >Imprimir</button><i class="bi bi-printer"></i></a>
         </div>    
         <!--Criação da Tabela-->
             <table id="example" class="lista-clientes" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Ordem</th>
-                        <th>Escola</th>
-                        <th>Tipo da Escola</th>
-                        <th>Sigla da Escola</th>
-                        <th>Distrito Adm</th>
-                        <th id="verificar">Cadastro da Escola</th>
-                        <th id="filial">Cadastro da Filial</th>
-                        <th id="docs">Documentação</th>
-                        <th id="confirmar">Aprovar Cadastro</th>
-                        <th id="deletar">Deletar Cadastro</th>
+                    
+                        <th>Sigla</th>
+                        <th>Quantidade</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
 
                     <?php 
-                    $id_instituicao = 0;
+                   
                     foreach($consulta as $consulta){
-                        $id_instituicao = $consulta['id_instituicao']
+                   
                         ?>
                     <tr>
-                        <td><?php echo $consulta ['id_instituicao'];?></td>
-                        <td><?php echo $consulta ['nome_instituicao'];?></td>
-                        <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['sigla'];?></td>
-                        <td><?php echo $consulta ['distritoAdm'];?></td>
-                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'> Verificar</button></a></td>" ?>
-                        <?php echo " <td><a href='verifica_filial.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'>Abrir</button></a></td>" ?>
-                        <?php echo " <td><a href='#?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'>Abrir</button></a></td>" ?>
-                        <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'>Aprovar</button></a></td>" ?>
-                        <?php echo " <td><a href='deletar_escola.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-danger'>Deletar</button></a></td>" ?>
+                        <td><?php echo $consulta ['qtd'];?></td>
                     </tr>
                     <?php }?>
                 </tbody>   
                 
                 
-            </table>    
+            </table>   
+            
+            <?php
+        foreach($qtdTotal as $qtdTotal){
+        ?>               
+        <a><btton type='button' class='btn btn-outline-primary' >Total: <?php echo $qtdTotal ['qtdTot'];?></button><i class="bi bi-printer"></i></a>
+        <?php }?>
         
     </div>
+
+   <!-- <div id="piechart" style="width: 900px; height: 500px;"></div> -->
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>

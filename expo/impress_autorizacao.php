@@ -59,7 +59,7 @@ table.lista-clientes{
 
 
 
-
+<img src="logoUFPA.png">
 
             <h4>SISPLAG</h4>
     <h5>AUTORIZAÇÃO DE CADASTRO</h5>

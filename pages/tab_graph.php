@@ -146,7 +146,7 @@
 
 
             <h1>SISPLAG</h1>
-    <h2>CADASTRO DE ESCOLA</h2>
+    <h2>TABELAS E GRÁFICOS</h2>
 
 
     <?php
@@ -157,11 +157,11 @@
     <div class=schoolForm>
         <div class=formPersonalData>
             <hr>
-                <h3>Tabelas e Gráficos</h3>
-            <hr>
+           
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
 
     <div class="row">
+        <!--
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">
@@ -208,6 +208,7 @@
                 </div>
             </div>
         </div>
+                            -->
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">
@@ -218,24 +219,8 @@
             </div>
         </div>
         <div><br></div>
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Principais Pendencias - Escola</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Principais Pendências - Sigla</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+        
+        
         
     </div>
 
