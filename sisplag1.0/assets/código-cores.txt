@@ -1,0 +1,7 @@
+Código do azul da barra lateral:
+#558FC2
+
+Códigos das cores das tags:
+Vermelho:#FF1616
+Amarelo: #FFDE59
+Azul:#7ED957

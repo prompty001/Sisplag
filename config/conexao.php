@@ -1,12 +1,23 @@
 <?php
-$username = 'root';
-$password= NULL;
-
-try {
-    $conn = new PDO('mysql:host=localhost;dbname=sisplag', $username, $password);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  } catch(PDOException $e) {
-      echo 'ERROR: ' . $e->getMessage();
-  }
-
+  define('HOST', 'localhost');
+  define('USER', 'root');
+  define('PASS', NULL);
+  define('DBNAME', 'sisplag');
+      
+          
+  class Conexao{
+      private static $pdo;
+      public static function conectar(){
+      if(self::$pdo == null){
+        try {		
+          self::$pdo = new PDO('mysql:host='.HOST.';dbname='.DBNAME, USER,PASS);
+            self::$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);  
+        } 
+        catch (PDOException $e) {
+              echo 'Erro na Canexão'.$e->getMessage();
+        }	
+      }
+      return self::$pdo;
+      }
+  }		
 ?>
