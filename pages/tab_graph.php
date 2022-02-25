@@ -189,26 +189,28 @@
                 </div>
             </div>
         </div>
+        -->
         <div><br></div>
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Quantidade de Escola - Distrito e Tipo</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="../tabelas/qtd_distrito_tipo.php" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
+                                    
+
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Quantidade de Escolas - Distrito e Sigla</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="../tabelas/qtd_distrito_sigla.php" class="btn btn-primary">Abrir</a>
                 </div>
             </div>
         </div>
-                            -->
         <div class="col-sm-4">
             <div class="card">
                 <div class="card-body">

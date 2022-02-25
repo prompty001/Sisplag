@@ -67,7 +67,7 @@
  
              $cadastroEscola->execute();
             Painel::alert('sucesso',' cadastro realizado com sucesso!');
-            header("Location: ../login.php");
+            header("Location: ../index.php");
         }
 
     ?>
@@ -190,7 +190,7 @@
 
                 <div class="col-md-3">
                     <label for="validationCustom01" class="form-label">Cidade</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="cidade" placeholder="Nome do Usuario" required>
+                    <input type="text" class="form-control" id="validationCustom01" value="Belém" name="cidade" placeholder="Cidade" required>
                     <div class="valid-feedback">
                         Nome não inserido!
                     </div>
@@ -199,7 +199,7 @@
     
                 <div class="col-md-1">
                     <label for="validationCustom01" class="form-label">UF</label>
-                    <input type="text" class="form-control" id="validationCustom01" name="uf" placeholder="UF" required>
+                    <input type="text" class="form-control" id="validationCustom01" name="uf" placeholder="UF" value="PA" required>
                     <div class="valid-feedback">
                         Nome não inserido!
                     </div>

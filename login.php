@@ -36,7 +36,7 @@
     function redirecionar(){
       if(confirm("Você será redirecioando para o cadastro de filiais. Caso não tenha feito o cadastro da sua escola, não prossiga com esse cadastro. Deseja continuar?")){
         //window.location="pages/cadastro_filialExt.php", "_blank";
-        window.open('pages/cadastro_filialExt.php', "_blank") || window.location.replace('pages/cadastro_filialExt.php');
+        window.open('pages/cadastro_filialExt.php', "_self") || window.location.replace('pages/cadastro_filialExt.php');
 
       }
     }
@@ -46,7 +46,7 @@
     function redirecionar2(){
       if(confirm("Você será redirecioando para o ENVIO DE DOCUMENTOS. Caso não tenha feito o cadastro da sua ESCOLA, não prossiga com esse cadastro. Deseja continuar?")){
         //window.location="pages/cadastro_filialExt.php", "_blank";
-        window.open('docs/documentos.php', "_blank") || window.location.replace('docs/documentos.php');
+        window.open('docs/documentos.php', "_self") || window.location.replace('docs/documentos.php');
 
       }
     }
@@ -87,7 +87,7 @@
             
             <li>
                 <!-- <a href="">Cadastro de Escolas</a> -->
-                <a href='./pages/cadastro_escolaExt.php' target="_black"><button style="width:auto;">Cadastro de Escola</button></a>
+                <a href='./pages/cadastro_escolaExt.php'><button style="width:auto;">Cadastro de Escola</button></a>
             </li>
                 <!-- modal -->
             <li>
@@ -117,7 +117,7 @@
 
         <div class="catchphrase-content">
             <p>Seja bem vindo(a) ao Sistema de Planejamento e Gestão (Sisplag) do Conselho Municipal de 
-                Educação (CME) de Belém. Para realizar o cadastro de sua escola, clique <a href='./pages/cadastro_escola.php' target="_black">aqui</a>.
+                Educação (CME) de Belém. Para realizar o cadastro de sua escola, clique <a href='./pages/cadastro_escola.php'>aqui</a>.
             </p>
         </div>
     </div>
@@ -145,7 +145,7 @@
       
           <div class="container" style="background-color:#f1f1f1">
             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
-            <span class="psw"><a href="./pages/cadastro_usuarioext.php" target="_black">Esqueci senha?</a></span>
+            <span class="psw"><a href="./pages/cadastro_usuarioext.php">Esqueci senha?</a></span>
           </div>
         </form>
       </div>

@@ -22,6 +22,7 @@
     </style>
 </head>
 
+
 <body id="body-pd">
 
 
@@ -41,7 +42,10 @@
             <h4>O SISPLAG solicita o envio dos seguintes documentos por parte das escolas, 
                 continuando o ato de Cadastro.<br>Obs.: Se algum estiver faltando, ainda assim 
                 enviar todos os outros que estiverem disponíveis.
-            </h4>  
+            </h4> 
+
+            <button type='button' class='btn btn-dark'> <a href="../index.php" style="text-decoration: none; color: white;"> << Voltar</a></button>
+ 
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
         <form method="POST" class="row g-3" enctype="multipart/form-data" action="">

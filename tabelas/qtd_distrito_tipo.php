@@ -151,14 +151,14 @@ session_start();
     <?php
         include ('../config/painel.php');
 
-        $consulta = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtd, S.sigla,  D.distritoadm
-        FROM instituicao I 
-        INNER JOIN siglainstituicao S 
-        ON S.id_sigla = I.fk_sigla 
-        INNER JOIN distritoadm D 
-        ON D.id_distrito = I.fk_distrito 
-        WHERE status_inst = 'Sim' 
-        GROUP BY (sigla);");
+        $consulta = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtd, T.nome_inst, D.distritoadm 
+                                                    FROM instituicao I 
+                                                    INNER JOIN tipoinstituicao T 
+                                                    ON T.id_inst = I.fk_tipoInstituicao 
+                                                    INNER JOIN distritoadm D 
+                                                    ON D.id_distrito = I.fk_distrito 
+                                                    WHERE status_inst = 'Sim' 
+                                                    GROUP BY (nome_inst);");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
 
@@ -183,7 +183,7 @@ session_start();
                 <thead>
                     <tr>
                     
-                        <th>Sigla</th>
+                        <th>Tipo Instituição</th>
                         <th>Distrito</th>
                         <th>Quantidade</th>
 
@@ -197,7 +197,7 @@ session_start();
                    
                         ?>
                     <tr>
-                        <td><?php echo $consulta ['sigla'];?></td>
+                        <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['distritoadm'];?></td>
                         <td><?php echo $consulta ['qtd'];?></td>
                     </tr>

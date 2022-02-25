@@ -13,7 +13,7 @@ session_start();
 
         $id_instituicao = (!empty($_GET['id_instituicao']) ? $_GET['id_instituicao'] : '');
 
-        $delete01 = Conexao::conectar()->prepare("DELETE FROM filial WHERE fk_instituicao = $id_instituicao;");
+        $delete01 = Conexao::conectar()->prepare("DELETE FROM FILIAL WHERE fk_instituicao = $id_instituicao;");
         $delete01->execute();
         $delete01 = $delete01->fetchAll();
 
