@@ -153,12 +153,12 @@ session_start();
 
         $consulta = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtd, S.sigla,  D.distritoadm
         FROM instituicao I 
-        INNER JOIN siglainstituicao S 
-        ON S.id_sigla = I.fk_sigla 
-        INNER JOIN distritoadm D 
-        ON D.id_distrito = I.fk_distrito 
-        WHERE status_inst = 'Sim' 
-        GROUP BY (sigla);");
+                                                    INNER JOIN siglainstituicao S 
+                                                    ON S.id_sigla = I.fk_sigla 
+                                                    INNER JOIN distritoadm D 
+                                                    ON D.id_distrito = I.fk_distrito 
+                                                    WHERE status_inst = 'Sim' 
+                                                    GROUP BY (distritoadm);");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
 

@@ -196,8 +196,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Quantidade de Escola - Distrito e Tipo</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="../tabelas/qtd_distrito_tipo.php" class="btn btn-primary">Go somewhere</a>
+                    <p class="card-text">Esse gráfico e tabela retorna a quantidade total de escolas autorizadas, agrupados por Distrito e Tipo de Instituição.</p>
+                    <a href="../tabelas/qtd_distrito_tipo.php" class="btn btn-primary">Tabela</a>
+                    <a href="../graph/qtd_tipo_distrito.php" class="btn btn-secondary">Gráfico</a>
                 </div>
             </div>
         </div>
@@ -207,8 +208,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Quantidade de Escolas - Distrito e Sigla</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">Esse gráfico e tabela retorna a quantidade total de escolas autorizadas, agrupados por Distrito e Sigla da Instituição.</p>
                     <a href="../tabelas/qtd_distrito_sigla.php" class="btn btn-primary">Abrir</a>
+                    <a href="../graph/qtd_distrito_sigla.php" class="btn btn-secondary">Gráfico</a>
                 </div>
             </div>
         </div>

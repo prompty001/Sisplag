@@ -14,23 +14,28 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Tipo de Instituição', 'Quantidade'],
+          ['Tipo de Instituição/Distrito', 'Quantidade'],
           <?php
                 include ('../config/painel.php');
 
-                $consulta = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtd, S.sigla AS nome
+                $consulta = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtd, T.nome_inst AS nome, D.distritoadm AS distrito 
                                                             FROM instituicao I 
-                                                            INNER JOIN siglainstituicao S 
-                                                            ON S.id_sigla = I.fk_sigla 
-                                                            WHERE status_inst = 'Sim'
-                                                            GROUP BY (S.sigla);");
+                                                            INNER JOIN tipoinstituicao T 
+                                                            ON T.id_inst = I.fk_tipoInstituicao 
+                                                            INNER JOIN distritoadm D 
+                                                            ON D.id_distrito = I.fk_distrito 
+                                                            WHERE status_inst = 'Sim' 
+                                                            GROUP BY (distritoadm);");
                 $consulta->execute();
                 $result = $consulta->fetchAll();
                 foreach($result as $dados){
                     $qtd = $dados['qtd'];
-                    $sigla = $dados['nome'];?>
+                    $sigla = $dados['nome'];
+                    $distrito = $dados['distrito'];
+            ?>
+                    
 
-          ['<?php echo $sigla?>', <?php echo $qtd?>],
+          ['<?php echo $sigla ,' | ', $distrito?>', <?php echo $qtd?>],
                 
         <?php } ?>
         ]);
@@ -38,7 +43,7 @@
         var options = {
           chart: {
             title: 'Conselho Municipal de Educação',
-            subtitle: 'Quantidade Total de Escolas - Por Instituição',
+            subtitle: 'Quantidade de Escolas - Por Tipo de Instituição e Distrito',
           }
         };
 
