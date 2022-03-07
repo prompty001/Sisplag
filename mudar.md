@@ -21,6 +21,12 @@
 https://www.youtube.com/watch?v=tzAXG3ZNBHc
 
 
+### Login
+* Esqueci Senha?
+    * redirecionar para o cadastro de usuario, conforme o login ou senha colocados.
 
+
+### Usuários
+* Linkar no banco os cargos atrelados ao perfil do usuario no sistema.
 
 

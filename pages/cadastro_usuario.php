@@ -66,6 +66,30 @@
                 <div class=" nav_list">
 
 
+                        <a href="main.php" class="nav_link" id="cadastro">
+                            <div class="grid-icon">
+                                <i class="bi bi-grid-1x2"></i>
+                                <span class="nav_name">Início</span>
+                            </div>
+                        </a>
+
+               
+                        <a href="cadastro_escolaint.php" target="_blank" class="nav_link" id="emprestimo">
+                            <div class="grid-icon">
+                                <i class="bi bi-house"></i>
+                                <span class="nav_name">Cadastro de Escolas</span>
+                            </div>
+                        </a>
+
+
+                       <a href='cadastro_filialInt.php' target="_blank" class='nav_link' id='cadastro'>
+                            <div class="grid-icon">
+                                </i><i class="bi bi-person-check"></i>
+                                <span class="nav_name">Cadastro Filial</span>
+                            </div>
+                        </a>
+
+                        
 
                         <a href="cadastro_usuario.php" class="nav_link" id="cadastro">
                             <div class="grid-icon">
@@ -76,8 +100,8 @@
 
                         <a href="cadastro_escola.php" class="nav_link" id="emprestimo">
                             <div class="grid-icon">
-                                <i class="bi bi-house"></i>
-                                <span class="nav_name">Cadastro de Escolas</span>
+                                <i class="bi bi-card-checklist"></i>
+                                <span class="nav_name">Autorização de Cadastro <br>de Escolas</span>
                             </div>
                         </a>
 
@@ -107,6 +131,7 @@
 
     </nav>
     </div>
+    
             <h1>SISPLAG</h1>
     <h2>CADASTRO DE USUÁRIOS</h2>
 
@@ -205,8 +230,14 @@
                     <div class="valid-feedback">
                         Email inválido!
                     </div>
-                </div> 
-
+                </div>
+                
+                <hr>
+                <div style="background-color: #d8dfe7; text-align: center; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">
+                <h6>
+                    Caso o seu cargo seja de PRESIDENTE, preencha os campos de 'Início de Mandato' e 'Fim de Mandato'
+                </h6>
+                </div>
                 <div class="col-md-4">
                     <label for="validationCustom05" class="form-label">Início do Mandato</label>
                     <input type="date" class="form-control" id="validationCustom01" name="inicio_mandato" required>
