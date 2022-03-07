@@ -79,6 +79,10 @@
             <hr>
                 <h3>Dados de Identificação</h3>
             <hr>
+            
+            <a href='../index.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
+            <hr>
+            
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
         <form method="POST" class="row g-3">
         <div>
@@ -409,6 +413,7 @@
             
             <div>
                 <button type="submit" class="btn btn-primary" type="button" name="enviar">Enviar</button>
+                <a href='../index.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
         </form>
 
                         </div>
