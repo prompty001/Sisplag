@@ -23,6 +23,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../imgs/sisplag_fundo.jpeg" type="image/x-icon">
     <title>Painel Empréstimo de Maletas</title>
 
     
@@ -168,7 +169,7 @@ session_start();
                         <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['sigla'];?></td>
                         <td><?php echo $consulta ['distritoAdm'];?></td>
-                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'> Verificar</button></a></td>" ?>
+                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'> Abrir</button></a></td>" ?>
                         <?php echo " <td><a href='verifica_filial.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'>Abrir</button></a></td>" ?>
                         <?php echo " <td><a href='#?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'>Abrir</button></a></td>" ?>
                         <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'>Aprovar</button></a></td>" ?>

@@ -58,12 +58,12 @@ table.lista-clientes{
 <body id="body-pd">
 
 
-
-<img src="logoUFPA.png">
-
-            <h4>SISPLAG</h4>
-    <h5>AUTORIZAÇÃO DE CADASTRO</h5>
-    
+    <h5 style="line-height: 0em;">PREFEITURA DE BELÉM</h5>
+    <h5 style="line-height: 0em;">CONSELHO MUNICIPAL DE EDUCAÇÃO</h5>
+    <h5 style="line-height: 0em;">SISTEMA DE PLANEJAMENTO E GESTÃO</h5>
+    <hr>
+    <h6 style="text-align: center; line-height: 0em;">AUTORIZAÇÃO DE CADASTRO</h6>
+    <hr>    
 
     <?php
         include ('../config/painel.php');

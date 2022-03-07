@@ -29,4 +29,7 @@ https://www.youtube.com/watch?v=tzAXG3ZNBHc
 ### Usuários
 * Linkar no banco os cargos atrelados ao perfil do usuario no sistema.
 
+### Autorização de Cadastro
+* botao de voltar em todas as telas que abrem desse menu
+
 
