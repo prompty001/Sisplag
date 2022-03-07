@@ -339,16 +339,21 @@
 <script>
     function funcao_pdf(){
         var pegar = document.getElementById('dados').innerHTML;
-        var janela = window.open('','', 'width=800, height=600');
+        var janela = window.open('','', 'width=1500, height=1000');
         janela.document.write('<html><head>');
-        janela.document.write('<style>input, textarea {font: 1em sans-serif; width: 450px; -moz-box-sizing: border-box; box-sizing: border-box; border: 3px solid #999;}</style>');
-        janela.document.write(`<style>label{display: inline-block; width: 200px; text-align: left;
-                                border: 3px solid #999; }</style>`);
-                                janela.document.write(`<style>:root{--bs-gutter-y: 1rem;} .col-md-1{flex:0 0 auto;width:8.3333333333%}.col-md-2{flex:0 0 auto;width:16.6666666667%}.col-md-3{flex:0 0 auto;width:25%}.col-md-4{flex:0 0 auto;width:33.3333333333%}.col-md-5{flex:0 0 auto;width:41.6666666667%}.col-md-6{flex:0 0 auto;width:50%}.col-md-7{flex:0 0 auto;width:58.3333333333%}.col-md-8{flex:0 0 auto;width:66.6666666667%} .form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;-webkit-appearance:none;-moz-appearance:none;appearance:none;border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out} .form-label{margin-bottom:.5rem}.row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(var(--bs-gutter-y) * -1);margin-right:calc(var(--bs-gutter-x)/ -2);margin-left:calc(var(--bs-gutter-x)/ -2)}.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)/ 2);padding-left:calc(var(--bs-gutter-x)/ 2);margin-top:var(--bs-gutter-y)}.col{flex:1 0 0%}</style>`);
-        janela.document.write('<style>form {margin: 0 auto; width: 700px; padding: 1em; border: 1px solid #CCC; border-radius: 1em;}</style>');
-        janela.document.write('<style>h3{text-align: center; text-decoration: bold}</style>');
-        janela.document.write('<title>Relatório SISPLAG - Verificação de Cadastro de Escola</title></head>');
-        janela.document.write('<h3> Verificação de Cadastro de Escola</h3>');
+        janela.document.write('<style>button{padding-left:90px; margin-left: 5em}</style>');
+        janela.document.write('<style>h3, h4, h5, h6, title{line-height: 0em; text-align: center; text-decoration: bold;}</style>');
+        janela.document.write(`<style>input, textarea{border-color: #999; }</style>`);
+        janela.document.write(`<style>input, textarea{font: 1em sans-serif; width: 1300px; -moz-box-sizing: border-box; box-sizing: border-box; border: 1px solid #999;}</style>`);
+        janela.document.write('<style>form {margin: 1em; width: 1400px; padding: 1em;border: 1px solid #CCC; border-radius: 1em;}</style>');
+        janela.document.write('<style>label{display: inline-flex; width: 90px; text-align: justify;}</style>');
+        janela.document.write('<style> form div + div { margin-top: 1em;</style>');
+        
+        janela.document.write('<h5>PREFEITURA DE BELÉM</h5>');
+        janela.document.write('<h5>CONSELHO MUNICIPAL DE EDUCAÇÃO</h5>');
+        janela.document.write('<h5>SISTEMA DE PLANEJAMENTO E GESTÃO</h5>');
+        janela.document.write('<hr>');
+        janela.document.write('<h6> Verificação de Cadastro de Escola</h6>');
         janela.document.write('</body>');
         janela.document.write(pegar);
         janela.document.write('</body></html>');

@@ -152,8 +152,8 @@ session_start();
                         <th>Tipo da Escola</th>
                         <th>Sigla da Escola</th>
                         <th>Distrito Adm</th>
-                        <th id="verificar" >Verificar Cadastro</th>
-                        <th id="confirmar" >Aprovar Transferencia</th>
+                        <th id="verificar" >Verificar/Atualizar Cadastro</th>
+                        
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -169,8 +169,7 @@ session_start();
                         <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['sigla'];?></td>
                         <td><?php echo $consulta ['distritoAdm'];?></td>
-                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'> Verificar</button></a></td>" ?>
-                        <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-danger'>Aprovar</button></a></td>" ?>
+                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-secondary'> Verificar/Atualizar</button></a></td>" ?>
                     </tr>
                     <?php }?>
                 </tbody>   

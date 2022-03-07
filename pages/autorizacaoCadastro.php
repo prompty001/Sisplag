@@ -169,9 +169,9 @@ session_start();
                         <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['sigla'];?></td>
                         <td><?php echo $consulta ['distritoAdm'];?></td>
-                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'> Abrir</button></a></td>" ?>
-                        <?php echo " <td><a href='verifica_filial.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'>Abrir</button></a></td>" ?>
-                        <?php echo " <td><a href='#?id_instituicao=$id_instituicao'><button type='button' class='btn btn-info'>Abrir</button></a></td>" ?>
+                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-secondary'> Abrir</button></a></td>" ?>
+                        <?php echo " <td><a href='verifica_filial.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-secondary'>Abrir</button></a></td>" ?>
+                        <?php echo " <td><a href='#?id_instituicao=$id_instituicao'><button type='button' class='btn btn-secondary'>Abrir</button></a></td>" ?>
                         <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'>Aprovar</button></a></td>" ?>
                         <?php echo " <td><a href='deletar_escola.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-danger'>Deletar</button></a></td>" ?>
                     </tr>
