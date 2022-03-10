@@ -129,6 +129,7 @@
 
     <div class=schoolForm >
         <div class=formPersonalData>
+        <a href='main.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
             
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
@@ -233,6 +234,7 @@
                 <hr>
 
                 <button type='button' class='btn btn-outline-info' value="imprimir" onclick="funcao_pdf()"><i class="bi bi-printer"> Imprimir</button></i></a>
+                <a href='main.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
             
 
 

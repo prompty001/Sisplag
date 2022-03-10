@@ -140,6 +140,9 @@
     <?php
         include ('../config/painel.php');
 
+        
+
+
         if(isset($_POST['enviar'])){
             $nome_usuario = $_POST['nome_usuario'];
             $cpf_usuario = $_POST['cpf_usuario'];
@@ -151,11 +154,31 @@
             $data_nascimento = $_POST['data_nascimento'];
             $fk_cargo = $_POST['fk_cargo'];
 
-            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, login_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$login_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo')");
 
-            $cadastroUsuario->execute();
-            Painel::alert('sucesso',' cadastro realizado com sucesso!');
-            header("Location: main.php");
+            $verificaUsuario = Conexao::conectar()->prepare("SELECT * FROM USUARIO WHERE login_usuario = '$login_usuario'");
+            $verificaUsuario->execute();
+            //$verificaUsuario=$verificaUsuario->fetchAll();
+
+
+            if($verificaUsuario){
+                if($verificaUsuario->rowCount() == 1){
+                    echo '<div class="box-alert sucesso" style="text-decoration: bold; text-align: center; background-color: #ffa1a1; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">'."Usuário já cadastrado!".'</div>';    
+                    // header("Location: cadastro_usuario.php");
+                    // Painel::alert('Erro',' Usuário já cadastrado!');
+                }else{
+                    $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, login_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$login_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo')");
+
+                    $cadastroUsuario->execute();
+                    echo '<div class="box-alert sucesso" style="text-decoration: bold; text-align: center; background-color: #c8e8f3; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">'."Sucesso. Cadastro Realizado!".'</div>'; 
+                    //header("Location: main.php");
+                }
+
+                
+            }else{
+                echo "Erro na consulta";
+                
+                
+            }
         }
 
     ?>
@@ -241,14 +264,14 @@
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom05" class="form-label">Início do Mandato</label>
-                    <input type="date" class="form-control" id="validationCustom01" name="inicio_mandato" required>
+                    <input type="date" class="form-control" id="validationCustom01" name="inicio_mandato">
                     <div class="valid-feedback">
                         Data inválida!
                     </div>
                 </div> 
                 <div class="col-md-4">
                     <label for="validationCustom06" class="form-label">Fim do Mandato</label>
-                    <input type="date" class="form-control" id="validationCustom01" name="fim_mandato" required>
+                    <input type="date" class="form-control" id="validationCustom01" name="fim_mandato">
                     <div class="valid-feedback">
                         Data inválida!
                     </div>
@@ -259,6 +282,7 @@
                 <hr>
 
                 <button type="submit" class="btn btn-primary" type="button" name="enviar">Enviar</button>
+                <a href='main.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
             
 
 

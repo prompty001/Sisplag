@@ -182,6 +182,7 @@ session_start();
         foreach($qtdTotal as $qtdTotal){
         ?>               
         <a><button type='button' class='btn btn-outline-primary' >Total: <?php echo $qtdTotal ['qtdTot'];?></button><i class="bi bi-printer"></i></a>
+        <a href='../pages/tab_graph.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
         <?php }?>
         
     </div>

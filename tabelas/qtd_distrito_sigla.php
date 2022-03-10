@@ -50,6 +50,7 @@ session_start();
 
     <header class="header" id="header">
         <div class="header_toggle" id="header-toggle"><i class="gg-menu" id="bt-menu"></i></div>
+        
         <button class="btn btn-dark"><a  href="main.php" id="navbarDropdown">
                 Usuário: 
                <?php echo $_SESSION['login_usuario']; ?>
@@ -142,7 +143,8 @@ session_start();
         
         <hr>
         <div class="d-flex justify-content-between">
-        <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" /> 
+        <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" />
+        
         <a href='../expo/impress05.php' target="_black"><button type='button' class='btn btn-outline-info' >Imprimir</button><i class="bi bi-printer"></i></a>
         </div>    
         <!--Criação da Tabela-->
@@ -178,6 +180,7 @@ session_start();
         foreach($qtdTotal as $qtdTotal){
         ?>               
         <a><btton type='button' class='btn btn-outline-primary' >Total: <?php echo $qtdTotal ['qtdTot'];?></button><i class="bi bi-printer"></i></a>
+        <a href='../pages/tab_graph.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
         <?php }?>
         
     </div>

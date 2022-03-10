@@ -11,14 +11,9 @@
 ### Alterar email da HOME
 * professora enviará
 
-### Paginas de impressoes
-* Colocar a imagem da ufpa ou prefeitura nas impressoes
-    * não foi possivel
-
 ### Login
 * Esqueci Senha?
     * redirecionar para o cadastro de usuario, conforme o login ou senha colocados.
-
 
 ### Usuários
 * Linkar no banco os cargos atrelados ao perfil do usuario no sistema.
@@ -28,6 +23,9 @@
 
 ### Janelas de Impressão
 * colocar o icone da janela em todas e um titulo
+
+### Tabelas e Gráficos
+* alterar o titulo e colocar o icone de todas as telas
 
 
 
