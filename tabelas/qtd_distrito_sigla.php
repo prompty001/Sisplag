@@ -43,39 +43,6 @@ session_start();
     <link rel="stylesheet" href="../lib/icons/css/icons.css">
 
 
-    <!--
-        Grafico de Pizza
--->
-   
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
-        ]);
-
-        var options = {
-          title: 'My Daily Activities'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-
-
-
-
 
 </head>
 
@@ -83,6 +50,7 @@ session_start();
 
     <header class="header" id="header">
         <div class="header_toggle" id="header-toggle"><i class="gg-menu" id="bt-menu"></i></div>
+        
         <button class="btn btn-dark"><a  href="main.php" id="navbarDropdown">
                 Usuário: 
                <?php echo $_SESSION['login_usuario']; ?>
@@ -153,12 +121,12 @@ session_start();
 
         $consulta = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtd, S.sigla,  D.distritoadm
         FROM instituicao I 
-        INNER JOIN siglainstituicao S 
-        ON S.id_sigla = I.fk_sigla 
-        INNER JOIN distritoadm D 
-        ON D.id_distrito = I.fk_distrito 
-        WHERE status_inst = 'Sim' 
-        GROUP BY (sigla);");
+                                                    INNER JOIN siglainstituicao S 
+                                                    ON S.id_sigla = I.fk_sigla 
+                                                    INNER JOIN distritoadm D 
+                                                    ON D.id_distrito = I.fk_distrito 
+                                                    WHERE status_inst = 'Sim' 
+                                                    GROUP BY (distritoadm);");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
 
@@ -175,8 +143,9 @@ session_start();
         
         <hr>
         <div class="d-flex justify-content-between">
-        <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" /> 
-        <a href='#' target="_black"><button type='button' class='btn btn-outline-info' >Imprimir</button><i class="bi bi-printer"></i></a>
+        <input type="text" class="input-search" alt="lista-clientes" placeholder="Buscar nesta lista" />
+        
+        <a href='../expo/impress05.php' target="_black"><button type='button' class='btn btn-outline-info' >Imprimir</button><i class="bi bi-printer"></i></a>
         </div>    
         <!--Criação da Tabela-->
             <table id="example" class="lista-clientes" style="width:100%">
@@ -211,6 +180,7 @@ session_start();
         foreach($qtdTotal as $qtdTotal){
         ?>               
         <a><btton type='button' class='btn btn-outline-primary' >Total: <?php echo $qtdTotal ['qtdTot'];?></button><i class="bi bi-printer"></i></a>
+        <a href='../pages/tab_graph.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
         <?php }?>
         
     </div>

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/painelAdmStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Cadastro de Escolas</title>
+    <link rel="shortcut icon" href="../imgs/sisplag_fundo.jpeg" type="image/x-icon">
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
     <script src="../lib/mask/script_mask.js" defer></script>
@@ -201,6 +202,7 @@
              $cadastroEscola->execute();
             Painel::alert('sucesso',' cadastro realizado com sucesso!');
             header("Location: main.php");
+            
         }
 
     ?>
@@ -208,7 +210,9 @@
     <div class=schoolForm>
         <div class=formPersonalData>
             <hr>
-                <h3>Dados de Identificação</h3>
+                <div style="background-color: #c3dfff; text-align: center; height: 2.5em; border-radius: 2em; padding-top: 0.5em; padding-bottom: 1em;">
+                    <h3>Dados de Identificação</h3><br>
+                </div>
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
         <form method="POST" class="row g-3">
@@ -307,7 +311,7 @@
                 
                 <div class="col-md-3">
                     <label for="validationCustom02" class="form-label">Vigência CE</label>
-                    <input type="date" class="form-control" id="validationCustom01" name="vigencia_ce'" required>
+                    <input type="date" class="form-control" id="validationCustom01" name="vigencia_ce" required>
                 </div>
 
                 <div class="col-md-2">
@@ -451,88 +455,96 @@
                 
 
             <hr>
-                <h3>Dados Técnicos</h3>
-            <hr>
-            <label class="form-check-label" for="flexRadioDefault1">Convenio com a Semec</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="convenio_semec" id="inlineRadio1"  value="Sim">
-                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="convenio_semec" id="inlineRadio2"  value="Não">
-                    <label class="form-check-label" for="inlineRadio2">Não</label>
+                <div style="background-color: #c3dfff; text-align: center; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">
+                    <h5>Dados Técnicos</h5><br>
                 </div>
-                <div id="mostrar">
+            
+            
+                
+                <div class="form-check" style="background-color: #d8dfe7; border-radius: 2em; padding-top: 0.5em; padding-bottom: 0.5em;">
+                <label for="flexRadioDefault1">Convenio com a SEMEC</label><br>
+                    <input class="form-check-input" type="radio" name="convenio_semec" id="flexRadioDefault1"  style="margin-left: 0.5em;" value="Sim">
+                    <label class="form-check-label" for="flexRadioDefault1">Sim</label><br>
+                    
+                    <input class="form-check-input" type="radio" name="convenio_semec" id="flexRadioDefault2"  style="margin-left: 0.5em;" value="Não">
+                    <label class="form-check-label" for="flexRadioDefault2">Não</label>
+                </div>
+                
+               
                 <div class="col-md-6">
                     <label for="validationCustom04" class="form-label" id="opcao">Nº do Convenio</label>
                     <input type="text" class="form-control" id="opcao" name="n_convenio" placeholder="E-mail">
-                    <div class="valid-feedback" id="mostrar">
-                        Número inválido!
-                    </div>
                 </div>
 
                 <div class="col-md-6">
                     <label for="validationCustom03" class="form-label" id="opcao">Objeto</label>
                     <input type="text" class="form-control" id="opcao" name="objeto">
-                    <div class="valid-feedback">
-                        Campo inválido!
-                    </div>
                 </div>
 
 
                 <div class="col-md-6">
                     <label for="validationCustom04" class="form-label" id="opcao">vigencia</label>
                     <input type="date" class="form-control" id="opcao" name="vigencia" placeholder="Vigência">
-                    <div class="valid-feedback">
-                        Email inválido!
-                    </div>
                 </div>
-                        </div>
+                        
+            
+            
             
 
             <hr>
 
-                <div class="form-check">
-                <label>Etapa(s)/Modalidade(s) da Educação Básica Ofertada</label><br>
+                <div style="background-color: #c3dfff; text-align: center; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">
+                <h5>Etapa(s)/Modalidade(s) da Educação Básica Ofertada</h5><br>
+                </div>
+                
+                <div class="form-check" style="background-color: #d8dfe7; border-radius: 2em; padding-top: 0.5em;">
                 <label class="form-check-label" for="flexRadioDefault1">Educação Infantil</label><br>
                     <input type="checkbox" name="educacao_infantil" value="Creche">
-                    <label for="nursery">Creche</label>
+                    <label for="nursery">Creche</label><br>
                     <input type="checkbox" name="educacao_infantil" value="Pré-Escola">
-                    <label for="preSchool">Pré-Escola</label>
+                    <label for="preSchool">Pré-Escola</label><br>
+                    <input type="checkbox" name="educacao_infantil" value="Pré-Escola">
+                    <label for="preSchool">Não Ofertante</label><br>
                 </div>
 
                 <br>
 
-                <div class="form-check">
+                <div class="form-check" style="background-color: #d8dfe7; border-radius: 2em; padding-top: 0.5em;">
                 <label class="form-check-label" for="flexRadioDefault1">Educação Fundamental</label><br>
                     <input type="checkbox" name="fundamental" value="CF I (1º, 2º e 3º ano)">
-                    <label for="cycleOne">CF I (1º, 2º e 3º ano)</label>
+                    <label for="cycleOne">CF I (1º, 2º e 3º ano)</label><br>
                     <input type="checkbox" name="fundamental" value="CF II (4º e 5º ano)">
-                    <label for="cycleTwo">CF II (4º e 5º ano)</label>
+                    <label for="cycleTwo">CF II (4º e 5º ano)</label><br>
                     <input type="checkbox" name="fundamental" value="CF III (6º e 7º ano)">
-                    <label for="cycleThree">CF III (6º e 7º ano)</label>
+                    <label for="cycleThree">CF III (6º e 7º ano)</label><br>
                     <input type="checkbox" name="fundamental" value="CF IV (8º e 9º ano)">
-                    <label for="cycleFour">CF IV (8º e 9º ano)</label>
+                    <label for="cycleFour">CF IV (8º e 9º ano)</label><br>
+                    <input type="checkbox" name="fundamental" value="Não Ofertante">
+                    <label for="cycleFive">Não Ofertante</label>
                 </div>
 
                 <br>
                 
-                <div class="form-check">
+                <div class="form-check" style="background-color: #d8dfe7; border-radius: 2em; padding-top: 0.5em;">
                 <label class="form-check-label" for="flexRadioDefault1">Ensino Fundamental - Educação de Jovens, Adultos e Idosos (Totalidades do Conhecimento) - Anos Iniciais e Finais</label><br>
                     <input type="checkbox" name="fundamental_eja" value="1ª Totalidade - CF I (1º, 2º e 3º ano)">
-                    <label for="totalityOne">1ª Totalidade - CF I (1º, 2º e 3º ano)</label>
+                    <label for="totalityOne">1ª Totalidade - CF I (1º, 2º e 3º ano)</label><br>
                     <input type="checkbox" name="fundamental_eja" value="2ª Totalidade - CF II (4º e 5º ano)">
                     <label for="totalityTwo">2ª Totalidade - CF II (4º e 5º ano)</label><br>
                     <input type="checkbox" name="fundamental_eja" value="3ª Totalidade - CF III (6º e 7º ano)">
-                    <label for="totalityThree">3ª Totalidade - CF III (6º e 7º ano)</label>
+                    <label for="totalityThree">3ª Totalidade - CF III (6º e 7º ano)</label><br>
                     <input type="checkbox" name="fundamental_eja" value="4ª Totalidade - CF IV (8º e 9º ano)">
                     <label for="totalityFour">4ª Totalidade - CF IV (8º e 9º ano)</label><br>
+                    <input type="checkbox" name="fundamental_eja" value="Não Ofertante">
+                    <label for="totalityFive">Não Ofertante</label><br>
                 </div>
 
-                <div class="form-check">
+                <div class="form-check" style="background-color: #d8dfe7; border-radius: 2em; padding-top: 0.5em;">
                 <label class="form-check-label" for="flexRadioDefault1">Outros</label><br>
                     <input type="checkbox" name="outros_niveis" value="Outros níveis e/ou Modalidades de Ensino Ofertadas">
-                    <label for="othersLevels">Outros níveis e/ou Modalidades de Ensino Ofertadas</label>
+                    <label for="othersLevels">Outros níveis e/ou Modalidades de Ensino Ofertadas</label><br>
+                    <input type="checkbox" name="outros_niveis" value="Não Ofertante">
+                    <label for="othersLevels">Não Ofertante</label>
                 </div>
 
 

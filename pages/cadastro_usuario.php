@@ -22,6 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Empréstimo de Maletas</title>
+    <link rel="shortcut icon" href="../imgs/sisplag_fundo.jpeg" type="image/x-icon">
 
     <script src="../lib/jquery/jquery.js" defer></script>
 
@@ -66,6 +67,30 @@
                 <div class=" nav_list">
 
 
+                        <a href="main.php" class="nav_link" id="cadastro">
+                            <div class="grid-icon">
+                                <i class="bi bi-grid-1x2"></i>
+                                <span class="nav_name">Início</span>
+                            </div>
+                        </a>
+
+               
+                        <a href="cadastro_escolaint.php"  class="nav_link" id="emprestimo">
+                            <div class="grid-icon">
+                                <i class="bi bi-house"></i>
+                                <span class="nav_name">Cadastro de Escolas</span>
+                            </div>
+                        </a>
+
+
+                       <a href='cadastro_filialInt.php' target="_blank" class='nav_link' id='cadastro'>
+                            <div class="grid-icon">
+                                </i><i class="bi bi-person-check"></i>
+                                <span class="nav_name">Cadastro Filial</span>
+                            </div>
+                        </a>
+
+                        
 
                         <a href="cadastro_usuario.php" class="nav_link" id="cadastro">
                             <div class="grid-icon">
@@ -76,8 +101,8 @@
 
                         <a href="cadastro_escola.php" class="nav_link" id="emprestimo">
                             <div class="grid-icon">
-                                <i class="bi bi-house"></i>
-                                <span class="nav_name">Cadastro de Escolas</span>
+                                <i class="bi bi-card-checklist"></i>
+                                <span class="nav_name">Autorização de Cadastro <br>de Escolas</span>
                             </div>
                         </a>
 
@@ -107,12 +132,16 @@
 
     </nav>
     </div>
+    
             <h1>SISPLAG</h1>
     <h2>CADASTRO DE USUÁRIOS</h2>
 
 
     <?php
         include ('../config/painel.php');
+
+        
+
 
         if(isset($_POST['enviar'])){
             $nome_usuario = $_POST['nome_usuario'];
@@ -125,11 +154,31 @@
             $data_nascimento = $_POST['data_nascimento'];
             $fk_cargo = $_POST['fk_cargo'];
 
-            $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, login_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$login_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo')");
 
-            $cadastroUsuario->execute();
-            Painel::alert('sucesso',' cadastro realizado com sucesso!');
-            header("Location: main.php");
+            $verificaUsuario = Conexao::conectar()->prepare("SELECT * FROM USUARIO WHERE login_usuario = '$login_usuario'");
+            $verificaUsuario->execute();
+            //$verificaUsuario=$verificaUsuario->fetchAll();
+
+
+            if($verificaUsuario){
+                if($verificaUsuario->rowCount() == 1){
+                    echo '<div class="box-alert sucesso" style="text-decoration: bold; text-align: center; background-color: #ffa1a1; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">'."Usuário já cadastrado!".'</div>';    
+                    // header("Location: cadastro_usuario.php");
+                    // Painel::alert('Erro',' Usuário já cadastrado!');
+                }else{
+                    $cadastroUsuario = Conexao::conectar()->prepare("INSERT INTO USUARIO (nome_usuario, cpf_usuario, email_usuario, login_usuario, senha_usuario, inicio_mandato, fim_mandato, data_nascimento, fk_cargo) VALUES ('$nome_usuario', '$cpf_usuario', '$email_usuario', '$login_usuario', '$senha_usuario', '$inicio_mandato', '$fim_mandato', '$data_nascimento', '$fk_cargo')");
+
+                    $cadastroUsuario->execute();
+                    echo '<div class="box-alert sucesso" style="text-decoration: bold; text-align: center; background-color: #c8e8f3; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">'."Sucesso. Cadastro Realizado!".'</div>'; 
+                    //header("Location: main.php");
+                }
+
+                
+            }else{
+                echo "Erro na consulta";
+                
+                
+            }
         }
 
     ?>
@@ -205,18 +254,24 @@
                     <div class="valid-feedback">
                         Email inválido!
                     </div>
-                </div> 
-
+                </div>
+                
+                <hr>
+                <div style="background-color: #d8dfe7; text-align: center; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">
+                <h6>
+                    Caso o seu cargo seja de PRESIDENTE, preencha os campos de 'Início de Mandato' e 'Fim de Mandato'
+                </h6>
+                </div>
                 <div class="col-md-4">
                     <label for="validationCustom05" class="form-label">Início do Mandato</label>
-                    <input type="date" class="form-control" id="validationCustom01" name="inicio_mandato" required>
+                    <input type="date" class="form-control" id="validationCustom01" name="inicio_mandato">
                     <div class="valid-feedback">
                         Data inválida!
                     </div>
                 </div> 
                 <div class="col-md-4">
                     <label for="validationCustom06" class="form-label">Fim do Mandato</label>
-                    <input type="date" class="form-control" id="validationCustom01" name="fim_mandato" required>
+                    <input type="date" class="form-control" id="validationCustom01" name="fim_mandato">
                     <div class="valid-feedback">
                         Data inválida!
                     </div>
@@ -227,6 +282,7 @@
                 <hr>
 
                 <button type="submit" class="btn btn-primary" type="button" name="enviar">Enviar</button>
+                <a href='main.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
             
 
 

@@ -2,25 +2,30 @@
 
 ### Tabelas e Gráficos
 * terminar as tabelas e graficos
+    * resta as relacionadas ao documentos
 
 ### Alterar Cadastro
 * criar a tela para realizar update
+    
 
 ### Alterar email da HOME
 * professora enviará
 
-### Paginas de impressoes
-* Colocar a imagem da ufpa ou prefeitura nas impressoes
+### Login
+* Esqueci Senha?
+    * redirecionar para o cadastro de usuario, conforme o login ou senha colocados.
 
-### Upload e Download de arquivos
-* https://www.youtube.com/watch?v=9iFw-jsGyyY
-* https://www.youtube.com/watch?v=iNm86iordCQ
-* enviar e realizar upload dos arquivos
-* integrar com o cadastro de escola
+### Usuários
+* Linkar no banco os cargos atrelados ao perfil do usuario no sistema.
 
-https://www.youtube.com/watch?v=tzAXG3ZNBHc
+### Autorização de Cadastro
+* botao de voltar em todas as telas que abrem desse menu
 
+### Janelas de Impressão
+* colocar o icone da janela em todas e um titulo
 
+### Tabelas e Gráficos
+* alterar o titulo e colocar o icone de todas as telas
 
 
 

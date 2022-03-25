@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/painelAdmStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Cadastro de Escolas</title>
+    <link rel="shortcut icon" href="../imgs/sisplag_fundo.jpeg" type="image/x-icon">
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
     <script src="../lib/mask/script_mask.js" defer></script>
@@ -44,7 +45,7 @@
                 enviar todos os outros que estiverem disponíveis.
             </h4> 
 
-            <button type='button' class='btn btn-dark'> <a href="../index.php" style="text-decoration: none; color: white;"> << Voltar</a></button>
+            <button type='button' class='btn btn-secondary'> <a href="../index.php" style="text-decoration: none; color: white;"> << Voltar</a></button>
  
             <hr>
             <!--Cadastro da escola - Dados de identificação | Parte 1/4-->
@@ -180,6 +181,7 @@
             
             <div>
                 <button type="submit" class="btn btn-primary" type="button" name="upload">Enviar</button>
+                <a href='../index.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
         </form>
 
             
@@ -187,6 +189,9 @@
         
 
     </div>
+
+    <br>
+    <br>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>

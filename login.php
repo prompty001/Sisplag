@@ -117,7 +117,7 @@
 
         <div class="catchphrase-content">
             <p>Seja bem vindo(a) ao Sistema de Planejamento e Gestão (Sisplag) do Conselho Municipal de 
-                Educação (CME) de Belém. Para realizar o cadastro de sua escola, clique <a href='./pages/cadastro_escola.php'>aqui</a>.
+                Educação (CME) de Belém. Para realizar o cadastro de sua escola, clique <a href='./pages/cadastro_escolaExt.php'>aqui</a>.
             </p>
         </div>
     </div>
@@ -138,9 +138,7 @@
             <input type="password" placeholder="Enter Password" name="senha_usuario" required>
               
             <button name="enviar" type="submit">Autenticar</button>
-            <label>
-              <input type="checkbox" checked="checked" name="remember"> Lembrar usuário
-            </label>
+            
           </div>
       
           <div class="container" style="background-color:#f1f1f1">

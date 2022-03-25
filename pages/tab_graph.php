@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/painelAdmStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Cadastro de Escolas</title>
+    <link rel="shortcut icon" href="../imgs/sisplag_fundo.jpeg" type="image/x-icon">
     <script src="../lib/bootstrap/js/bootstrap.js"></script>
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
     <script src="../lib/mask/script_mask.js" defer></script>
@@ -195,8 +196,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Quantidade de Escola - Distrito e Tipo</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="../tabelas/qtd_distrito_tipo.php" class="btn btn-primary">Go somewhere</a>
+                    <p class="card-text">Esse gráfico e tabela retorna a quantidade total de escolas autorizadas, agrupados por Distrito e Tipo de Instituição.</p>
+                    <a href="../tabelas/qtd_distrito_tipo.php" class="btn btn-primary">Tabela</a>
+                    <a href="../graph/qtd_tipo_distrito.php" class="btn btn-secondary">Gráfico</a>
                 </div>
             </div>
         </div>
@@ -206,8 +208,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Quantidade de Escolas - Distrito e Sigla</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">Esse gráfico e tabela retorna a quantidade total de escolas autorizadas, agrupados por Distrito e Sigla da Instituição.</p>
                     <a href="../tabelas/qtd_distrito_sigla.php" class="btn btn-primary">Abrir</a>
+                    <a href="../graph/qtd_distrito_sigla.php" class="btn btn-secondary">Gráfico</a>
                 </div>
             </div>
         </div>
@@ -216,7 +219,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Quantidade Total de Escolas</h5>
                     <p class="card-text">Esse gráfico e tabela retorna a quantidade total de escolas autorizadas, e a quantidade por sigla.</p>
-                    <a href="../tabelas/qtdtotal_escola.php" class="btn btn-primary">Abrir</a>
+                    <a href="../tabelas/qtdtotal_escola.php" class="btn btn-primary">Tabela</a>
+                    <a href="../graph/qtdtotal_escola.php" class="btn btn-secondary">Gráfico</a>
                 </div>
             </div>
         </div>

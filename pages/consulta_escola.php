@@ -24,6 +24,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Empréstimo de Maletas</title>
+    <link rel="shortcut icon" href="../imgs/sisplag_fundo.jpeg" type="image/x-icon">
 
     <script src="../lib/mask/script_mask.js" defer></script>
 
@@ -151,8 +152,8 @@ session_start();
                         <th>Tipo da Escola</th>
                         <th>Sigla da Escola</th>
                         <th>Distrito Adm</th>
-                        <th id="verificar" >Verificar Cadastro</th>
-                        <th id="confirmar" >Aprovar Transferencia</th>
+                        <th id="verificar" >Verificar/Atualizar Cadastro</th>
+                        
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -168,8 +169,7 @@ session_start();
                         <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['sigla'];?></td>
                         <td><?php echo $consulta ['distritoAdm'];?></td>
-                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-primary'> Verificar</button></a></td>" ?>
-                        <?php echo " <td><a href='aprovar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-danger'>Aprovar</button></a></td>" ?>
+                        <?php echo " <td><a href='verificar_cadastro.php?id_instituicao=$id_instituicao'><button type='button' class='btn btn-secondary'> Verificar/Atualizar</button></a></td>" ?>
                     </tr>
                     <?php }?>
                 </tbody>   

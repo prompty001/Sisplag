@@ -9,7 +9,7 @@
 
      	public static function alert($tipo,$messagem){
 		if($tipo =='sucesso'){
-			echo '<div class="box-alert sucesso">'.$messagem.'</div>';
+			echo '<div class="box-alert sucesso" style="text-decoration: bold; text-align: center; background-color: #d8dfe7; height: 2.5em; border-radius: 2em; padding-top: 0.5em;">'.$messagem.'</div>';
 		}else if ($tipo == 'erro'){
 			echo '<div class="box-alert erro">'.$messagem.'</div>';
 		}

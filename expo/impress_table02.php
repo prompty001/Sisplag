@@ -65,66 +65,72 @@ table.lista-clientes{
     <h5 style="line-height: 0em;">CONSELHO MUNICIPAL DE EDUCAÇÃO</h5>
     <h5 style="line-height: 0em;">SISTEMA DE PLANEJAMENTO E GESTÃO</h5>
     <hr>
-    <h6 style="text-align: center; line-height: 0em;">CONSULTA DE ESCOLAS DEFERIDAS</h6>
+    <h6 style="text-align: center; line-height: 0em;">QUANTIDADE TOTAL DE ESCOLAS - POR DISTRITO E SIGLA</h6>
     <hr>    
 
     <?php
         include ('../config/painel.php');
 
-        $consulta = Conexao::conectar()->prepare("SELECT I.id_instituicao, I.nome_instituicao, T.nome_inst, S.sigla, D.distritoAdm 
-                                        FROM instituicao I
-                                        INNER JOIN  tipoinstituicao T
-                                            ON T.id_inst = I.fk_tipoInstituicao
-                                        INNER JOIN siglainstituicao S
-                                            ON S.id_sigla = I.fk_sigla
-                                        INNER JOIN distritoadm D 
-                                            ON D.id_distrito=I.fk_distrito
-                                        WHERE status_inst = 'Sim'");
+        $consulta = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtd, S.sigla,  D.distritoadm
+        FROM instituicao I 
+                                                    INNER JOIN siglainstituicao S 
+                                                    ON S.id_sigla = I.fk_sigla 
+                                                    INNER JOIN distritoadm D 
+                                                    ON D.id_distrito = I.fk_distrito 
+                                                    WHERE status_inst = 'Sim' 
+                                                    GROUP BY (distritoadm);");
         $consulta->execute();
         $consulta = $consulta->fetchAll();
 
-    
+        $qtdTotal = Conexao::conectar()->prepare("SELECT count(I.nome_instituicao) AS qtdTot
+                                                    FROM instituicao I 
+                                                    WHERE status_inst = 'Sim'");
+        $qtdTotal->execute();
+        $qtdTotal = $qtdTotal->fetchAll();
+
 
     ?>
 
     <div class=schoolForm>
         
-        
-            <!--Criação da Tabela-->
+
+        <!--Criação da Tabela-->
             <table id="example" class="lista-clientes" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Ordem</th>
-                        <th>Escola</th>
-                        <th>Tipo da Escola</th>
-                        <th>Sigla da Escola</th>
-                        <th>Distrito Adm</th>
-                        
+                    
+                        <th>Sigla</th>
+                        <th>Distrito</th>
+                        <th>Quantidade</th>
+
                     </tr>
                 </thead>
                 <tbody id="myTable">
 
                     <?php 
-                    $id_instituicao = 0;
+                   
                     foreach($consulta as $consulta){
-                        $id_instituicao = $consulta['id_instituicao']
+                   
                         ?>
                     <tr>
-                        <td><?php echo $consulta ['id_instituicao'];?></td>
-                        <td><?php echo $consulta ['nome_instituicao'];?></td>
-                        <td><?php echo $consulta ['nome_inst'];?></td>
                         <td><?php echo $consulta ['sigla'];?></td>
-                        <td><?php echo $consulta ['distritoAdm'];?></td>
-                        
+                        <td><?php echo $consulta ['distritoadm'];?></td>
+                        <td><?php echo $consulta ['qtd'];?></td>
                     </tr>
                     <?php }?>
                 </tbody>   
                 
                 
-            </table>    
+            </table>   
+            
+            <?php
+        foreach($qtdTotal as $qtdTotal){
+        ?>               
+        <a><btton type='button' class='btn btn-outline-primary' >Total: <?php echo $qtdTotal ['qtdTot'];?></button><i class="bi bi-printer"></i></a>
+        <?php }?>
+        
         
     </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/painelAdmConfig.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>

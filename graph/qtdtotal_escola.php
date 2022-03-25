@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="../lib/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -14,7 +17,7 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Nome', 'Quantidade'],
+          ['Tipo de Instituição', 'Quantidade'],
           <?php
                 include ('../config/painel.php');
 
@@ -37,8 +40,8 @@
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: 'Conselho Municipal de Educação',
+            subtitle: 'Quantidade Total de Escolas - Por Instituição',
           }
         };
 
@@ -49,7 +52,11 @@
     </script>
 </head>
 <body>
-<div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+
+  <div id="columnchart_material" style="width: 800px; height: 500px; padding: 5em 5em 0em 10em;"></div>
+  <div style="margin-left: 10em;">
+    <a href='../pages/tab_graph.php'><button type='button' class='btn btn-secondary'>Voltar</button></a>
+  </div>
 </body>
 </html>
 

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/painelAdmStyle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="../lib/mask/script_mask.js" defer></script>
+    <link rel="shortcut icon" href="../imgs/sisplag_fundo.jpeg" type="image/x-icon">
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -85,7 +86,7 @@
                         </a>
 
                
-                        <a href="cadastro_escolaint.php" target="_blank" class="nav_link" id="emprestimo">
+                        <a href="cadastro_escolaint.php" class="nav_link" id="emprestimo">
                             <div class="grid-icon">
                                 <i class="bi bi-house"></i>
                                 <span class="nav_name">Cadastro de Escolas</span>
@@ -93,7 +94,7 @@
                         </a>
 
 
-                       <a href='cadastro_filialInt.php' target="_blank" class='nav_link' id='cadastro'>
+                       <a href='cadastro_filialInt.php' class='nav_link' id='cadastro'>
                             <div class="grid-icon">
                                 </i><i class="bi bi-person-check"></i>
                                 <span class="nav_name">Cadastro Filial</span>
@@ -109,7 +110,7 @@
                             </div>
                         </a>
 
-                        <a href="cadastro_escola.php" class="nav_link" id="emprestimo">
+                        <a href="autorizacaoCadastro.php" class="nav_link" id="emprestimo">
                             <div class="grid-icon">
                                 <i class="bi bi-card-checklist"></i>
                                 <span class="nav_name">Autorização de Cadastro <br>de Escolas</span>
